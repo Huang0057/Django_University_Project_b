@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="english">
+  <head>
+    <title>登入畫面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    {% load static %}
+
+    <script>
+      function redirectToPage3() {
+        window.location.href = "http://127.0.0.1:8000/首頁";
+      }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var currentDate = new Date();
+        var month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+        var day = currentDate.getDate().toString().padStart(2, "0");
+        var formattedDate = month + "/" + day;
+        document.getElementById("currentDate").innerHTML = month + "/" + day;
+      });
+    </script>
+
+    <style data-tag="reset-style-sheet">
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}' %}" />
+  </head>
+  <body>
+    <div>
+      <link href="{% static 'css/登入畫面.css' %}" rel="stylesheet" />
+
+      <div class="page1-container">
+        <div class="page1-frame">
+          {% comment %}
+          <div class="page1-frame1">
+            <button
+              name="button"
+              class="login_button"
+              onclick="redirectToPage3()"
+            >
+              登入
+            </button>
+          </div>
+          {% endcomment %}
+          <img
+            src="{% static 'public/playground_assets/calendar4161-jsqk-200h.png' %}"
+            alt="Calendar4161"
+            class="page1-calendar"
+          />
+          <span class="Date" id="currentDate"></span>
+          <img
+            src="{% static 'public/playground_assets/user4163-pxf6-200h.png' %}"
+            alt="User4163"
+            class="page1-user"
+          />
+          <img
+            src="{% static 'public/playground_assets/search4164-yvga-200h.png' %}"
+            alt="Search4164"
+            class="page1-search"
+          />
+          <span class="page1-text04">
+            <span>
+              <span>歡迎</span>
+              <br />
+              <span>請登入</span>
+            </span>
+          </span>
+          {% comment %}
+          <span class="username_label"><span>帳號：</span></span>
+          <span class="password_label"><span>密碼：</span></span>
+          <img
+            src="{% static 'public/playground_assets/line14180-fs1r.svg' %}"
+            alt="Line14180"
+            class="page1-line1"
+          />
+          <img
+            src="{% static 'public/playground_assets/line24183-k7v.svg' %}"
+            alt="Line24183"
+            class="page1-line2"
+          />
+          <input
+            class="login_username"
+            type="email"
+            placeholder="default@example.com"
+            required
+          />
+          <input
+            class="login_Password"
+            type="password"
+            placeholder="**********"
+            autocomplete="on"
+            required
+          />
+          <span class="page1-text13"><span>忘記密碼?</span></span>
+          {% endcomment %}
+          <a href="{% url 'signup' %}" target="_self" class="page1-text15"
+            >新的使用者按此創辦帳號</a
+          >
+          <form action="" method="POST">
+            {% csrf_token %}
+            <label class="username_label" for="{{ form.username.id_for_label }}"
+              >帳號：</label
+            >
+            {{ form.username }}
+            <br />
+            <label class="password_label" for="{{ form.password.id_for_label }}"
+              >密碼：</label
+            >
+            {{ form.password }}
+            <br />
+            <span class="error-message">{{ error_message }}</span>
+            <div class="page1-frame1">
+              <button name="button" class="login_button" type="submit">
+                登入
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

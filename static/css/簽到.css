@@ -1,0 +1,776 @@
+body {
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+}
+.page10-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.page10-frame {
+  width: 100%;
+  height: 1024px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 1);
+}
+.page10-text {
+  top: 166px;
+  left: 760px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 60px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-text02 {
+  top: 426px;
+  left: 263px;
+  color: rgba(0, 0, 0, 1);
+  width: 121px;
+  height: auto;
+  position: absolute;
+  font-size: 35px;
+  font-style: Extra Bold;
+  text-align: left;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-text04 {
+  top: 426px;
+  left: 464px;
+  color: rgba(0, 0, 0, 1);
+  width: 121px;
+  height: auto;
+  position: absolute;
+  font-size: 35px;
+  font-style: Extra Bold;
+  text-align: left;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-text06 {
+  top: 426px;
+  left: 665px;
+  color: rgba(0, 0, 0, 1);
+  width: 121px;
+  height: auto;
+  position: absolute;
+  font-size: 35px;
+  font-style: Extra Bold;
+  text-align: left;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-text08 {
+  top: 426px;
+  left: 866px;
+  color: rgba(0, 0, 0, 1);
+  width: 121px;
+  height: auto;
+  position: absolute;
+  font-size: 35px;
+  font-style: Extra Bold;
+  text-align: left;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-text10 {
+  top: 426px;
+  left: 1067px;
+  color: rgba(0, 0, 0, 1);
+  width: 121px;
+  height: auto;
+  position: absolute;
+  font-size: 35px;
+  font-style: Extra Bold;
+  text-align: left;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-text12 {
+  top: 426px;
+  left: 1268px;
+  color: rgba(0, 0, 0, 1);
+  width: 121px;
+  height: auto;
+  position: absolute;
+  font-size: 35px;
+  font-style: Extra Bold;
+  text-align: left;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-text14 {
+  top: 426px;
+  left: 1469px;
+  color: rgba(0, 0, 0, 1);
+  width: 121px;
+  height: auto;
+  position: absolute;
+  font-size: 35px;
+  font-style: Extra Bold;
+  text-align: left;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-rectangle17 {
+  top: 480px;
+  left: 225px;
+  width: 183px;
+  height: 182px;
+  position: absolute;
+  border-radius: 36px;
+}
+.page10-rectangle18 {
+  top: 480px;
+  left: 426px;
+  width: 183px;
+  height: 182px;
+  position: absolute;
+  border-radius: 36px;
+}
+.page10-rectangle19 {
+  top: 480px;
+  left: 627px;
+  width: 183px;
+  height: 182px;
+  position: absolute;
+  border-radius: 36px;
+}
+.page10-rectangle20 {
+  top: 480px;
+  left: 828px;
+  width: 183px;
+  height: 182px;
+  position: absolute;
+  border-radius: 36px;
+}
+.page10-rectangle21 {
+  top: 480px;
+  left: 1032px;
+  width: 183px;
+  height: 182px;
+  position: absolute;
+  border-radius: 36px;
+}
+.page10-rectangle22 {
+  top: 480px;
+  left: 1230px;
+  width: 183px;
+  height: 182px;
+  position: absolute;
+  border-radius: 36px;
+}
+.page10-rectangle23 {
+  top: 480px;
+  left: 1431px;
+  width: 183px;
+  height: 182px;
+  position: absolute;
+  border-radius: 36px;
+}
+.page10-rectangle24 {
+  top: 286px;
+  left: 833px;
+  width: 233px;
+  height: 71px;
+  position: absolute;
+  border-radius: 61px;
+}
+.page10-text16 {
+  top: 298px;
+  left: 909px;
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: Extra Bold;
+  text-align: left;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-rectangle31 {
+  top: 870px;
+  left: 0px;
+  width: 100%;
+  height: 171px;
+  position: absolute;
+}
+.page10-component {
+  top: 788px;
+  left: 100px;
+  width: 130px;
+  height: 200px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.page10-group9 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 199.71144104003906px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.page10-image6 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 129px;
+  position: absolute;
+}
+.page10-text18 {
+  top: 142px;
+  color: rgba(0, 0, 0, 1);
+  width: 129px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-component1 {
+  top: 788px;
+  left: 570px;
+  width: 130px;
+  height: 200px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.page10-group91 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 199.71144104003906px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.page10-image61 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 129px;
+  position: absolute;
+}
+.page10-text20 {
+  top: 142px;
+  color: rgba(0, 0, 0, 1);
+  width: 129px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-component2 {
+  top: 768px;
+  left: 1090px;
+  width: 130px;
+  height: 200px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.page10-group10 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 199.71144104003906px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.page10-image62 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 129px;
+  position: absolute;
+}
+.page10-text22 {
+  top: 142px;
+  color: rgba(0, 0, 0, 1);
+  width: 129px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-component3 {
+  top: 788px;
+  left: 1010px;
+  width: 130px;
+  height: 200px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.page10-group92 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 199.71144104003906px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.page10-image63 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 129px;
+  position: absolute;
+}
+.page10-text24 {
+  top: 142px;
+  color: rgba(0, 0, 0, 1);
+  width: 129px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-component4 {
+  top: 788px;
+  left: 1330px;
+  width: 130px;
+  height: 200px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.page10-group93 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 199.71144104003906px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.page10-image64 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 129px;
+  position: absolute;
+}
+.page10-text26 {
+  top: 142px;
+  color: rgba(0, 0, 0, 1);
+  width: 129px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-component5 {
+  top: 788px;
+  left: 1650px;
+  width: 130px;
+  height: 200px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.page10-group94 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 199.71144104003906px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.page10-image65 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 129px;
+  position: absolute;
+}
+.page10-text28 {
+  top: 142px;
+  color: rgba(0, 0, 0, 1);
+  width: 129px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-user {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+}
+.page10-search {
+  top: 15px;
+  right: 150px;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+}
+.page10-calendar {
+  top: 0px;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+.page10-image4 {
+  top: 13px;
+  left: 278px;
+  width: 75px;
+  height: 75px;
+  position: absolute;
+}
+.page10-text30 {
+  top: 21px;
+  left: 116px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-text32 {
+  top: 21px;
+  left: 368px;
+  color: rgba(254, 168, 50, 1);
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-group1 {
+  top: 676px;
+  left: 243px;
+  width: 146px;
+  height: 58px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.page10-text34 {
+  color: rgba(254, 168, 50, 1);
+  width: 96px;
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-image5 {
+  top: 4px;
+  left: 96px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+.page10-group2 {
+  top: 676px;
+  left: 444px;
+  width: 146px;
+  height: 58px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.page10-text36 {
+  color: rgba(254, 168, 50, 1);
+  width: 96px;
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-image51 {
+  top: 4px;
+  left: 96px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+.page10-group3 {
+  top: 676px;
+  left: 645px;
+  width: 146px;
+  height: 58px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.page10-text38 {
+  color: rgba(254, 168, 50, 1);
+  width: 96px;
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-image52 {
+  top: 4px;
+  left: 96px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+.page10-group4 {
+  top: 676px;
+  left: 846px;
+  width: 146px;
+  height: 58px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.page10-text40 {
+  color: rgba(254, 168, 50, 1);
+  width: 96px;
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-image53 {
+  top: 4px;
+  left: 96px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+.page10-group5 {
+  top: 676px;
+  left: 1050px;
+  width: 146px;
+  height: 58px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.page10-text42 {
+  color: rgba(254, 168, 50, 1);
+  width: 96px;
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-image54 {
+  top: 4px;
+  left: 96px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+.page10-group6 {
+  top: 676px;
+  left: 1249px;
+  width: 146px;
+  height: 58px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.page10-text44 {
+  color: rgba(254, 168, 50, 1);
+  width: 96px;
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-image55 {
+  top: 4px;
+  left: 96px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+.page10-group7 {
+  top: 676px;
+  left: 1450px;
+  width: 146px;
+  height: 58px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.page10-text46 {
+  color: rgba(254, 168, 50, 1);
+  width: 96px;
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page10-image56 {
+  top: 4px;
+  left: 96px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+.page10-text48 {
+  top: 21px;
+  left: 368px;
+  color: rgba(254, 168, 50, 1);
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}

@@ -1,0 +1,556 @@
+body {
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+}
+.component-紀錄1-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.component-紀錄1-frame {
+  width: 100%;
+  height: 1024px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 1);
+}
+.component-紀錄1-line6 {
+  top: 763px;
+  left: 32px;
+  width: 1358px;
+  height: 1px;
+  position: absolute;
+}
+.component-紀錄1-user {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+}
+.component-紀錄1-search {
+  top: 15px;
+  right: 150px;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+}
+.component-紀錄1-calendar {
+  top: 0px;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+.component-紀錄1-image4 {
+  top: 13px;
+  left: 278px;
+  width: 75px;
+  height: 75px;
+  position: absolute;
+}
+.component-紀錄1-text {
+  top: 21px;
+  left: 116px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-text02 {
+  top: 21px;
+  left: 368px;
+  color: rgba(254, 168, 50, 1);
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-rectangle31 {
+  top: 870px;
+  left: 0px;
+  width: 100%;
+  height: 171px;
+  position: absolute;
+}
+.component-紀錄1-component {
+  top: 788px;
+  left: 100px;
+  width: 130px;
+  height: 200px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.component-紀錄1-group9 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 199.71144104003906px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.component-紀錄1-image6 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 129px;
+  position: absolute;
+}
+.component-紀錄1-text04 {
+  top: 142px;
+  color: rgba(0, 0, 0, 1);
+  width: 129px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-component1 {
+  top: 788px;
+  left: 570px;
+  width: 130px;
+  height: 200px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.component-紀錄1-group91 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 199.71144104003906px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.component-紀錄1-image61 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 129px;
+  position: absolute;
+}
+.component-紀錄1-text06 {
+  top: 142px;
+  color: rgba(0, 0, 0, 1);
+  width: 129px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-component2 {
+  top: 788px;
+  left: 1090px;
+  width: 130px;
+  height: 200px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.component-紀錄1-group92 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 199.71144104003906px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.component-紀錄1-image62 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 129px;
+  position: absolute;
+}
+.component-紀錄1-text08 {
+  top: 142px;
+  color: rgba(0, 0, 0, 1);
+  width: 129px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-component3 {
+  top: 768px;
+  left: 1650px;
+  width: 130px;
+  height: 200px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.component-紀錄1-group10 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 199.71144104003906px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.component-紀錄1-image63 {
+  top: 0px;
+  left: 0px;
+  width: 130px;
+  height: 129px;
+  position: absolute;
+}
+.component-紀錄1-text10 {
+  top: 142px;
+  color: rgba(0, 0, 0, 1);
+  width: 129px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-rectangle32 {
+  top: 176px;
+  left: 261px;
+  width: 181px;
+  height: 82px;
+  position: absolute;
+  border-radius: 60px;
+}
+.component-紀錄1-rectangle41 {
+  top: 703px;
+  left: 260px;
+  width: 348px;
+  height: 82px;
+  position: absolute;
+  border-radius: 60px;
+}
+.component-紀錄1-text12 {
+  top: 720px;
+  left: 362px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-text14 {
+  top: 190px;
+  left: 60px;
+  color: rgba(0, 0, 0, 1);
+  width: 100%;
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-rectangle33 {
+  top: 284px;
+  left: 262px;
+  width: 181px;
+  height: 81px;
+  position: absolute;
+  border-radius: 60px;
+}
+.component-紀錄1-text16 {
+  top: 298px;
+  left: 309px;
+  color: rgba(0, 0, 0, 1);
+  width: 88px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-rectangle34 {
+  top: 392px;
+  left: 262px;
+  width: 181px;
+  height: 81px;
+  position: absolute;
+  border-radius: 60px;
+}
+.component-紀錄1-text18 {
+  top: 406px;
+  left: 309px;
+  color: rgba(0, 0, 0, 1);
+  width: 87px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-rectangle35 {
+  top: 499px;
+  left: 262px;
+  width: 180px;
+  height: 82px;
+  position: absolute;
+  border-radius: 60px;
+}
+.component-紀錄1-text20 {
+  top: 514px;
+  left: 308px;
+  color: rgba(0, 0, 0, 1);
+  width: 88px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-rectangle40 {
+  top: 579px;
+  left: 1289px;
+  width: 232px;
+  height: 106px;
+  position: absolute;
+  border-radius: 60px;
+}
+.component-紀錄1-text22 {
+  top: 598px;
+  left: 1348px;
+  color: rgba(0, 0, 0, 1);
+  width: 114px;
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-line7 {
+  top: 271px;
+  left: 75px;
+  width: 885px;
+  height: 1px;
+  position: absolute;
+}
+.component-紀錄1-line8 {
+  top: 379px;
+  left: 75px;
+  width: 885px;
+  height: 1px;
+  position: absolute;
+}
+.component-紀錄1-line9 {
+  top: 486px;
+  left: 75px;
+  width: 885px;
+  height: 1px;
+  position: absolute;
+}
+.component-紀錄1-text24 {
+  top: 231px;
+  left: 532px;
+  color: rgba(0, 0, 0, 1);
+  width: 566px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-text26 {
+  top: 337px;
+  left: 533px;
+  color: rgba(0, 0, 0, 1);
+  width: 566px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-text28 {
+  top: 443px;
+  left: 534px;
+  color: rgba(0, 0, 0, 1);
+  width: 566px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-text30 {
+  top: 549px;
+  left: 535px;
+  color: rgba(0, 0, 0, 1);
+  width: 566px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-text32 {
+  top: 179px;
+  left: 468px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-text34 {
+  top: 285px;
+  left: 472px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-text36 {
+  top: 391px;
+  left: 473px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-text38 {
+  top: 497px;
+  left: 474px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-rectangle54 {
+  top: 152px;
+  left: 1177px;
+  width: 455px;
+  height: 420px;
+  position: absolute;
+}

@@ -1,0 +1,534 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="english">
+  <head>
+    <title>商店</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <script>
+      function redirectToPage1() {
+        window.location.href = "http://127.0.0.1:8000/首頁";
+      }
+    </script>
+
+    <script>
+      function redirectToPage2() {
+        window.location.href = "http://127.0.0.1:8000/遊戲選擇畫面";
+      }
+    </script>
+
+    <script>
+      function redirectToPage3() {
+        window.location.href = "http://127.0.0.1:8000/簽到";
+      }
+    </script>
+
+    <script>
+      function redirectToPage4() {
+        window.location.href = "http://127.0.0.1:8000/商店";
+      }
+    </script>
+
+    <script>
+      function redirectToPage5() {
+        window.location.href = "http://127.0.0.1:8000/衣櫥";
+      }
+    </script>
+
+    <script>
+      function redirectToPage6() {
+        window.location.href = "http://127.0.0.1:8000/紀錄";
+      }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var currentDate = new Date();
+        var month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+        var day = currentDate.getDate().toString().padStart(2, "0");
+        var formattedDate = month + "/" + day;
+        document.getElementById("currentDate").innerHTML = month + "/" + day;
+      });
+    </script>
+
+    <style data-tag="reset-style-sheet">
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div>
+      <link href="css/商店.css" rel="stylesheet" />
+
+      <div class="page4-container">
+        <div class="page4-frame">
+          <img
+            src="public/playground_assets/rectangle313294-afl6-200h.png"
+            alt="Rectangle313294"
+            class="page4-rectangle31"
+          />
+          <div class="page4-component">
+            <div class="page4-group9">
+              <img
+                onclick="redirectToPage1()"
+                src="public/playground_assets/image6i329-ubr-200h.png"
+                alt="image6I329"
+                class="page4-image6"
+              />
+              <span class="page4-text"><span>首頁</span></span>
+            </div>
+          </div>
+          <div class="page4-component1">
+            <div class="page4-group91">
+              <img
+                onclick="redirectToPage2()"
+                src="public/playground_assets/image6i329-mf1lg-200h.png"
+                alt="image6I329"
+                class="page4-image61"
+              />
+              <span class="page4-text02"><span>遊戲</span></span>
+            </div>
+          </div>
+          <div>
+            <div class="page4-group92">
+              <img
+                onclick="redirectToPage3()"
+                src="public/playground_assets/image6i329-nltc-200h.png"
+                alt="image6I329"
+                class="page4-image62"
+              />
+              <span class="page4-text04"><span>簽到</span></span>
+            </div>
+          </div>
+          <div class="page4-component3">
+            <div class="page4-group10">
+              <img
+                onclick="redirectToPage4()"
+                src="public/playground_assets/image6i329-0nip-200h.png"
+                alt="image6I329"
+                class="page4-image63"
+              />
+              <span class="page4-text06"><span>商店</span></span>
+            </div>
+          </div>
+          <div class="page4-component4">
+            <div class="page4-group93">
+              <img
+                onclick="redirectToPage5()"
+                src="public/playground_assets/image6i329-9vow8-200h.png"
+                alt="image6I329"
+                class="page4-image64"
+              />
+              <span class="page4-text08"><span>衣櫥</span></span>
+            </div>
+          </div>
+          <img
+            src="public/playground_assets/calendar3295-tsm.svg"
+            alt="Calendar3295"
+            class="page4-calendar"
+          />
+          <img
+            src="public/playground_assets/image43295-3k0p.svg"
+            alt="image43295"
+            class="page4-image4"
+          />
+          <span class="page4-text10" id="currentDate"></span>
+          <span class="page4-text12"><span>999</span></span>
+          <div class="page4-component5">
+            <div class="page4-group94">
+              <img
+                onclick="redirectToPage6()"
+                src="public/playground_assets/image6i329-cgds-200h.png"
+                alt="image6I329"
+                class="page4-image65"
+              />
+              <span class="page4-text14"><span>紀錄</span></span>
+            </div>
+          </div>
+          <div class="page4-component2">
+            <img
+              src="public/playground_assets/rectangle1i329-1itb-200h.png"
+              alt="Rectangle1I329"
+              class="page4-rectangle1"
+            />
+            <span class="page4-text16"><span>帽子</span></span>
+          </div>
+          <div class="page4-component21">
+            <img
+              src="public/playground_assets/rectangle1i329-l54-200h.png"
+              alt="Rectangle1I329"
+              class="page4-rectangle11"
+            />
+            <span class="page4-text18"><span>衣服</span></span>
+          </div>
+          <div class="page4-component22">
+            <img
+              src="public/playground_assets/rectangle1i329-ndr7-200h.png"
+              alt="Rectangle1I329"
+              class="page4-rectangle12"
+            />
+            <span class="page4-text20"><span>下著</span></span>
+          </div>
+          <div class="page4-component23">
+            <img
+              src="public/playground_assets/rectangle1i329-xuj-200h.png"
+              alt="Rectangle1I329"
+              class="page4-rectangle13"
+            />
+            <span class="page4-text22"><span>手套</span></span>
+          </div>
+          <div class="page4-component24">
+            <img
+              src="public/playground_assets/rectangle1i329-dcii-200h.png"
+              alt="Rectangle1I329"
+              class="page4-rectangle14"
+            />
+            <span class="page4-text24"><span>背景</span></span>
+          </div>
+          <div class="page4-component25">
+            <img
+              src="public/playground_assets/rectangle1i329-7xxu-200h.png"
+              alt="Rectangle1I329"
+              class="page4-rectangle15"
+            />
+            <span class="page4-text26"><span>鞋子</span></span>
+          </div>
+          <div class="page4-component9">
+            <img
+              src="public/playground_assets/image7i321-pait-200h.png"
+              alt="image7I321"
+              class="page4-image7"
+            />
+            <img
+              src="public/playground_assets/rectangle32i321-la9n-200h.png"
+              alt="Rectangle32I321"
+              class="page4-rectangle32"
+            />
+            <img
+              src="public/playground_assets/ellipse5i321-hsjr-200h.png"
+              alt="Ellipse5I321"
+              class="page4-ellipse5"
+            />
+            <img
+              src="public/playground_assets/svgi321-vilm.svg"
+              alt="SVGI321"
+              class="page4-svg"
+            />
+            <img
+              src="public/playground_assets/image5i321-q2ao.svg"
+              alt="image5I321"
+              class="page4-image5"
+            />
+            <span class="page4-text28"><span>100</span></span>
+          </div>
+          <div class="page4-component10">
+            <img
+              src="public/playground_assets/image7i321-4yt8-200h.png"
+              alt="image7I321"
+              class="page4-image71"
+            />
+            <img
+              src="public/playground_assets/rectangle32i321-w7nr-200h.png"
+              alt="Rectangle32I321"
+              class="page4-rectangle321"
+            />
+            <img
+              src="public/playground_assets/ellipse5i321-s1iu-200h.png"
+              alt="Ellipse5I321"
+              class="page4-ellipse51"
+            />
+            <img
+              src="public/playground_assets/svgi321-n6gp.svg"
+              alt="SVGI321"
+              class="page4-svg1"
+            />
+            <img
+              src="public/playground_assets/image5i321-l4ju.svg"
+              alt="image5I321"
+              class="page4-image51"
+            />
+            <span class="page4-text30"><span>100</span></span>
+          </div>
+          <div class="page4-component91">
+            <img
+              src="public/playground_assets/image7i321-j8ki-200h.png"
+              alt="image7I321"
+              class="page4-image72"
+            />
+            <img
+              src="public/playground_assets/rectangle32i321-47nj-200h.png"
+              alt="Rectangle32I321"
+              class="page4-rectangle322"
+            />
+            <img
+              src="public/playground_assets/ellipse5i321-ami-200h.png"
+              alt="Ellipse5I321"
+              class="page4-ellipse52"
+            />
+            <img
+              src="public/playground_assets/svgi321-k8wi.svg"
+              alt="SVGI321"
+              class="page4-svg2"
+            />
+            <img
+              src="public/playground_assets/image5i321-pntw.svg"
+              alt="image5I321"
+              class="page4-image52"
+            />
+            <span class="page4-text32"><span>100</span></span>
+          </div>
+          <div class="page4-component11">
+            <img
+              src="public/playground_assets/image7i321-jmi-200h.png"
+              alt="image7I321"
+              class="page4-image73"
+            />
+            <img
+              src="public/playground_assets/rectangle32i321-wat-200h.png"
+              alt="Rectangle32I321"
+              class="page4-rectangle323"
+            />
+            <img
+              src="public/playground_assets/ellipse5i321-i9rr-200h.png"
+              alt="Ellipse5I321"
+              class="page4-ellipse53"
+            />
+            <img
+              src="public/playground_assets/svgi321-8j3g.svg"
+              alt="SVGI321"
+              class="page4-svg3"
+            />
+            <img
+              src="public/playground_assets/image5i321-6zkj.svg"
+              alt="image5I321"
+              class="page4-image53"
+            />
+            <span class="page4-text34"><span>100</span></span>
+          </div>
+          <div class="page4-component92">
+            <img
+              src="public/playground_assets/image7i321-q7nl-200h.png"
+              alt="image7I321"
+              class="page4-image74"
+            />
+            <img
+              src="public/playground_assets/rectangle32i321-cj7b-200h.png"
+              alt="Rectangle32I321"
+              class="page4-rectangle324"
+            />
+            <img
+              src="public/playground_assets/ellipse5i321-9ve9-200h.png"
+              alt="Ellipse5I321"
+              class="page4-ellipse54"
+            />
+            <img
+              src="public/playground_assets/svgi321-6lg5.svg"
+              alt="SVGI321"
+              class="page4-svg4"
+            />
+            <img
+              src="public/playground_assets/image5i321-rluj.svg"
+              alt="image5I321"
+              class="page4-image54"
+            />
+            <span class="page4-text36"><span>100</span></span>
+          </div>
+          <div class="page4-component12">
+            <img
+              src="public/playground_assets/image7i321-3yzo-200h.png"
+              alt="image7I321"
+              class="page4-image75"
+            />
+            <img
+              src="public/playground_assets/rectangle32i321-zpg-200h.png"
+              alt="Rectangle32I321"
+              class="page4-rectangle325"
+            />
+            <img
+              src="public/playground_assets/ellipse5i321-bohm-200h.png"
+              alt="Ellipse5I321"
+              class="page4-ellipse55"
+            />
+            <img
+              src="public/playground_assets/svgi321-y20a.svg"
+              alt="SVGI321"
+              class="page4-svg5"
+            />
+            <img
+              src="public/playground_assets/image5i321-lpwt.svg"
+              alt="image5I321"
+              class="page4-image55"
+            />
+            <span class="page4-text38"><span>100</span></span>
+          </div>
+          <div class="page4-component93">
+            <img
+              src="public/playground_assets/image7i321-lgkf-200h.png"
+              alt="image7I321"
+              class="page4-image76"
+            />
+            <img
+              src="public/playground_assets/rectangle32i321-can6-200h.png"
+              alt="Rectangle32I321"
+              class="page4-rectangle326"
+            />
+            <img
+              src="public/playground_assets/ellipse5i321-zxvig-200h.png"
+              alt="Ellipse5I321"
+              class="page4-ellipse56"
+            />
+            <img
+              src="public/playground_assets/svgi321-f5af.svg"
+              alt="SVGI321"
+              class="page4-svg6"
+            />
+            <img
+              src="public/playground_assets/image5i321-gee.svg"
+              alt="image5I321"
+              class="page4-image56"
+            />
+            <span class="page4-text40"><span>100</span></span>
+          </div>
+          <div class="page4-component13">
+            <img
+              src="public/playground_assets/image7i321-1di-200h.png"
+              alt="image7I321"
+              class="page4-image77"
+            />
+            <img
+              src="public/playground_assets/rectangle32i321-dzeo-200h.png"
+              alt="Rectangle32I321"
+              class="page4-rectangle327"
+            />
+            <img
+              src="public/playground_assets/ellipse5i321-0f4e-200h.png"
+              alt="Ellipse5I321"
+              class="page4-ellipse57"
+            />
+            <img
+              src="public/playground_assets/svgi321-3ifb.svg"
+              alt="SVGI321"
+              class="page4-svg7"
+            />
+            <img
+              src="public/playground_assets/image5i321-lp6.svg"
+              alt="image5I321"
+              class="page4-image57"
+            />
+            <span class="page4-text42"><span>100</span></span>
+          </div>
+          <img
+            src="public/playground_assets/user6040-68f-200h.png"
+            alt="User6040"
+            class="page4-user"
+          />
+          <img
+            src="public/playground_assets/search6040-qrea-200h.png"
+            alt="Search6040"
+            class="page4-search"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

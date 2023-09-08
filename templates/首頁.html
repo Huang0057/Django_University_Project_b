@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>首頁</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <script>
+      function redirectToPage1() {
+        window.location.href = "http://127.0.0.1:8000/首頁";
+      }
+    </script>
+
+    <script>
+      function redirectToPage2() {
+        window.location.href = "http://127.0.0.1:8000/遊戲選擇畫面";
+      }
+    </script>
+
+    <script>
+      function redirectToPage3() {
+        window.location.href = "http://127.0.0.1:8000/簽到";
+      }
+    </script>
+
+    <script>
+      function redirectToPage4() {
+        window.location.href = "http://127.0.0.1:8000/商店";
+      }
+    </script>
+
+    <script>
+      function redirectToPage5() {
+        window.location.href = "http://127.0.0.1:8000/衣櫥";
+      }
+    </script>
+
+    <script>
+      function redirectToPage6() {
+        window.location.href = "http://127.0.0.1:8000/紀錄";
+      }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var currentDate = new Date();
+        var month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+        var day = currentDate.getDate().toString().padStart(2, "0");
+        var formattedDate = month + "/" + day;
+        document.getElementById("currentDate").innerHTML = month + "/" + day;
+      });
+    </script>
+
+    <style data-tag="reset-style-sheet">
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div>
+      <link href="{% static 'css/首頁.css' %}" rel="stylesheet" />
+
+      <div class="page3-container">
+        <div class="page3-frame">
+          <img
+            src="{% static 'public/playground_assets/rectangle313282-g8bdh-200h.png' %}"
+            alt="Rectangle313282"
+            class="page3-rectangle31"
+          />
+          <div class="page3-component">
+            <div class="page3-group10">
+              <img
+                onclick="redirectToPage1()"
+                src="{% static 'public/playground_assets/image6i328-pfw1-200h.png' %}"
+                alt="image6I328"
+                class="page3-image6"
+              />
+              <span class="page3-text"><span>首頁</span></span>
+            </div>
+          </div>
+          <div class="page3-component1">
+            <div class="page3-group9">
+              <img
+                onclick="redirectToPage2()"
+                src="{% static 'public/playground_assets/image6i328-mpbx-200h.png' %}"
+                alt="image6I328"
+                class="page3-image61"
+              />
+              <span class="page3-text02"><span>遊戲</span></span>
+            </div>
+          </div>
+          <div class="page3-component2">
+            <div class="page3-group91">
+              <img
+                onclick="redirectToPage3()"
+                src="{% static 'public/playground_assets/image6i328-08mfh-200h.png' %}"
+                alt="image6I328"
+                class="page3-image62"
+              />
+              <span class="page3-text04"><span>簽到</span></span>
+            </div>
+          </div>
+
+          <div class="page3-component5">
+            <div class="page3-group94">
+              <img
+                onclick="redirectToPage6()"
+                src="{% static 'public/playground_assets/image6i328-35qc-200h.png' %}"
+                alt="image6I328"
+                class="page3-image65"
+              />
+              <span class="page3-text14"><span>紀錄</span></span>
+            </div>
+          </div>
+
+          <img
+            src="{% static 'public/playground_assets/calendar3283-gkkf.svg' %}"
+            alt="Calendar3283"
+            class="page3-calendar"
+          />
+          <img
+            src="{% static 'public/playground_assets/image43283-gee.svg' %}"
+            alt="image43283"
+            class="page3-image4"
+          />
+          <span class="page3-text10" id="currentDate"></span>
+          <span class="page3-text12"><span>999</span></span>
+
+          <span class="page3-text16"><span>最高連續登入天數：2天</span></span>
+          <span class="page3-text18"><span>目前獲得運動點數：190點</span></span>
+          <img
+            src="{% static 'public/playground_assets/rectangle293285-xson-200h.png' %}"
+            alt="Rectangle293285"
+            class="page3-rectangle29"
+          />
+          <img
+            src="{% static 'public/playground_assets/rectangle303285-h2cv-200h.png' %}"
+            alt="Rectangle303285"
+            class="page3-rectangle30"
+          />
+          <img
+            src="{% static 'public/playground_assets/user5657-89ie-200h.png' %}"
+            alt="User5657"
+            class="page3-user"
+          />
+          <img
+            src="{% static 'public/playground_assets/search5657-he9-200h.png' %}"
+            alt="Search5657"
+            class="page3-search"
+          />
+          <img
+            onclick="redirectToPage2()"
+            src="{% static 'public/playground_assets/rectangle347837-bi29-300h.png' %}"
+            alt="Rectangle347837"
+            class="page3-rectangle34"
+          />
+          <span class="page3-text20" onclick="redirectToPage2()"
+            ><span>開始遊戲</span></span
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

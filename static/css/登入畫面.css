@@ -1,0 +1,244 @@
+body {
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  /* 添加其他全局样式规则 */
+}
+
+.page1-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.page1-frame {
+  width: 100%;
+  height: 1024px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 1);
+  justify-content: center;
+}
+.page1-frame1 {
+  top: 870px;
+  left: 0px;
+  width: 100%;
+  height: 258px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+  background-color: rgba(196, 230, 255, 1);
+}
+.page1-rectangle7 {
+  top: 39px;
+  left: 810px;
+  width: 400px;
+  height: 90px;
+  position: absolute;
+  border-radius: 90px;
+}
+.page1-text {
+  top: 55px;
+  left: 960px;
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page1-calendar {
+  top: 0px;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+.page1-text02 {
+  top: 21px;
+  left: 119px;
+  color: rgba(0, 0, 0, 1);
+  width: 129px;
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page1-user {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+}
+.page1-search {
+  top: 15px;
+  right: 150px;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+}
+.page1-text04 {
+  top: 100px;
+  left: 900px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 64px;
+  font-style: Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.username_label {
+  top: 342px;
+  left: 740px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.password_label {
+  top: 532px;
+  left: 740px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page1-line1 {
+  top: 492px;
+  left: 740px;
+  width: 534px;
+  height: 1px;
+  position: absolute;
+}
+.page1-line2 {
+  top: 682px;
+  left: 740px;
+  width: 534px;
+  height: 1px;
+  position: absolute;
+}
+.Date {
+  top: 21px;
+  left: 116px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-weight: 1000;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-style: Extra Bold;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page1-text13 {
+  top: 698px;
+  left: 1100px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 30px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page1-text15 {
+  top: 280px;
+  left: 830px;
+  color: rgba(72, 127, 211, 1);
+  height: auto;
+  position: absolute;
+  font-size: 30px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_username {
+  position: absolute;
+  top: 418px;
+  left: 740px;
+  width: 533px;
+  height: 58px;
+  background: #cfcbcb;
+  border-radius: 13px;
+  font-size: 30px;
+}
+.login_Password {
+  position: absolute;
+  top: 608px;
+  left: 740px;
+  width: 533px;
+  height: 58px;
+  background: #cfcbcb;
+  border-radius: 13px;
+  font-size: 30px;
+}
+.login_button {
+  top: 39px;
+  left: 810px;
+  width: 400px;
+  height: 90px;
+  position: absolute;
+  padding: 20px 150px;
+  background-color: #4d33ed;
+  border-radius: 90px;
+  text-align: center;
+  font-size: 48px;
+  color: white;
+}
+.login_button:hover {
+  background-color: #2655b0;
+}

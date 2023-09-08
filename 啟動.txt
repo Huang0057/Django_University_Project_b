@@ -1,0 +1,8 @@
+conda activate w1
+cd w1
+
+pip install SpeechRecognition
+pip install pipwin
+pip install pyaudio
+
+python manage.py runserver

@@ -1,0 +1,265 @@
+.page1-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  max-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.page1-frame {
+  width: 100%;
+  height: 1024px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 1);
+  justify-content: center;
+}
+.page1-frame1 {
+  top: 853px;
+  left: 0px;
+  width: 100%;
+  height: 75%;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+  background-color: rgba(196, 230, 255, 1);
+}
+.page1-rectangle7 {
+  top: 39px;
+  left: 810px;
+  width: 400px;
+  height: 90px;
+  position: absolute;
+  border-radius: 90px;
+}
+.page1-text {
+  top: 55px;
+  left: 960px;
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page1-calendar {
+  top: 0px;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+.page1-text02 {
+  top: 21px;
+  left: 119px;
+  color: rgba(0, 0, 0, 1);
+  width: 129px;
+  height: auto;
+  position: absolute;
+  font-size: 40px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page1-user {
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+}
+.page1-search {
+  top: 15px;
+  right: 150px;
+  width: 70px;
+  height: 70px;
+  position: absolute;
+}
+.page1-text04 {
+  top: 100px;
+  left: 48%;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 64px;
+  font-style: Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page1-username {
+  top: 25%;
+  left: 38%;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 36px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page1-text09 {
+  top: 40%;
+  left: 38%;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 36px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page1-text10 {
+  top: 48%;
+  left: 38%;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 48px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page1-text11 {
+  top: 55%;
+  left: 38%;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 36px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page1-line1 {
+  top: 492px;
+  left: 740px;
+  width: 534px;
+  height: 1px;
+  position: absolute;
+}
+.page1-line2 {
+  top: 682px;
+  left: 740px;
+  width: 534px;
+  height: 1px;
+  position: absolute;
+}
+.page1-text13 {
+  top: 698px;
+  left: 1100px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 30px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.page1-text15 {
+  top: 280px;
+  left: 830px;
+  color: rgba(72, 127, 211, 1);
+  height: auto;
+  position: absolute;
+  font-size: 30px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sign_username {
+  position: absolute;
+  top: 32%;
+  left: 38%;
+  width: 533px;
+  height: 58px;
+  background: #cfcbcb;
+  border-radius: 13px;
+  font-size: 30px;
+}
+
+.sign_email {
+  position: absolute;
+  top: 47%;
+  left: 38%;
+  width: 533px;
+  height: 58px;
+  background: #cfcbcb;
+  border-radius: 13px;
+  font-size: 30px;
+}
+.sign_Password {
+  position: absolute;
+  top: 62%;
+  left: 38%;
+  width: 533px;
+  height: 58px;
+  background: #cfcbcb;
+  border-radius: 13px;
+  font-size: 30px;
+}
+.sign_button {
+  top: 39px;
+  left: 810px;
+  width: 400px;
+  height: 90px;
+  position: absolute;
+  padding: 20px 150px;
+  background-color: #4d33ed;
+  border-radius: 90px;
+  text-align: center;
+  font-size: 48px;
+  color: white;
+  margin: 0 auto;
+}
+.sign_button:hover {
+  background-color: #2655b0;
+}
