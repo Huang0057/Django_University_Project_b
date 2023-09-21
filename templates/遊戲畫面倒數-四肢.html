@@ -1,0 +1,278 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="english">
+  <head>
+    <title>遊戲畫面倒數</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <script>
+      function redirectToPage1() {
+        window.location.href = "http://127.0.0.1:8000/首頁";
+      }
+    </script>
+
+    <script>
+      function redirectToPage2() {
+        window.location.href = "http://127.0.0.1:8000/遊戲選擇畫面";
+      }
+    </script>
+
+    <script>
+      function redirectToPage3() {
+        window.location.href = "http://127.0.0.1:8000/簽到";
+      }
+    </script>
+
+    <script>
+      function redirectToPage4() {
+        window.location.href = "http://127.0.0.1:8000/商店";
+      }
+    </script>
+
+    <script>
+      function redirectToPage5() {
+        window.location.href = "http://127.0.0.1:8000/衣櫥";
+      }
+    </script>
+
+    <script>
+      function redirectToPage6() {
+        window.location.href = "http://127.0.0.1:8000/紀錄";
+      }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var currentDate = new Date();
+        var month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+        var day = currentDate.getDate().toString().padStart(2, "0");
+        var formattedDate = month + "/" + day;
+        document.getElementById("currentDate").innerHTML = month + "/" + day;
+      });
+    </script>
+
+    <style>
+      #countdown {
+        top: 408px;
+        left: 920px;
+        color: rgba(0, 0, 0, 1);
+        height: auto;
+        position: absolute;
+        font-size: 150px;
+        font-style: Extra Bold;
+        text-align: center;
+        font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        line-height: normal;
+        font-stretch: normal;
+        text-decoration: none;
+      }
+    </style>
+
+    <style data-tag="reset-style-sheet">
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div>
+      <link href="{% static 'css/遊戲畫面倒數-上肢.css' %}" rel="stylesheet" />
+
+      <div class="page6-container">
+        <div class="page6-frame">
+          <img
+            src="{% static 'public/playground_assets/user7844-k5z-200h.png' %}"
+            alt="User7844"
+            class="page6-user"
+          />
+          <img
+            src="{% static 'public/playground_assets/search7844-npog-200h.png' %}"
+            alt="Search7844"
+            class="page6-search"
+          />
+          <img
+            src="{% static 'public/playground_assets/calendar7844-ptui.svg' %}"
+            alt="Calendar7844"
+            class="page6-calendar"
+          />
+          <img
+            src="{% static 'public/playground_assets/image47844-zlku.svg' %}"
+            alt="image47844"
+            class="page6-image4"
+          />
+          <span class="page6-text" id="currentDate"></span>
+          <span class="page6-text02"><span>999</span></span>
+          <img
+            src="{% static 'public/playground_assets/rectangle317844-7csj-200h.png' %}"
+            alt="Rectangle317844"
+            class="page6-rectangle31"
+          />
+          <div class="page6-component">
+            <div class="page6-group9">
+              <img
+                src="{% static 'public/playground_assets/image6i784-f1fq-200h.png' %}"
+                alt="image6I784"
+                class="page6-image6"
+              />
+              <span class="page6-text04"><span>首頁</span></span>
+            </div>
+          </div>
+          <div class="page6-component1">
+            <div class="page6-group10">
+              <img
+                src="{% static 'public/playground_assets/image6i784-obaq-200h.png' %}"
+                alt="image6I784"
+                class="page6-image61"
+              />
+              <span class="page6-text06"><span>遊戲</span></span>
+            </div>
+          </div>
+          <div class="page6-component2">
+            <div class="page6-group91">
+              <img
+                src="{% static 'public/playground_assets/image6i784-ujxd-200h.png' %}"
+                alt="image6I784"
+                class="page6-image62"
+              />
+              <span class="page6-text08"><span>簽到</span></span>
+            </div>
+          </div>
+
+          <div class="page6-component5">
+            <div class="page6-group94">
+              <img
+                src="{% static 'public/playground_assets/image6i784-eqj-200h.png' %}"
+                alt="image6I784"
+                class="page6-image65"
+              />
+              <span class="page6-text14"><span>紀錄</span></span>
+            </div>
+          </div>
+          <span class="page6-text16"><span>遊戲即將開始</span></span>
+          <span class="page6-text18"><span>倒數</span></span>
+          <div id="countdown"></div>
+
+          <script>
+            // 設定倒數計時秒數
+            var seconds = 5;
+
+            function countdown() {
+              var countdownElement = document.getElementById("countdown");
+              countdownElement.innerHTML = seconds;
+
+              if (seconds === 0) {
+                // 在計時結束後自動換頁
+                window.location.href = "http://127.0.0.1:8000/遊戲畫面-四肢";
+              } else {
+                seconds--;
+                setTimeout(countdown, 1000); // 每秒觸發倒數計時
+              }
+            }
+
+            countdown();
+          </script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -269,7 +269,7 @@ body {
 }
 .component-紀錄1-rectangle41 {
   top: 703px;
-  left: 260px;
+  left: 60px;
   width: 348px;
   height: 82px;
   position: absolute;
@@ -277,7 +277,7 @@ body {
 }
 .component-紀錄1-text12 {
   top: 720px;
-  left: 362px;
+  left: 162px;
   color: rgba(0, 0, 0, 1);
   height: auto;
   position: absolute;
@@ -290,7 +290,7 @@ body {
   font-stretch: normal;
   text-decoration: none;
 }
-.component-紀錄1-text14 {
+.component-紀錄1-text13 {
   top: 190px;
   left: 60px;
   color: rgba(0, 0, 0, 1);
@@ -306,17 +306,51 @@ body {
   font-stretch: normal;
   text-decoration: none;
 }
+.component-紀錄1-text13-1 {
+  display:flex;
+  justify-content:center;
+  top: 190px;
+  left: 60px;
+  color: rgba(0, 0, 0, 1);
+  width: 100%;
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.component-紀錄1-text14 {
+  top: 720px;
+  left: 509px;
+  color: rgba(0, 0, 0, 1);
+  width: 88px;
+  height: auto;
+  position: absolute;
+  font-size: 32px;
+  font-style: Extra Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
 .component-紀錄1-rectangle33 {
-  top: 284px;
-  left: 262px;
+  top: 705px;
+  left: 462px;
   width: 181px;
   height: 81px;
   position: absolute;
   border-radius: 60px;
 }
 .component-紀錄1-text16 {
-  top: 298px;
-  left: 309px;
+  top: 720px;
+  left: 709px;
   color: rgba(0, 0, 0, 1);
   width: 88px;
   height: auto;
@@ -331,16 +365,16 @@ body {
   text-decoration: none;
 }
 .component-紀錄1-rectangle34 {
-  top: 392px;
-  left: 262px;
+  top: 705px;
+  left: 662px;
   width: 181px;
   height: 81px;
   position: absolute;
   border-radius: 60px;
 }
 .component-紀錄1-text18 {
-  top: 406px;
-  left: 309px;
+  top: 720px;
+  left: 909px;
   color: rgba(0, 0, 0, 1);
   width: 87px;
   height: auto;
@@ -355,16 +389,16 @@ body {
   text-decoration: none;
 }
 .component-紀錄1-rectangle35 {
-  top: 499px;
-  left: 262px;
+  top: 705px;
+  left: 862px;
   width: 180px;
   height: 82px;
   position: absolute;
   border-radius: 60px;
 }
 .component-紀錄1-text20 {
-  top: 514px;
-  left: 308px;
+  top: 720px;
+  left: 1109px;
   color: rgba(0, 0, 0, 1);
   width: 88px;
   height: auto;
@@ -377,6 +411,14 @@ body {
   line-height: normal;
   font-stretch: normal;
   text-decoration: none;
+}
+.component-紀錄1-rectangle36 {
+  top: 705px;
+  left: 1062px;
+  width: 180px;
+  height: 82px;
+  position: absolute;
+  border-radius: 60px;
 }
 .component-紀錄1-rectangle40 {
   top: 579px;

@@ -1,0 +1,353 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="english">
+  <head>
+    <title>紀錄</title>
+    <meta property="og:title" content="Page9 - exported project" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <script>
+      function redirectToPage1() {
+        window.location.href = "http://127.0.0.1:8000/首頁";
+      }
+    </script>
+
+    <script>
+      function redirectToPage2() {
+        window.location.href = "http://127.0.0.1:8000/遊戲選擇畫面";
+      }
+    </script>
+
+    <script>
+      function redirectToPage3() {
+        window.location.href = "http://127.0.0.1:8000/簽到";
+      }
+    </script>
+
+    <script>
+      function redirectToPage4() {
+        window.location.href = "http://127.0.0.1:8000/商店";
+      }
+    </script>
+
+    <script>
+      function redirectToPage5() {
+        window.location.href = "http://127.0.0.1:8000/衣櫥";
+      }
+    </script>
+
+    <script>
+      function redirectToPage6() {
+        window.location.href = "http://127.0.0.1:8000/紀錄";
+      }
+    </script>
+    <script>
+      function redirectToPage7() {
+        window.location.href = "http://127.0.0.1:8000/紀錄上肢";
+      }
+    </script>
+    <script>
+      function redirectToPage8() {
+        window.location.href = "http://127.0.0.1:8000/紀錄下肢";
+      }
+    </script>
+    <script>
+      function redirectToPage9() {
+        window.location.href = "http://127.0.0.1:8000/紀錄四肢";
+      }
+    </script>
+    <script>
+      function redirectToPage10() {
+        window.location.href = "http://127.0.0.1:8000/紀錄手部";
+      }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var currentDate = new Date();
+        var month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+        var day = currentDate.getDate().toString().padStart(2, "0");
+        var formattedDate = month + "/" + day;
+        document.getElementById("currentDate").innerHTML = month + "/" + day;
+      });
+    </script>
+
+    <style data-tag="reset-style-sheet">
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div>
+      <link href="{% static 'css/紀錄.css' %}" rel="stylesheet" />
+      <div class="component-紀錄1-container">
+        <div class="component-紀錄1-frame">
+          <img
+            src="{% static 'public/playground_assets/user5657-89ie-200h.png' %}"
+            alt="User1345"
+            class="component-紀錄1-user"
+          />
+          <img
+            src="{% static 'public/playground_assets/search5657-he9-200h.png' %}"
+            alt="Search1345"
+            class="component-紀錄1-search"
+          />
+          <img
+            src="{% static 'public/playground_assets/calendar3283-gkkf.svg' %}"
+            alt="Calendar1345"
+            class="component-紀錄1-calendar"
+          />
+          <img
+            src="{% static 'public/playground_assets/image43283-gee.svg' %}"
+            alt="image41345"
+            class="component-紀錄1-image4"
+          />
+          <span class="component-紀錄1-text" id="currentDate"></span>
+          <span class="component-紀錄1-text02"><span>999</span></span>
+          <img
+            src="{% static 'public/playground_assets/rectangle313282-g8bdh-200h.png' %}"
+            alt="Rectangle311345"
+            class="component-紀錄1-rectangle31"
+          />
+          <div class="component-紀錄1-component">
+            <div class="component-紀錄1-group9">
+              <img
+                onclick="redirectToPage1()"
+                src="{% static 'public/playground_assets/image6i328-pfw1-200h.png' %}"
+                alt="image6I134"
+                class="component-紀錄1-image6"
+              />
+              <span class="component-紀錄1-text04"><span>首頁</span></span>
+            </div>
+          </div>
+          <div class="component-紀錄1-component1">
+            <div class="component-紀錄1-group91">
+              <img
+                onclick="redirectToPage2()"
+                src="{% static 'public/playground_assets/image6i328-mpbx-200h.png' %}"
+                alt="image6I134"
+                class="component-紀錄1-image61"
+              />
+              <span class="component-紀錄1-text06"><span>遊戲</span></span>
+            </div>
+          </div>
+          <div class="component-紀錄1-component2">
+            <div class="component-紀錄1-group92">
+              <img
+                onclick="redirectToPage3()"
+                src="{% static 'public/playground_assets/image6i328-08mfh-200h.png' %}"
+                alt="image6I134"
+                class="component-紀錄1-image62"
+              />
+              <span class="component-紀錄1-text08"><span>簽到</span></span>
+            </div>
+          </div>
+          <div class="component-紀錄1-component3">
+            <div class="component-紀錄1-group10">
+              <img
+                onclick="redirectToPage6()"
+                src="{% static 'public/playground_assets/image6i328-35qc-200h.png' %}"
+                alt="image6I134"
+                class="component-紀錄1-image63"
+              />
+              <span class="component-紀錄1-text10"><span>紀錄</span></span>
+            </div>
+          </div>
+
+          <img
+            src="{% static 'public/playground_assets/buttongray1.png' %}"
+            alt="Rectangle411556"
+            class="component-紀錄1-rectangle41"
+          />
+          <span class="component-紀錄1-text12"><span>匯出紀錄</span></span>
+
+          <span class="component-紀錄1-text13-1">
+            <span>
+              <table style="border: 8px #75e6ff groove" cellpadding="10">
+                <tr>
+                  <th>日期</th>
+                  <th>時間</th>
+                  <th>運動部位</th>
+                  <th>關卡</th>
+                  <th>遊玩時長</th>
+                  <th>運動次數/總次數</th>
+                  <th>金幣</th>
+                </tr>
+                <tr>
+                  <td>12/31</td>
+                  <td>11:59</td>
+                  <td>上肢</td>
+                  <td>上肢上舉</td>
+                  <td>59:59</td>
+                  <td>6/6</td>
+                  <td>+99</td>
+                </tr>
+                <tr>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+              </table>
+            </span>
+          </span>
+
+          <img
+            onclick="redirectToPage7()"
+            src="{% static 'public/playground_assets/buttongray1.png' %}"
+            alt="Rectangle544014"
+            class="component-紀錄1-rectangle33"
+          />
+          <span class="component-紀錄1-text14" onclick="redirectToPage7()"
+            ><span>上肢</span></span
+          >
+          <img
+            onclick="redirectToPage8()"
+            src="{% static 'public/playground_assets/buttongray1.png' %}"
+            alt="Rectangle544014"
+            class="component-紀錄1-rectangle34"
+          />
+          <span class="component-紀錄1-text16" onclick="redirectToPage8()"
+            ><span>下肢</span></span
+          >
+          <img
+            onclick="redirectToPage9()"
+            src="{% static 'public/playground_assets/buttongray1.png' %}"
+            alt="Rectangle544014"
+            class="component-紀錄1-rectangle35"
+          />
+          <span class="component-紀錄1-text18" onclick="redirectToPage9()"
+            ><span>四肢</span></span
+          >
+          <img
+            onclick="redirectToPage10()"
+            src="{% static 'public/playground_assets/buttongray2.png' %}"
+            alt="Rectangle544014"
+            class="component-紀錄1-rectangle36"
+          />
+          <span class="component-紀錄1-text20" onclick="redirectToPage10()"
+            ><span>手部</span></span
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

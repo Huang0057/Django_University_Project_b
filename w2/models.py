@@ -9,3 +9,24 @@ class UserProfile(models.Model):
     username = models.CharField(max_length=50, null=False)
     email = models.EmailField(blank=False, null=False)
     password = models.CharField(max_length=50)
+
+
+class UserPlayHistoryTotal(models.Model):
+    Username = models.CharField(max_length=50, null=False)
+    Part = models.CharField(max_length=20)
+    Stage = models.CharField(max_length=20)
+    TotalPlaytimes = models.CharField(max_length=10)  # 以文字形式存儲，例如 "2:30"
+    TotalGamePlay = models.IntegerField()
+    TotalPasses = models.IntegerField()
+    TotalCoinObtained = models.CharField(max_length=10)
+
+
+class UserPlayHistory(models.Model):
+    Username = models.CharField(max_length=50, null=False)
+    Part = models.CharField(max_length=20)
+    Stage = models.CharField(max_length=20)
+    StartTime = models.CharField(max_length=10)  # 以文字形式存儲，例如 "2:30"
+    EndTime = models.CharField(max_length=10)  # 以文字形式存儲，例如 "2:30"
+    PlayTime = models.CharField(max_length=10)  # 以文字形式存儲，例如 "2:30"
+    NumberOfTimes = models.CharField(max_length=20)
+    Coins = models.CharField(max_length=10)

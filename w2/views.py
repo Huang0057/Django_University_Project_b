@@ -38,7 +38,14 @@ def 商店(request):
 
 def 紀錄(request):
     return render(request, '紀錄.html')
-
+def 紀錄上肢(request):
+    return render(request, '紀錄上肢.html')
+def 紀錄下肢(request):
+    return render(request, '紀錄下肢.html')
+def 紀錄四肢(request):
+    return render(request, '紀錄四肢.html')
+def 紀錄手部(request):
+    return render(request, '紀錄手部.html')
 
 def 衣櫥(request):
     return render(request, '衣櫥.html')
@@ -46,16 +53,43 @@ def 衣櫥(request):
 
 def 上肢遊戲畫面解說(request):
     return render(request, '上肢遊戲畫面-解說.html')
+def 下肢遊戲畫面解說(request):
+    return render(request, '下肢遊戲畫面-解說.html')
+def 四肢遊戲畫面解說1(request):
+    return render(request, '四肢遊戲畫面-解說1.html')
+def 四肢遊戲畫面解說2(request):
+    return render(request, '四肢遊戲畫面-解說2.html')
+def 手部遊戲畫面解說(request):
+    return render(request, '手部遊戲畫面-解說.html')
 
 
 def 遊戲畫面倒數上肢(request):
     return render(request, '遊戲畫面倒數-上肢.html')
+def 遊戲畫面倒數下肢(request):
+    return render(request, '遊戲畫面倒數-下肢.html')
+def 遊戲畫面倒數四肢(request):
+    return render(request, '遊戲畫面倒數-四肢.html')
+def 遊戲畫面倒數手部(request):
+    return render(request, '遊戲畫面倒數-手部.html')
 
 
 def 遊戲畫面上肢(request):
     call(["python", "test03.py"])
     call(["python", "arm01.py"])
     return render(request, '遊戲畫面-上肢.html')
+def 遊戲畫面下肢(request):
+    call(["python", "test03.py"])
+    call(["python", "leg01.py"])
+    return render(request, '遊戲畫面-下肢.html')
+def 遊戲畫面四肢(request):
+    call(["python", "test03.py"])
+    call(["python", "arm01.py"])
+    call(["python", "leg01.py"])
+    return render(request, '遊戲畫面-四肢.html')
+def 遊戲畫面手部(request):
+    call(["python", "test03.py"])
+    call(["python", "hand01.py"])
+    return render(request, '遊戲畫面-手部.html')
 
 
 def signup(request):

@@ -43,6 +43,26 @@
         window.location.href = "http://127.0.0.1:8000/紀錄";
       }
     </script>
+    <script>
+      function redirectToPage7() {
+        window.location.href = "http://127.0.0.1:8000/紀錄上肢";
+      }
+    </script>
+    <script>
+      function redirectToPage8() {
+        window.location.href = "http://127.0.0.1:8000/紀錄下肢";
+      }
+    </script>
+    <script>
+      function redirectToPage9() {
+        window.location.href = "http://127.0.0.1:8000/紀錄四肢";
+      }
+    </script>
+    <script>
+      function redirectToPage10() {
+        window.location.href = "http://127.0.0.1:8000/紀錄手部";
+      }
+    </script>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -241,48 +261,43 @@
           />
           <span class="component-紀錄1-text12"><span>匯出紀錄</span></span>
 
-          <span class="component-紀錄1-text14">
+          <span class="component-紀錄1-text13">
             <span>
               <table style="border: 8px #75e6ff groove" cellpadding="10">
                 <tr>
                   <th>運動部位</th>
-                  <th>關卡名稱</th>
-                  <th>進入關卡時間</th>
-                  <th>遊玩關卡時長</th>
-                  <th>通過關卡標準次數/總次數</th>
-                  <th>金幣增加量</th>
+                  <th>遊玩次數</th>
+                  <th>總遊玩時間(小時)</th>
+                  <th>通過關卡次數</th>
+                  <th>獲得金幣</th>
                 </tr>
                 <tr>
                   <td>上肢</td>
-                  <td>arm01</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
+                  <td>99</td>
+                  <td>99:59</td>
+                  <td>99</td>
+                  <td>99</td>
                 </tr>
                 <tr>
                   <td>下肢</td>
-                  <td>arm01</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
+                  <td>99</td>
+                  <td>99:59</td>
+                  <td>99</td>
+                  <td>99</td>
                 </tr>
                 <tr>
                   <td>四肢</td>
-                  <td>arm01</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
+                  <td>99</td>
+                  <td>99:59</td>
+                  <td>99</td>
+                  <td>99</td>
                 </tr>
                 <tr>
                   <td>手部</td>
-                  <td>arm01</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
+                  <td>99</td>
+                  <td>99:59</td>
+                  <td>99</td>
+                  <td>99</td>
                 </tr>
               </table>
             </span>
@@ -300,6 +315,43 @@
             alt="Rectangle544014"
             class="component-紀錄1-rectangle54"
           />
+
+          <img
+            onclick="redirectToPage7()"
+            src="{% static 'public/playground_assets/buttongray1.png' %}"
+            alt="Rectangle544014"
+            class="component-紀錄1-rectangle33"
+          />
+          <span class="component-紀錄1-text14" onclick="redirectToPage7()"
+            ><span>上肢</span></span
+          >
+          <img
+            onclick="redirectToPage8()"
+            src="{% static 'public/playground_assets/buttongray1.png' %}"
+            alt="Rectangle544014"
+            class="component-紀錄1-rectangle34"
+          />
+          <span class="component-紀錄1-text16" onclick="redirectToPage8()"
+            ><span>下肢</span></span
+          >
+          <img
+            onclick="redirectToPage9()"
+            src="{% static 'public/playground_assets/buttongray1.png' %}"
+            alt="Rectangle544014"
+            class="component-紀錄1-rectangle35"
+          />
+          <span class="component-紀錄1-text18" onclick="redirectToPage9()"
+            ><span>四肢</span></span
+          >
+          <img
+            onclick="redirectToPage10()"
+            src="{% static 'public/playground_assets/buttongray1.png' %}"
+            alt="Rectangle544014"
+            class="component-紀錄1-rectangle36"
+          />
+          <span class="component-紀錄1-text20" onclick="redirectToPage10()"
+            ><span>手部</span></span
+          >
         </div>
       </div>
     </div>
