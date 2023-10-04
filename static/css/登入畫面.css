@@ -32,7 +32,7 @@ body {
   position: absolute;
   align-items: flex-start;
   flex-shrink: 0;
-  background-color: rgba(196, 230, 255, 1);
+  background-color: #506E54;
 }
 .page1-rectangle7 {
   top: 39px;
@@ -96,8 +96,8 @@ body {
 }
 .page1-text04 {
   top: 100px;
-  left: 900px;
-  color: rgba(0, 0, 0, 1);
+  left: 850px;
+  color: #2E5A8D;
   height: auto;
   position: absolute;
   font-size: 64px;
@@ -233,12 +233,12 @@ body {
   height: 90px;
   position: absolute;
   padding: 20px 150px;
-  background-color: #4d33ed;
+  background-color: #DAF7BF;
   border-radius: 90px;
   text-align: center;
   font-size: 48px;
   color: white;
 }
 .login_button:hover {
-  background-color: #2655b0;
+  background-color: #61973d;
 }

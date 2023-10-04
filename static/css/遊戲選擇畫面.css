@@ -17,10 +17,10 @@ body {
   background-color: rgba(255, 255, 255, 1);
 }
 .page-rectangle31 {
-  top: 870px;
+  top: 750px;
   left: 0px;
   width: 100%;
-  height: 171px;
+  height: 300px;
   position: absolute;
 }
 .page-user {
@@ -44,9 +44,6 @@ body {
   height: 330px;
   position: absolute;
   border-color: rgba(0, 0, 0, 1);
-  border-style: solid;
-  border-width: 3px;
-  border-radius: 50%;
 }
 .page-ellipse2 {
   top: 344px;
@@ -55,9 +52,6 @@ body {
   height: 330px;
   position: absolute;
   border-color: rgba(0, 0, 0, 1);
-  border-style: solid;
-  border-width: 3px;
-  border-radius: 50%;
 }
 .page-ellipse3 {
   top: 344px;
@@ -66,9 +60,6 @@ body {
   height: 330px;
   position: absolute;
   border-color: rgba(0, 0, 0, 1);
-  border-style: solid;
-  border-width: 3px;
-  border-radius: 50%;
 }
 .page-ellipse4 {
   top: 344px;
@@ -77,14 +68,11 @@ body {
   height: 330px;
   position: absolute;
   border-color: rgba(0, 0, 0, 1);
-  border-style: solid;
-  border-width: 3px;
-  border-radius: 50%;
 }
 .page-text {
   top: 247px;
   left: 146px;
-  color: rgba(0, 0, 0, 1);
+  color: #506E54;
   height: auto;
   position: absolute;
   font-size: 60px;
@@ -99,7 +87,7 @@ body {
 .page-text02 {
   top: 247px;
   left: 610px;
-  color: rgba(0, 0, 0, 1);
+  color: #506E54;
   height: auto;
   position: absolute;
   font-size: 60px;
@@ -114,7 +102,7 @@ body {
 .page-text04 {
   top: 247px;
   left: 1085px;
-  color: rgba(0, 0, 0, 1);
+  color: #506E54;
   height: auto;
   position: absolute;
   font-size: 60px;
@@ -129,7 +117,7 @@ body {
 .page-text06 {
   top: 247px;
   left: 1550px;
-  color: rgba(0, 0, 0, 1);
+  color: #506E54;
   height: auto;
   position: absolute;
   font-size: 60px;
@@ -184,7 +172,7 @@ body {
   text-decoration: none;
 }
 .page-component1 {
-  top: 768px;
+  top: 788px;
   left: 570px;
   width: 130px;
   height: 200px;

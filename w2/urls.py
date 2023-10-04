@@ -30,5 +30,9 @@ urlpatterns = [
     path('遊戲畫面-手部/', views.遊戲畫面手部, name="遊戲畫面-手部"),
     path('signup', views.signup, name="signup"),
     path('home', views.首頁, name="首頁"),
+    path('遊戲難度選擇-上肢', views.遊戲難度選擇上肢, name="遊戲難度選擇-上肢"),
+    path('遊戲難度選擇-下肢', views.遊戲難度選擇下肢, name="遊戲難度選擇-下肢"),
+    path('遊戲難度選擇-四肢', views.遊戲難度選擇四肢, name="遊戲難度選擇-四肢"),
+    path('遊戲難度選擇-手部', views.遊戲難度選擇手部, name="遊戲難度選擇-手部"),
     
 ]

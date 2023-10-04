@@ -26,6 +26,14 @@ def 首頁(request):
 
 def 遊戲選擇畫面(request):
     return render(request, '遊戲選擇畫面.html')
+def 遊戲難度選擇上肢(request):
+    return render(request, '遊戲難度選擇-上肢.html')
+def 遊戲難度選擇下肢(request):
+    return render(request, '遊戲難度選擇-下肢.html')
+def 遊戲難度選擇四肢(request):
+    return render(request, '遊戲難度選擇-四肢.html')
+def 遊戲難度選擇手部(request):
+    return render(request, '遊戲難度選擇-手部.html')
 
 
 def 簽到(request):

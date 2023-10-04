@@ -5,28 +5,67 @@ from django.contrib.auth.models import User
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    username = models.CharField(max_length=50, null=False)
-    email = models.EmailField(blank=False, null=False)
-    password = models.CharField(max_length=50)
+    USER_UID = models.CharField(max_length=20)
+    Arm_UID = models.CharField(max_length=20)
+    Foot_UID = models.CharField(max_length=20)
+    Limb_UID = models.CharField(max_length=20)
+    Hand_UID = models.CharField(max_length=20)
+    TotalCoin = models.IntegerField(default=0)
 
 
-class UserPlayHistoryTotal(models.Model):
-    Username = models.CharField(max_length=50, null=False)
-    Part = models.CharField(max_length=20)
-    Stage = models.CharField(max_length=20)
-    TotalPlaytimes = models.CharField(max_length=10)  # 以文字形式存儲，例如 "2:30"
-    TotalGamePlay = models.IntegerField()
-    TotalPasses = models.IntegerField()
-    TotalCoinObtained = models.CharField(max_length=10)
+class ArmMetrics(models.Model):
+    Arm_UID = models.CharField(max_length=20)
+    USER_UID = models.CharField(max_length=20)
+    LastStage = models.CharField(max_length=20)
+    TotalPlayTime = models.FloatField(default=0)
+    TotalPlayCount = models.IntegerField(default=0)
+    PassCount = models.IntegerField(default=0)
+    TotalGetCoin = models.IntegerField(default=0)
+    LastRecordId = models.CharField(max_length=20)
 
 
-class UserPlayHistory(models.Model):
-    Username = models.CharField(max_length=50, null=False)
-    Part = models.CharField(max_length=20)
-    Stage = models.CharField(max_length=20)
-    StartTime = models.CharField(max_length=10)  # 以文字形式存儲，例如 "2:30"
-    EndTime = models.CharField(max_length=10)  # 以文字形式存儲，例如 "2:30"
-    PlayTime = models.CharField(max_length=10)  # 以文字形式存儲，例如 "2:30"
-    NumberOfTimes = models.CharField(max_length=20)
-    Coins = models.CharField(max_length=10)
+class FootMetrics(models.Model):
+    Foot_UID = models.CharField(max_length=20)
+    USER_UID = models.CharField(max_length=20)
+    LastStage = models.CharField(max_length=20)
+    TotalPlayTime = models.FloatField(default=0)
+    TotalPlayCount = models.IntegerField(default=0)
+    PassCount = models.IntegerField(default=0)
+    TotalGetCoin = models.IntegerField(default=0)
+    LastRecordId = models.CharField(max_length=20)
+
+
+class LimbMetrics(models.Model):
+    Limb_UID = models.CharField(max_length=20)
+    USER_UID = models.CharField(max_length=20)
+    LastStage = models.CharField(max_length=20)
+    TotalPlayTime = models.FloatField(default=0)
+    TotalPlayCount = models.IntegerField(default=0)
+    PassCount = models.IntegerField(default=0)
+    TotalGetCoin = models.IntegerField(default=0)
+    LastRecordId = models.CharField(max_length=20)
+
+
+class HandMetrics(models.Model):
+    Hand_UID = models.CharField(max_length=20)
+    USER_UID = models.CharField(max_length=20)
+    LastStage = models.CharField(max_length=20)
+    TotalPlayTime = models.FloatField(default=0)
+    TotalPlayCount = models.IntegerField(default=0)
+    PassCount = models.IntegerField(default=0)
+    TotalGetCoin = models.IntegerField(default=0)
+    LastRecordId = models.CharField(max_length=20)
+
+
+class GameRecord(models.Model):
+    USER_UID = models.CharField(max_length=20)
+    PlayDate = models.DateField()
+    PlayPart = models.CharField(max_length=20)
+    UID = models.IntegerField()
+    PlayStage = models.CharField(max_length=20)
+    StartTime = models.TimeField()
+    EndTime = models.TimeField()
+    DurationTime = models.DurationField()
+    AddCoin = models.IntegerField(default=0)
+    ExerciseCount = models.IntegerField(default=0)
+    EstablishTime = models.DateTimeField(auto_now_add=True)
