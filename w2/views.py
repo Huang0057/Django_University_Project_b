@@ -4,9 +4,12 @@ import numpy as np
 from .form import UserInfoForm
 from .form import LoginForm
 from django.contrib.auth import authenticate, login, logout
-from .models import GameRecord
+from .models import GameRecord, UserProfile
 from datetime import datetime
-
+import uuid
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -138,10 +141,19 @@ def signup(request):
     if request.method == "POST":
         form = UserInfoForm(request.POST)
         if form.is_valid():
+            # 創建用戶，設置密碼並保存
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
             user.save()
             print(form.cleaned_data['password'])
+            # 創建 UserProfile 實例，並生成唯一的 UID
+            user_profile = UserProfile(user=user)
+            user_profile.Arm_UID = str(uuid.uuid4())[:20]
+            user_profile.Foot_UID = str(uuid.uuid4())[:20]
+            user_profile.Limb_UID = str(uuid.uuid4())[:20]
+            user_profile.Hand_UID = str(uuid.uuid4())[:20]
+            user_profile.save()
+
             return redirect('/signin')
 
     context = {
@@ -186,6 +198,7 @@ def signin(request):
     return render(request, '登入畫面.html', context)
 
 
+@csrf_exempt
 def gamerecord(request):
     if request.method == 'POST':
 
@@ -210,7 +223,7 @@ def gamerecord(request):
             USER_UID=user_profile,
             PlayDate=datetime.now().date(),  # 以当前日期作为PlayDate
             PlayPart=playpart,
-            UID='',
+            UID=str(uuid.uuid4())[:20],
             PlayStage=playstage,
             StartTime=start_time.time(),
             EndTime=end_time.time(),
@@ -222,6 +235,6 @@ def gamerecord(request):
         # 执行其他操作，例如增加金币或计算锻炼次数
         # ...
 
-        return
+        return render(request, '遊戲畫面-上肢.html')
 
-    return
+    return HttpResponse("Method not allowed", status=405)

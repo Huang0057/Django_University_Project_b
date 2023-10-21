@@ -3,12 +3,15 @@ import mediapipe as mp
 import numpy as np
 import datetime
 import requests
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 mp_drawing = mp.solutions.drawing_utils  # 有關於任何需要繪製的東西
 mp_pose = mp.solutions.pose
 
+
 # 初始化计数器和标志位
-counter = 0
+counter = 8
 stage = None
 
 # 11:LEFT_SHOULDER；13:LEFT_ELBOW手肘；15:LEFT_WRIST手腕
@@ -84,7 +87,21 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                     print(counter)
                     end_time = datetime.datetime.now()
                     print("End time:", end_time)
+                    url = 'http://127.0.0.1:8000/gamerecord'  # 替換為你的Django應用程式的URL和端點
+                    data = {
+                        'counter': counter,
+                        'start_time': start_time,
+                        'end_time': end_time,
+                        'playpart': part,
+                        'playstage': stage,
+                    }
 
+                    response = requests.post(url, data=data)
+
+                    if response.status_code == 200:
+                        print("Data sent successfully.")
+                    else:
+                        print("Failed to send data.")
                     break
 
             # if counter == 5:
@@ -118,14 +135,13 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
         if cv2.waitKey(10) & 0xFF == ord('q'):
             end_time = datetime.datetime.now()
             print("End time:", end_time)
-            url = 'http://127.0.0.1:8000/遊戲畫面-上肢'  # 替換為你的Django應用程式的URL和端點
+            url = 'http://127.0.0.1:8000/gamerecord'
             data = {
                 'counter': counter,
                 'start_time': start_time,
                 'end_time': end_time,
                 'playpart': part,
                 'playstage': stage
-
             }
 
             response = requests.post(url, data=data)

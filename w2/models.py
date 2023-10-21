@@ -1,13 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, primary_key=True)
     Arm_UID = models.CharField(max_length=20, unique=True)
     Foot_UID = models.CharField(max_length=20, unique=True)
     Limb_UID = models.CharField(max_length=20, unique=True)
     Hand_UID = models.CharField(max_length=20, unique=True)
     TotalCoin = models.IntegerField(default=0)
+
 
 class MetricsBase(models.Model):
     USER_UID = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
@@ -21,23 +24,28 @@ class MetricsBase(models.Model):
     class Meta:
         abstract = True
 
+
 class ArmMetrics(MetricsBase):
-    Arm_UID = models.CharField(max_length=20, unique=True)
+    Arm_UID = models.CharField(max_length=30, unique=True)
+
 
 class FootMetrics(MetricsBase):
-    Foot_UID = models.CharField(max_length=20, unique=True)
+    Foot_UID = models.CharField(max_length=30, unique=True)
+
 
 class LimbMetrics(MetricsBase):
-    Limb_UID = models.CharField(max_length=20, unique=True)
+    Limb_UID = models.CharField(max_length=30, unique=True)
+
 
 class HandMetrics(MetricsBase):
-    Hand_UID = models.CharField(max_length=20, unique=True)
+    Hand_UID = models.CharField(max_length=30, unique=True)
+
 
 class GameRecord(models.Model):
     USER_UID = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     PlayDate = models.DateField()
     PlayPart = models.CharField(max_length=20)
-    UID = models.IntegerField()
+    UID = models.CharField(max_length=30)
     PlayStage = models.CharField(max_length=20)
     StartTime = models.TimeField()
     EndTime = models.TimeField()
