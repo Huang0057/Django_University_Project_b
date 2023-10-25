@@ -4,7 +4,9 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE, primary_key=True)
+        User, on_delete=models.CASCADE)
+    USER_UID = models.CharField(
+        max_length=30, primary_key=True, unique=True, default=0)
     Arm_UID = models.CharField(max_length=20, unique=True)
     Foot_UID = models.CharField(max_length=20, unique=True)
     Limb_UID = models.CharField(max_length=20, unique=True)

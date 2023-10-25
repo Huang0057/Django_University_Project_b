@@ -87,7 +87,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                     print(counter)
                     end_time = datetime.datetime.now()
                     print("End time:", end_time)
-                    url = 'http://127.0.0.1:8000/gamerecord'  # 替換為你的Django應用程式的URL和端點
+                    url = 'http://127.0.0.1:8000/gamerecord/'  # 替換為你的Django應用程式的URL和端點
                     data = {
                         'counter': counter,
                         'start_time': start_time,
@@ -96,7 +96,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                         'playstage': stage,
                     }
 
-                    response = requests.post(url, data=data)
+                    response = requests.post(url, json=data)
 
                     if response.status_code == 200:
                         print("Data sent successfully.")
@@ -135,8 +135,9 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
         if cv2.waitKey(10) & 0xFF == ord('q'):
             end_time = datetime.datetime.now()
             print("End time:", end_time)
-            url = 'http://127.0.0.1:8000/gamerecord'
+            url = 'http://127.0.0.1:8000/gamerecord/'
             data = {
+                'id': 'test1021',
                 'counter': counter,
                 'start_time': start_time,
                 'end_time': end_time,
@@ -144,7 +145,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                 'playstage': stage
             }
 
-            response = requests.post(url, data=data)
+            response = requests.post(url, json=data)
 
             if response.status_code == 200:
                 print("Data sent successfully.")
