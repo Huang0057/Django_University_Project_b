@@ -216,9 +216,11 @@ def gamerecord(request):
         duration_minutes = int(duration.total_seconds() // 60)
         duration_seconds = int(duration.total_seconds() % 60)
         duration_time = f"{duration_minutes:02}:{duration_seconds:02}"
-
-        user_profile = request.user.userprofile
-
+        if request.user.is_authenticated:
+            user_profile = request.user.userprofile
+        else:
+            # 用戶未登入，進行相應的處理，如重定向到登入頁面
+            return redirect('login_url_name')
         game_record = GameRecord.objects.create(
             USER_UID=user_profile,
             PlayDate=datetime.now().date(),  # 以当前日期作为PlayDate
