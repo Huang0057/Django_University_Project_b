@@ -30,6 +30,7 @@ def calculate_angle(a, b, c):  # 分別為肩，手肘，手腕
     return angle
 
 
+id = "test1021"
 part = "上肢"
 stage = "上肢上舉"
 start_time = datetime.datetime.now()
@@ -86,17 +87,22 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                 if counter == 10:  # 次數=10結束
                     print(counter)
                     end_time = datetime.datetime.now()
+                    start_time = start_time.strftime('%Y-%m-%d %H:%M:%S')
+                    end_time = end_time.strftime('%Y-%m-%d %H:%M:%S')
                     print("End time:", end_time)
                     url = 'http://127.0.0.1:8000/gamerecord/'  # 替換為你的Django應用程式的URL和端點
                     data = {
+                        'id': id,
                         'counter': counter,
                         'start_time': start_time,
                         'end_time': end_time,
                         'playpart': part,
                         'playstage': stage,
                     }
-
-                    response = requests.post(url, json=data)
+                    header = {
+                        "Content-Type": "application/json"
+                    }
+                    response = requests.post(url, json=data, headers=header)
 
                     if response.status_code == 200:
                         print("Data sent successfully.")
@@ -135,17 +141,21 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
         if cv2.waitKey(10) & 0xFF == ord('q'):
             end_time = datetime.datetime.now()
             print("End time:", end_time)
+            start_time = start_time.strftime('%Y-%m-%d %H:%M:%S')
+            end_time = end_time.strftime('%Y-%m-%d %H:%M:%S')
             url = 'http://127.0.0.1:8000/gamerecord/'
             data = {
-                'id': 'test1021',
+                'id': id,
                 'counter': counter,
                 'start_time': start_time,
                 'end_time': end_time,
                 'playpart': part,
                 'playstage': stage
             }
-
-            response = requests.post(url, json=data)
+            header = {
+                "Content-Type": "application/json"
+            }
+            response = requests.post(url, json=data, headers=header)
 
             if response.status_code == 200:
                 print("Data sent successfully.")

@@ -4,7 +4,7 @@ import numpy as np
 from .form import UserInfoForm
 from .form import LoginForm
 from django.contrib.auth import authenticate, login, logout
-from .models import GameRecord, UserProfile,ArmMetrics,FootMetrics,LimbMetrics,HandMetrics
+from .models import GameRecord, UserProfile, ArmMetrics, FootMetrics, LimbMetrics, HandMetrics
 from datetime import datetime
 import uuid
 from django.http import HttpResponse
@@ -199,14 +199,13 @@ def signin(request):
     return render(request, '登入畫面.html', context)
 
 
-@csrf_exempt
 def gamerecord(request):
     if request.method == 'POST':
         # Parse the data from the request
 
         data = json.loads(request.body.decode('utf-8'))
         counter = int(data.get('counter', 0))
-        id = data.get('id',None)
+        id = data.get('id', None)
         start_time_str = data.get('start_time')
         end_time_str = data.get('end_time')
         playpart = data.get('playpart')
@@ -214,7 +213,8 @@ def gamerecord(request):
 
         # Validate and convert the times
         try:
-            start_time = datetime.strptime(start_time_str, "%Y-%m-%d %H:%M:%S.%f")
+            start_time = datetime.strptime(
+                start_time_str, "%Y-%m-%d %H:%M:%S.%f")
             end_time = datetime.strptime(end_time_str, "%Y-%m-%d %H:%M:%S.%f")
         except ValueError:
             return HttpResponse("Invalid time format", status=400)
@@ -223,9 +223,8 @@ def gamerecord(request):
         duration_minutes = int(duration.total_seconds() // 60)
         duration_seconds = int(duration.total_seconds() % 60)
         duration_time = f"{duration_minutes:02}:{duration_seconds:02}"
-        #修到這
+        # 修到這
         user_profile = id
-      
 
         game_record = GameRecord.objects.create(
             USER_UID=user_profile,
@@ -254,9 +253,11 @@ def gamerecord(request):
 
         metrics_model = METRICS_MODELS.get(playpart)
         if metrics_model:
-            metrics, created = metrics_model.objects.get_or_create(USER_UID=user_profile)
+            metrics, created = metrics_model.objects.get_or_create(
+                USER_UID=user_profile)
             metrics.TotalPlayCount += 1
-            metrics.TotalPlayTime += (end_time - start_time).seconds / 60.0  # Convert to minutes
+            # Convert to minutes
+            metrics.TotalPlayTime += (end_time - start_time).seconds / 60.0
             metrics.LastStage = playstage
             metrics.TotalGetCoin += 5
             metrics.LastRecordId = game_record.UID
