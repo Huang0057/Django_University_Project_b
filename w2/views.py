@@ -265,3 +265,9 @@ def gamerecord(request):
         return render(request, '遊戲畫面-上肢.html')
 
     return HttpResponse("Method not allowed", status=405)
+
+
+def arm_play_records(request):
+    user = request.user
+    arm_play_records = GameRecord.objects.filter(USER_UID=user, PlayPart='ARM')
+    return render(request, '紀錄上肢.html', {'play_records': arm_play_records})

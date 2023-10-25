@@ -187,7 +187,7 @@
             alt="User1345"
             class="component-紀錄1-user"
           />
-          
+
           <img
             src="{% static 'public/playground_assets/calendar3283-gkkf.svg' %}"
             alt="Calendar1345"
@@ -213,7 +213,6 @@
                 alt="image6I134"
                 class="component-紀錄1-image6"
               />
-
             </div>
           </div>
           <div class="component-紀錄1-component1">
@@ -224,7 +223,6 @@
                 alt="image6I134"
                 class="component-紀錄1-image61"
               />
-
             </div>
           </div>
           <div class="component-紀錄1-component2">
@@ -235,7 +233,6 @@
                 alt="image6I134"
                 class="component-紀錄1-image62"
               />
-
             </div>
           </div>
           <div class="component-紀錄1-component3">
@@ -246,7 +243,6 @@
                 alt="image6I134"
                 class="component-紀錄1-image63"
               />
-
             </div>
           </div>
 
@@ -261,84 +257,63 @@
             <span>
               <table style="border: 8px #75e6ff groove" cellpadding="10">
                 <tr>
-                  <th>運動部位</th>
+                  <th>遊玩日期</th>
                   <th>關卡名稱</th>
-                  <th>進入關卡時間</th>
-                  <th>遊玩關卡時長</th>
-                  <th>通過關卡標準次數/總次數</th>
-                  <th>金幣增加量</th>
+                  <th>開始時間</th>
+                  <th>遊玩時間</th>
+                  <th>鍛鍊次數</th>
+                  <th>獲得金幣</th>
                 </tr>
+                {% for record in play_records %}
                 <tr>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
+                  <td>{{ record.PlayDate }}</td>
+                  <td>{{ record.PlayStage }}</td>
+                  <td>{{ record.StartTime }}</td>
+                  <td>{{ record.DurationTime }}</td>
+                  <td>{{ record.ExerciseCount }}</td>
+                  <td>{{ record.AddCoin }}</td>
                 </tr>
-                <tr>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                </tr>
-                <tr>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                </tr>
+                {% endfor %}
               </table>
             </span>
           </span>
-          
-          
-          
+
           <img
             onclick="redirectToPage7()"
             src="{% static 'public/playground_assets/rectangle347837-bi29-300h.png' %}"
             alt="Rectangle544014"
             class="component-紀錄1-rectangle33"
           />
-          <span class="component-紀錄1-text14" onclick="redirectToPage7()"><span>上肢</span></span>
+          <span class="component-紀錄1-text14" onclick="redirectToPage7()"
+            ><span>上肢</span></span
+          >
           <img
             onclick="redirectToPage8()"
             src="{% static 'public/playground_assets/buttongray1.png' %}"
             alt="Rectangle544014"
             class="component-紀錄1-rectangle34"
           />
-          <span class="component-紀錄1-text16" onclick="redirectToPage8()"><span>下肢</span></span>
+          <span class="component-紀錄1-text16" onclick="redirectToPage8()"
+            ><span>下肢</span></span
+          >
           <img
             onclick="redirectToPage9()"
             src="{% static 'public/playground_assets/buttongray1.png' %}"
             alt="Rectangle544014"
             class="component-紀錄1-rectangle35"
           />
-          <span class="component-紀錄1-text18" onclick="redirectToPage9()"><span>四肢</span></span>
+          <span class="component-紀錄1-text18" onclick="redirectToPage9()"
+            ><span>四肢</span></span
+          >
           <img
             onclick="redirectToPage10()"
             src="{% static 'public/playground_assets/buttongray1.png' %}"
             alt="Rectangle544014"
             class="component-紀錄1-rectangle36"
           />
-          <span class="component-紀錄1-text20" onclick="redirectToPage10()"><span>手部</span></span>
-
-
-
-
-
+          <span class="component-紀錄1-text20" onclick="redirectToPage10()"
+            ><span>手部</span></span
+          >
         </div>
       </div>
     </div>
