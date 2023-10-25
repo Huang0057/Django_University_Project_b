@@ -4,12 +4,13 @@ import numpy as np
 from .form import UserInfoForm
 from .form import LoginForm
 from django.contrib.auth import authenticate, login, logout
-from .models import GameRecord, UserProfile
+from .models import GameRecord, UserProfile,ArmMetrics,FootMetrics,LimbMetrics,HandMetrics
 from datetime import datetime
 import uuid
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+import json
 # Create your views here.
 
 
@@ -201,29 +202,34 @@ def signin(request):
 @csrf_exempt
 def gamerecord(request):
     if request.method == 'POST':
+        # Parse the data from the request
 
-        counter = request.POST.get('counter')
-        start_time = request.POST.get('start_time')
-        end_time = request.POST.get('end_time')
-        duration_time = request.POST.get('duration_time')
-        playpart = request.POST.get('playpart')
-        playstage = request.POST.get('playstage')
+        data = json.loads(request.body.decode('utf-8'))
+        counter = int(data.get('counter', 0))
+        id = data.get('id')
+        start_time_str = data.get('start_time')
+        end_time_str = data.get('end_time')
+        playpart = data.get('playpart')
+        playstage = data.get('playstage')
 
-        start_time = datetime.strptime(start_time, "%Y-%m-%d %H:%M:%S.%f")
-        end_time = datetime.strptime(end_time, "%Y-%m-%d %H:%M:%S.%f")
+        # Validate and convert the times
+        try:
+            start_time = datetime.strptime(start_time_str, "%Y-%m-%d %H:%M:%S.%f")
+            end_time = datetime.strptime(end_time_str, "%Y-%m-%d %H:%M:%S.%f")
+        except ValueError:
+            return HttpResponse("Invalid time format", status=400)
 
         duration = end_time - start_time
         duration_minutes = int(duration.total_seconds() // 60)
         duration_seconds = int(duration.total_seconds() % 60)
         duration_time = f"{duration_minutes:02}:{duration_seconds:02}"
-        if request.user.is_authenticated:
-            user_profile = request.user.userprofile
-        else:
-            # 用戶未登入，進行相應的處理，如重定向到登入頁面
-            return redirect('login_url_name')
+        #修到這
+        user_profile = id
+      
+
         game_record = GameRecord.objects.create(
             USER_UID=user_profile,
-            PlayDate=datetime.now().date(),  # 以当前日期作为PlayDate
+            PlayDate=datetime.now().date(),
             PlayPart=playpart,
             UID=str(uuid.uuid4())[:20],
             PlayStage=playstage,
@@ -234,8 +240,27 @@ def gamerecord(request):
             ExerciseCount=counter,
         )
 
-        # 执行其他操作，例如增加金币或计算锻炼次数
-        # ...
+        # Update the TotalCoin in UserProfile
+        user_profile.TotalCoin += 5
+        user_profile.save()
+
+        # Update the specific Metrics model based on playpart
+        METRICS_MODELS = {
+            'Arm': ArmMetrics,
+            'Foot': FootMetrics,
+            'Limb': LimbMetrics,
+            'Hand': HandMetrics
+        }
+
+        metrics_model = METRICS_MODELS.get(playpart)
+        if metrics_model:
+            metrics, created = metrics_model.objects.get_or_create(USER_UID=user_profile)
+            metrics.TotalPlayCount += 1
+            metrics.TotalPlayTime += (end_time - start_time).seconds / 60.0  # Convert to minutes
+            metrics.LastStage = playstage
+            metrics.TotalGetCoin += 5
+            metrics.LastRecordId = game_record.UID
+            metrics.save()
 
         return render(request, '遊戲畫面-上肢.html')
 
