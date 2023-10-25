@@ -206,7 +206,7 @@ def gamerecord(request):
 
         data = json.loads(request.body.decode('utf-8'))
         counter = int(data.get('counter', 0))
-        id = data.get('id')
+        id = data.get('id',None)
         start_time_str = data.get('start_time')
         end_time_str = data.get('end_time')
         playpart = data.get('playpart')
