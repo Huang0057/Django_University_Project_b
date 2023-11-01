@@ -5,12 +5,15 @@ from .form import UserInfoForm
 from .form import LoginForm
 from django.contrib.auth import authenticate, login, logout
 from .models import GameRecord, UserProfile, ArmMetrics, FootMetrics, LimbMetrics, HandMetrics
+from .form import UserProfileForm
 from datetime import datetime
 import uuid
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 import json
+from django.http import JsonResponse
+from datetime import timedelta
 # Create your views here.
 
 
@@ -206,6 +209,7 @@ def gamerecord(request):
         data = json.loads(request.body.decode('utf-8'))
         counter = int(data.get('counter', 0))
         id = data.get('id', None)
+        user_profile = UserProfile.objects.get(user__username=id)
         start_time_str = data.get('start_time')
         end_time_str = data.get('end_time')
         playpart = data.get('playpart')
@@ -272,3 +276,61 @@ def arm_play_records(request):
     user = request.user
     arm_play_records = GameRecord.objects.filter(USER_UID=user, PlayPart='ARM')
     return render(request, '紀錄上肢.html', {'play_records': arm_play_records})
+
+
+
+def update_user_profile(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=request.user.userprofile)
+        if form.is_valid():
+            form.save()
+            # redirect to a success page or back to the form
+            return redirect('some-success-url')
+    else:
+        form = UserProfileForm(instance=request.user.userprofile)
+
+    return render(request, 'path_to_template.html', {'form': form})
+
+def add_gamerecord(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+
+            user_uid = data.get('USER_UID')
+            play_date = data.get('PlayDate')
+            play_part = data.get('PlayPart')
+            uid = data.get('UID')
+            play_stage = data.get('PlayStage')
+            start_time = data.get('StartTime')
+            end_time = data.get('EndTime')
+            duration_str = data.get('DurationTime')
+            add_coin = data.get('AddCoin')
+            exercise_count = data.get('ExerciseCount')
+
+            # Convert the duration string to a timedelta object
+            hours, minutes, seconds = map(int, duration_str.split(':'))
+            duration_time = timedelta(hours=hours, minutes=minutes, seconds=seconds)
+
+            game_record = GameRecord(
+                USER_UID=user_uid,
+                PlayDate=play_date,
+                PlayPart=play_part,
+                UID=uid,
+                PlayStage=play_stage,
+                StartTime=start_time,
+                EndTime=end_time,
+                DurationTime=duration_time,
+                AddCoin=add_coin,
+                ExerciseCount=exercise_count,
+            )
+
+            game_record.save()
+
+            return JsonResponse({"status": "success", "message": "GameRecord added successfully."})
+        
+        except json.JSONDecodeError:
+            return JsonResponse({"status": "error", "message": "Failed to decode JSON."})
+        except Exception as e:
+            return JsonResponse({"status": "error", "message": str(e)})
+
+    return JsonResponse({"status": "error", "message": "Invalid method."})
