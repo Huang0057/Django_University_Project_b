@@ -295,7 +295,7 @@ def add_gamerecord(request):
     if request.method == "POST":
         try:
             data = json.loads(request.body)
-
+            # 資料處理
             user_uid = data.get('USER_UID')
             play_date = data.get('PlayDate')
             play_part = data.get('PlayPart')
@@ -306,7 +306,7 @@ def add_gamerecord(request):
             duration_str = data.get('DurationTime')
             add_coin = data.get('AddCoin')
             exercise_count = data.get('ExerciseCount')
-
+            # 資料處理
             # Convert the duration string to a timedelta object
             hours, minutes, seconds = map(int, duration_str.split(':'))
             duration_time = timedelta(hours=hours, minutes=minutes, seconds=seconds)
@@ -325,6 +325,41 @@ def add_gamerecord(request):
             )
 
             game_record.save()
+
+            return JsonResponse({"status": "success", "message": "GameRecord added successfully."})
+        
+        except json.JSONDecodeError:
+            return JsonResponse({"status": "error", "message": "Failed to decode JSON."})
+        except Exception as e:
+            return JsonResponse({"status": "error", "message": str(e)})
+
+    return JsonResponse({"status": "error", "message": "Invalid method."})
+
+def add_arm(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            # 資料處理
+            user_uid = data.get('USER_UID')
+            last_stage = data.get('LastStage')
+            total_play_time = data.get('TotalPlayTime')
+            total_play_count = data.get('TotalPlayCount')
+            pass_count = data.get('PassCount')
+            total_get_coin = data.get('TotalGetCoin')
+            last_record_id = data.get('LastRecordId')
+            arm_uid = data.get('Arm_UID')
+            data = {
+                'USER_UID' : user_uid,
+                'LastStage' : last_stage,
+                'TotalPlayTime' : total_play_time,
+                'TotalPlayCount' : total_play_count,
+                'PassCount' : pass_count,
+                'TotalGetCoin' : total_get_coin,
+                'LastRecordId' : last_record_id
+            }
+            ArmMetrics.objects.filter(USER_UID=user_uid).update(**data)
+
+
 
             return JsonResponse({"status": "success", "message": "GameRecord added successfully."})
         

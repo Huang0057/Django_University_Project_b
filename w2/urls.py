@@ -37,4 +37,5 @@ urlpatterns = [
     path('gamerecord/', views.gamerecord, name="gamerecord"),
     path('update-profile/', views.update_user_profile, name='update-profile'),
     path('add-gamerecord/', views.add_gamerecord, name='add_gamerecord'),
+    path('add-armrecord/', views.add_arm, name='add_arm'),
 ]

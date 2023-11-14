@@ -143,7 +143,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
             print("End time:", end_time)
             start_time = start_time.strftime('%Y-%m-%d %H:%M:%S')
             end_time = end_time.strftime('%Y-%m-%d %H:%M:%S')
-            url = 'http://127.0.0.1:8000/gamerecord/'
+            url = 'http://127.0.0.1:8000/add-gamerecord//'
             data = {
                 'id': id,
                 'counter': counter,
