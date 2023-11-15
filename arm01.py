@@ -1,4 +1,5 @@
 import cv2
+import uuid
 import mediapipe as mp
 import numpy as np
 import datetime
@@ -30,7 +31,7 @@ def calculate_angle(a, b, c):  # 分別為肩，手肘，手腕
     return angle
 
 
-id = "test1021"
+id = "123123"
 part = "上肢"
 stage = "上肢上舉"
 start_time = datetime.datetime.now()
@@ -85,19 +86,38 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                 stage = "up"
                 counter += 1
                 if counter == 10:  # 次數=10結束
-                    print(counter)
                     end_time = datetime.datetime.now()
-                    start_time = start_time.strftime('%Y-%m-%d %H:%M:%S')
-                    end_time = end_time.strftime('%Y-%m-%d %H:%M:%S')
-                    print("End time:", end_time)
-                    url = 'http://127.0.0.1:8000/gamerecord/'  # 替換為你的Django應用程式的URL和端點
+                    duration = end_time - start_time
+                    duration_time_str = str(duration)
+
+                    PlayDate = start_time.strftime('%Y/%m/%d')
+                    StartTime = start_time.strftime('%H:%M:%S')
+                    EndTime = end_time.strftime('%H:%M:%S')
+                    UID = str(uuid.uuid4())
+                    duration_formatted = duration.total_seconds()
+                    hours, remainder = divmod(duration_formatted, 3600)
+                    minutes, seconds = divmod(remainder, 60)
+                    duration_str_formatted = "{:02}:{:02}:{:02}".format(
+                        int(hours), int(minutes), int(seconds))
+
+                    print("Counter:", counter)
+                    print("Start Time:", EndTime)
+                    print("End time:", EndTime)
+                    print("Duration Time:", duration_str_formatted)
+
+                    url = 'http://127.0.0.1:8000/add_gamerecord/'  # 替換為你的Django應用程式的URL和端點
+
                     data = {
-                        'id': id,
-                        'counter': counter,
-                        'start_time': start_time,
-                        'end_time': end_time,
-                        'playpart': part,
-                        'playstage': stage,
+                        'USER_UID': id,
+                        'PlayDate': counter,
+                        'PlayPart': part,
+                        'UID': UID,
+                        'PlayStage': stage,
+                        'StartTime': StartTime,
+                        'EndTime': EndTime,
+                        'DurationTime': duration_str_formatted,
+                        'AddCoin': "5",
+                        'ExerciseCount': counter
                     }
                     header = {
                         "Content-Type": "application/json"
@@ -140,17 +160,38 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
         # 按下q键退出
         if cv2.waitKey(10) & 0xFF == ord('q'):
             end_time = datetime.datetime.now()
-            print("End time:", end_time)
-            start_time = start_time.strftime('%Y-%m-%d %H:%M:%S')
-            end_time = end_time.strftime('%Y-%m-%d %H:%M:%S')
-            url = 'http://127.0.0.1:8000/add-gamerecord//'
+
+            duration = end_time - start_time
+            duration_time_str = str(duration)
+
+            PlayDate = start_time.strftime('%Y/%m/%d')
+            StartTime = start_time.strftime('%H:%M:%S')
+            EndTime = end_time.strftime('%H:%M:%S')
+            UID = str(uuid.uuid4())
+            duration_formatted = duration.total_seconds()
+            hours, remainder = divmod(duration_formatted, 3600)
+            minutes, seconds = divmod(remainder, 60)
+            duration_str_formatted = "{:02}:{:02}:{:02}".format(
+                int(hours), int(minutes), int(seconds))
+
+            print("Counter:", counter)
+            print("Start Time:", EndTime)
+            print("End time:", EndTime)
+            print("Duration Time:", duration_str_formatted)
+
+            url = 'http://127.0.0.1:8000/add_gamerecord/'  # 替換為你的Django應用程式的URL和端點
+
             data = {
-                'id': id,
-                'counter': counter,
-                'start_time': start_time,
-                'end_time': end_time,
-                'playpart': part,
-                'playstage': stage
+                'USER_UID': id,
+                'PlayDate': counter,
+                'PlayPart': part,
+                'UID': UID,
+                'PlayStage': stage,
+                'StartTime': StartTime,
+                'EndTime': EndTime,
+                'DurationTime': duration_str_formatted,
+                'AddCoin': "5",
+                'ExerciseCount': counter
             }
             header = {
                 "Content-Type": "application/json"

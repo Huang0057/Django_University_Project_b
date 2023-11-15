@@ -35,7 +35,7 @@ urlpatterns = [
     path('遊戲難度選擇-四肢', views.遊戲難度選擇四肢, name="遊戲難度選擇-四肢"),
     path('遊戲難度選擇-手部', views.遊戲難度選擇手部, name="遊戲難度選擇-手部"),
     path('gamerecord/', views.gamerecord, name="gamerecord"),
-    path('update-profile/', views.update_user_profile, name='update-profile'),
-    path('add-gamerecord/', views.add_gamerecord, name='add_gamerecord'),
-    path('add-armrecord/', views.add_arm, name='add_arm'),
+    path('update_profile/', views.update_user_profile, name='update-profile'),
+    path('add_gamerecord/', views.add_gamerecord, name='add_gamerecord'),
+    path('add_armrecord/', views.add_arm, name='add_arm'),
 ]
