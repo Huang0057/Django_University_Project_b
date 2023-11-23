@@ -37,5 +37,7 @@ urlpatterns = [
     path('gamerecord/', views.gamerecord, name="gamerecord"),
     path('update_profile/', views.update_user_profile, name='update-profile'),
     path('add_gamerecord/', views.add_gamerecord, name='add_gamerecord'),
-    path('add_armrecord/', views.add_arm, name='add_arm'),
+    path('add_arm_metrics/', views.add_arm_metrics, name='add_arm_metrics'),
+    path('add_arm_metrics/<str:user_uid>/<str:play_date>/',
+         views.add_arm_metrics, name='add_arm_metrics'),
 ]

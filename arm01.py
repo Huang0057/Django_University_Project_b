@@ -32,13 +32,14 @@ def calculate_angle(a, b, c):  # 分別為肩，手肘，手腕
 
 
 id = "123123"
-part = "上肢"
-stage = "上肢上舉"
+part = "arm"
+playstage = "上肢上舉"
 start_time = datetime.datetime.now()
-print(f"{part}\n{stage}\nStart time: {start_time}")
+print(f"{part}\n{playstage}\nStart time: {start_time}")
+
 
 # 定义MediaPipe姿势识别模型
-with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:  # 想要偵測得更具體可以提高信度
+with mp_pose.Pose(model_complexity=0, min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:  # 想要偵測得更具體可以提高信度
     # 建立視窗，並讓視窗可以動態調整
     cv2.namedWindow('Camera', cv2.WINDOW_NORMAL)
     # 打开摄像头
@@ -90,7 +91,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                     duration = end_time - start_time
                     duration_time_str = str(duration)
 
-                    PlayDate = start_time.strftime('%Y/%m/%d')
+                    PlayDate = start_time.strftime('%Y-%m-%d')
                     StartTime = start_time.strftime('%H:%M:%S')
                     EndTime = end_time.strftime('%H:%M:%S')
                     UID = str(uuid.uuid4())
@@ -100,8 +101,12 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                     duration_str_formatted = "{:02}:{:02}:{:02}".format(
                         int(hours), int(minutes), int(seconds))
 
+                    print("id:", id)
                     print("Counter:", counter)
-                    print("Start Time:", EndTime)
+                    print("part:", part)
+                    print("UID:", UID)
+                    print("PlayStage:", playstage)
+                    print("Start Time:", StartTime)
                     print("End time:", EndTime)
                     print("Duration Time:", duration_str_formatted)
 
@@ -109,10 +114,10 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
 
                     data = {
                         'USER_UID': id,
-                        'PlayDate': counter,
+                        'PlayDate': PlayDate,
                         'PlayPart': part,
                         'UID': UID,
-                        'PlayStage': stage,
+                        'PlayStage': playstage,
                         'StartTime': StartTime,
                         'EndTime': EndTime,
                         'DurationTime': duration_str_formatted,
@@ -123,7 +128,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                         "Content-Type": "application/json"
                     }
                     response = requests.post(url, json=data, headers=header)
-
+                    print(response.text)
                     if response.status_code == 200:
                         print("Data sent successfully.")
                     else:
@@ -164,7 +169,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
             duration = end_time - start_time
             duration_time_str = str(duration)
 
-            PlayDate = start_time.strftime('%Y/%m/%d')
+            PlayDate = start_time.strftime('%Y-%m-%d')
             StartTime = start_time.strftime('%H:%M:%S')
             EndTime = end_time.strftime('%H:%M:%S')
             UID = str(uuid.uuid4())
@@ -175,7 +180,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                 int(hours), int(minutes), int(seconds))
 
             print("Counter:", counter)
-            print("Start Time:", EndTime)
+            print("Start Time:", PlayDate)
             print("End time:", EndTime)
             print("Duration Time:", duration_str_formatted)
 
@@ -183,10 +188,10 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
 
             data = {
                 'USER_UID': id,
-                'PlayDate': counter,
+                'PlayDate': PlayDate,
                 'PlayPart': part,
                 'UID': UID,
-                'PlayStage': stage,
+                'PlayStage': playstage,
                 'StartTime': StartTime,
                 'EndTime': EndTime,
                 'DurationTime': duration_str_formatted,

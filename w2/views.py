@@ -278,7 +278,6 @@ def arm_play_records(request):
     return render(request, '紀錄上肢.html', {'play_records': arm_play_records})
 
 
-
 def update_user_profile(request):
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=request.user.userprofile)
@@ -290,6 +289,7 @@ def update_user_profile(request):
         form = UserProfileForm(instance=request.user.userprofile)
 
     return render(request, 'path_to_template.html', {'form': form})
+
 
 def add_gamerecord(request):
     if request.method == "POST":
@@ -309,7 +309,8 @@ def add_gamerecord(request):
             # 資料處理
             # Convert the duration string to a timedelta object
             hours, minutes, seconds = map(int, duration_str.split(':'))
-            duration_time = timedelta(hours=hours, minutes=minutes, seconds=seconds)
+            duration_time = timedelta(
+                hours=hours, minutes=minutes, seconds=seconds)
 
             game_record = GameRecord(
                 USER_UID=user_uid,
@@ -325,9 +326,10 @@ def add_gamerecord(request):
             )
 
             game_record.save()
+            print("GameRecord added successfully.")
 
-            return JsonResponse({"status": "success", "message": "GameRecord added successfully."})
-        
+            return redirect('add_arm_metrics', user_uid=user_uid, play_date=play_date)
+
         except json.JSONDecodeError:
             return JsonResponse({"status": "error", "message": "Failed to decode JSON."})
         except Exception as e:
@@ -335,37 +337,42 @@ def add_gamerecord(request):
 
     return JsonResponse({"status": "error", "message": "Invalid method."})
 
-def add_arm(request):
-    if request.method == "POST":
-        try:
-            data = json.loads(request.body)
-            # 資料處理
-            user_uid = data.get('USER_UID')
-            last_stage = data.get('LastStage')
-            total_play_time = data.get('TotalPlayTime')
-            total_play_count = data.get('TotalPlayCount')
-            pass_count = data.get('PassCount')
-            total_get_coin = data.get('TotalGetCoin')
-            last_record_id = data.get('LastRecordId')
-            arm_uid = data.get('Arm_UID')
-            data = {
-                'USER_UID' : user_uid,
-                'LastStage' : last_stage,
-                'TotalPlayTime' : total_play_time,
-                'TotalPlayCount' : total_play_count,
-                'PassCount' : pass_count,
-                'TotalGetCoin' : total_get_coin,
-                'LastRecordId' : last_record_id
-            }
-            ArmMetrics.objects.filter(USER_UID=user_uid).update(**data)
 
+def add_arm_metrics(request, user_uid, play_date):
+    try:
+        latest_game_record = GameRecord.objects.filter(
+            USER_UID=user_uid, PlayPart='arm', PlayDate=play_date).order_by('-StartTime').first()
 
+        user_profile = UserProfile.objects.get(
+            USER_UID=latest_game_record.USER_UID)
+        arm_uid = user_profile.Arm_UID
 
-            return JsonResponse({"status": "success", "message": "GameRecord added successfully."})
-        
-        except json.JSONDecodeError:
-            return JsonResponse({"status": "error", "message": "Failed to decode JSON."})
-        except Exception as e:
-            return JsonResponse({"status": "error", "message": str(e)})
+        arm_metrics = ArmMetrics.objects.get(
+            USER_UID=user_uid, Arm_UID=arm_uid)
 
-    return JsonResponse({"status": "error", "message": "Invalid method."})
+        # 取得相關遊戲紀錄的資料
+        play_stage = latest_game_record.PlayStage
+        duration_time = latest_game_record.DurationTime
+        exercise_count = latest_game_record.ExerciseCount
+        add_coin = latest_game_record.AddCoin
+        uid = latest_game_record.UID
+
+        duration_seconds = duration_time.total_seconds()
+
+        # 處理更新 ArmMetrics 資料表
+        arm_metrics.LastStage = play_stage
+        arm_metrics.TotalPlayTime += duration_seconds
+        arm_metrics.TotalPlayCount += exercise_count
+        arm_metrics.PassCount += exercise_count
+        arm_metrics.TotalGetCoin += add_coin
+        arm_metrics.LastRecordId = uid
+        arm_metrics.save()
+
+        return JsonResponse({"status": "success", "message": "ArmMetrics updated successfully."})
+
+    except UserProfile.DoesNotExist:
+        return JsonResponse({"status": "error", "message": "UserProfile does not exist."})
+    except ArmMetrics.DoesNotExist:
+        return JsonResponse({"status": "error", "message": "ArmMetrics does not exist."})
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)})
