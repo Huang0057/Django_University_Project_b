@@ -9,7 +9,7 @@ from .form import UserProfileForm
 from datetime import datetime
 import uuid
 from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 import json
 from django.http import JsonResponse
@@ -57,8 +57,25 @@ def 紀錄(request):
     return render(request, '紀錄.html')
 
 
-def 紀錄上肢(request):
-    return render(request, '紀錄上肢.html')
+def ArmRecords(request):
+    # 取得目前登入的使用者
+    current_user = request.user
+
+    try:
+        # 根據目前登入使用者的使用者名稱取得相對應的 UserProfile
+        user_profile = UserProfile.objects.get(user=current_user)
+        user_uid = user_profile.USER_UID
+
+        # 取得符合條件的遊戲紀錄（假設有與使用者相關的遊戲紀錄查詢）
+        play_records = GameRecord.objects.filter(
+            USER_UID=user_uid, PlayPart='arm')
+
+        return render(request, '紀錄上肢.html', {'play_records': play_records})
+
+    except UserProfile.DoesNotExist:
+        return JsonResponse({"status": "error", "message": "UserProfile does not exist."})
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)})
 
 
 def 紀錄下肢(request):
@@ -202,76 +219,6 @@ def signin(request):
     return render(request, '登入畫面.html', context)
 
 
-def gamerecord(request):
-    if request.method == 'POST':
-        # Parse the data from the request
-
-        data = json.loads(request.body.decode('utf-8'))
-        counter = int(data.get('counter', 0))
-        id = data.get('id', None)
-        user_profile = UserProfile.objects.get(user__username=id)
-        start_time_str = data.get('start_time')
-        end_time_str = data.get('end_time')
-        playpart = data.get('playpart')
-        playstage = data.get('playstage')
-
-        # Validate and convert the times
-        try:
-            start_time = datetime.strptime(
-                start_time_str, "%Y-%m-%d %H:%M:%S.%f")
-            end_time = datetime.strptime(end_time_str, "%Y-%m-%d %H:%M:%S.%f")
-        except ValueError:
-            return HttpResponse("Invalid time format", status=400)
-
-        duration = end_time - start_time
-        duration_minutes = int(duration.total_seconds() // 60)
-        duration_seconds = int(duration.total_seconds() % 60)
-        duration_time = f"{duration_minutes:02}:{duration_seconds:02}"
-        # 修到這
-        user_profile = id
-
-        game_record = GameRecord.objects.create(
-            USER_UID=user_profile,
-            PlayDate=datetime.now().date(),
-            PlayPart=playpart,
-            UID=str(uuid.uuid4())[:20],
-            PlayStage=playstage,
-            StartTime=start_time.time(),
-            EndTime=end_time.time(),
-            DurationTime=duration_time,
-            AddCoin=5,
-            ExerciseCount=counter,
-        )
-
-        # Update the TotalCoin in UserProfile
-        user_profile.TotalCoin += 5
-        user_profile.save()
-
-        # Update the specific Metrics model based on playpart
-        METRICS_MODELS = {
-            'Arm': ArmMetrics,
-            'Foot': FootMetrics,
-            'Limb': LimbMetrics,
-            'Hand': HandMetrics
-        }
-
-        metrics_model = METRICS_MODELS.get(playpart)
-        if metrics_model:
-            metrics, created = metrics_model.objects.get_or_create(
-                USER_UID=user_profile)
-            metrics.TotalPlayCount += 1
-            # Convert to minutes
-            metrics.TotalPlayTime += (end_time - start_time).seconds / 60.0
-            metrics.LastStage = playstage
-            metrics.TotalGetCoin += 5
-            metrics.LastRecordId = game_record.UID
-            metrics.save()
-
-        return render(request, '遊戲畫面-上肢.html')
-
-    return HttpResponse("Method not allowed", status=405)
-
-
 def arm_play_records(request):
     user = request.user
     arm_play_records = GameRecord.objects.filter(USER_UID=user, PlayPart='ARM')
@@ -328,7 +275,7 @@ def add_gamerecord(request):
             game_record.save()
             print("GameRecord added successfully.")
 
-            return redirect('add_arm_metrics', user_uid=user_uid, play_date=play_date)
+            return redirect(update_metrics, user_uid=user_uid, play_date=play_date, play_part=play_part)
 
         except json.JSONDecodeError:
             return JsonResponse({"status": "error", "message": "Failed to decode JSON."})
@@ -338,7 +285,7 @@ def add_gamerecord(request):
     return JsonResponse({"status": "error", "message": "Invalid method."})
 
 
-def add_arm_metrics(request, user_uid, play_date):
+def update_arm_metrics(request, user_uid, play_date):
     try:
         latest_game_record = GameRecord.objects.filter(
             USER_UID=user_uid, PlayPart='arm', PlayDate=play_date).order_by('-StartTime').first()
@@ -374,5 +321,56 @@ def add_arm_metrics(request, user_uid, play_date):
         return JsonResponse({"status": "error", "message": "UserProfile does not exist."})
     except ArmMetrics.DoesNotExist:
         return JsonResponse({"status": "error", "message": "ArmMetrics does not exist."})
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)})
+
+
+table_mapping = {
+    'arm': ArmMetrics,
+    'foot': FootMetrics,
+    'limb': LimbMetrics,
+    'hand': HandMetrics,
+}
+
+
+def update_metrics(request, user_uid, play_date, play_part):
+    try:
+        # 確認 play_part 是否存在於映射字典中
+        if play_part in table_mapping:
+            MetricsModel = table_mapping[play_part]
+
+            # 根據 play_part 選擇要操作的資料表
+            latest_game_record = GameRecord.objects.filter(
+                USER_UID=user_uid, PlayPart=play_part, PlayDate=play_date).order_by('-StartTime').first()
+
+            user_profile = UserProfile.objects.get(
+                USER_UID=latest_game_record.USER_UID)
+
+            metrics_instance = MetricsModel.objects.get(
+                USER_UID=user_uid, **{f"{play_part.upper()}_UID": user_profile.__dict__[f"{play_part.capitalize()}_UID"]})
+
+            duration_time = latest_game_record.DurationTime
+            exercise_count = latest_game_record.ExerciseCount
+            add_coin = latest_game_record.AddCoin
+
+            duration_seconds = duration_time.total_seconds()
+
+            metrics_instance.LastStage = latest_game_record.PlayStage
+            metrics_instance.TotalPlayTime += duration_seconds
+            metrics_instance.TotalPlayCount += exercise_count
+            metrics_instance.PassCount += exercise_count
+            metrics_instance.TotalGetCoin += add_coin
+            metrics_instance.LastRecordId = latest_game_record.UID
+            metrics_instance.save()
+
+            return JsonResponse({"status": "success", "message": f"{play_part.capitalize()}Metrics updated successfully."})
+
+        else:
+            return JsonResponse({"status": "error", "message": "Invalid play part."})
+
+    except UserProfile.DoesNotExist:
+        return JsonResponse({"status": "error", "message": "UserProfile does not exist."})
+    except MetricsModel.DoesNotExist:
+        return JsonResponse({"status": "error", "message": f"{play_part.capitalize()}Metrics does not exist."})
     except Exception as e:
         return JsonResponse({"status": "error", "message": str(e)})

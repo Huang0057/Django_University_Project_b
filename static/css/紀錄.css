@@ -307,16 +307,16 @@ body {
   text-decoration: none;
 }
 .component-紀錄1-text13-1 {
-  display:flex;
-  justify-content:center;
-  top: 190px;
-  left: 60px;
+  display:flex;  
+  justify-content: center;
+  left: 509px;
+  top: 190px;  
   color: rgba(0, 0, 0, 1);
   width: 100%;
   height: auto;
   position: absolute;
   font-size: 24px;
-  font-style: Extra Bold;
+  font-weight: 800;
   text-align: center;
   font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -339,6 +339,10 @@ body {
   line-height: normal;
   font-stretch: normal;
   text-decoration: none;
+  cursor: pointer;
+}
+.component-紀錄1-text14:hover {
+  cursor: pointer;
 }
 .component-紀錄1-rectangle33 {
   top: 650px;
@@ -595,4 +599,19 @@ body {
   width: 455px;
   height: 420px;
   position: absolute;
+}
+
+.record-table {
+  border: 8px #75e6ff groove;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.record-table th, .record-table td {
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+
+.record-table th {
+  border-bottom: 2px solid #000;
 }

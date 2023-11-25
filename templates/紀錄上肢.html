@@ -253,30 +253,31 @@
           />
           <span class="component-紀錄1-text12"><span>匯出紀錄</span></span>
 
-          <span class="component-紀錄1-text13-1">
-            <span>
-              <table style="border: 8px #75e6ff groove" cellpadding="10">
-                <tr>
-                  <th>遊玩日期</th>
-                  <th>關卡名稱</th>
-                  <th>開始時間</th>
-                  <th>遊玩時間</th>
-                  <th>鍛鍊次數</th>
-                  <th>獲得金幣</th>
-                </tr>
+          <div class="component-紀錄1-text13-1">
+            <table style="border: 8px #75e6ff groove;" cellpadding="12">              
+                <tr style="border-bottom: 2px solid #000;">
+                  <th style="border-bottom: 2px solid #000;">遊玩日期</th>
+                  <th style="border-bottom: 2px solid #000;">關卡名稱</th>
+                  <th style="border-bottom: 2px solid #000;">開始時間</th>
+                  <th style="border-bottom: 2px solid #000;">遊玩時間</th>
+                  <th style="border-bottom: 2px solid #000;">鍛鍊次數</th>
+                  <th style="border-bottom: 2px solid #000;">獲得金幣</th>
+                </tr>             
+              
                 {% for record in play_records %}
-                <tr>
-                  <td>{{ record.PlayDate }}</td>
-                  <td>{{ record.PlayStage }}</td>
-                  <td>{{ record.StartTime }}</td>
-                  <td>{{ record.DurationTime }}</td>
-                  <td>{{ record.ExerciseCount }}</td>
-                  <td>{{ record.AddCoin }}</td>
-                </tr>
+                  <tr style="border-bottom: 1px solid #8E8E8E;">
+                    <td style="border-bottom: 1px solid #8E8E8E;">{{ record.PlayDate }}</td>
+                    <td style="border-bottom: 1px solid #8E8E8E;">{{ record.PlayStage }}</td>
+                    <td style="border-bottom: 1px solid #8E8E8E;">{{ record.StartTime }}</td>
+                    <td style="border-bottom: 1px solid #8E8E8E;">{{ record.DurationTime }}</td>
+                    <td style="border-bottom: 1px solid #8E8E8E;">{{ record.ExerciseCount }}</td>
+                    <td style="border-bottom: 1px solid #8E8E8E;">{{ record.AddCoin }}</td>
+                  </tr>
                 {% endfor %}
-              </table>
-            </span>
-          </span>
+              
+            </table>
+          </div>
+          
 
           <img
             onclick="redirectToPage7()"
@@ -284,9 +285,9 @@
             alt="Rectangle544014"
             class="component-紀錄1-rectangle33"
           />
-          <span class="component-紀錄1-text14" onclick="redirectToPage7()"
-            ><span>上肢</span></span
-          >
+          <button class="component-紀錄1-text14"  onclick="redirectToPage7()">
+            <span>上肢</span>
+          </button>
           <img
             onclick="redirectToPage8()"
             src="{% static 'public/playground_assets/buttongray1.png' %}"
