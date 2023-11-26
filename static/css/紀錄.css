@@ -290,7 +290,7 @@ body {
   font-stretch: normal;
   text-decoration: none;
 }
-.component-紀錄1-text13 {
+.component-紀錄1-MetricsTable {
   top: 190px;
   left: 60px;
   color: rgba(0, 0, 0, 1);
@@ -298,7 +298,7 @@ body {
   height: auto;
   position: absolute;
   font-size: 24px;
-  font-style: Extra Bold;
+  font-style: Bold;
   text-align: center;
   font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -306,24 +306,7 @@ body {
   font-stretch: normal;
   text-decoration: none;
 }
-.component-紀錄1-text13-1 {
-  display:flex;  
-  justify-content: center;
-  left: 509px;
-  top: 190px;  
-  color: rgba(0, 0, 0, 1);
-  width: 100%;
-  height: auto;
-  position: absolute;
-  font-size: 24px;
-  font-weight: 800;
-  text-align: center;
-  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
-}
+
 .component-紀錄1-text14 {
   top: 670px;
   left: 509px;
@@ -601,17 +584,101 @@ body {
   position: absolute;
 }
 
-.record-table {
-  border: 8px #75e6ff groove;
-  border-collapse: collapse;
+
+
+.component-紀錄1-pagination {
+  position: fixed;
+  top: 57%;
+  left: -3%;
+  color: rgba(0, 0, 0, 1);
   width: 100%;
+  height: auto;  
+  font-size: 20px;
+  font-style: Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
 }
 
-.record-table th, .record-table td {
-  border-right: 2px solid #000;
-  border-bottom: 2px solid #000;
+.table_nextpage {
+  position: absolute;
+  top: 0%;
+  left: 10%;
+  color: rgba(0, 0, 0, 1);
+  width: 100%;
+  height: auto;  
+  font-size: 20px;
+  font-style: Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
 }
 
-.record-table th {
-  border-bottom: 2px solid #000;
+.table_nextpage {
+  position: absolute;
+  top: 0%;
+  left: 10%;
+  color: rgba(0, 0, 0, 1);
+  width: 100%;
+  height: auto;  
+  font-size: 20px;
+  font-style: Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
 }
+.table_previouspage {
+  position: absolute;
+  top: 0%;
+  left: -10%;
+  color: rgba(0, 0, 0, 1);
+  width: 100%;
+  height: auto;  
+  font-size: 20px;
+  font-style: Bold;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.component-紀錄1-table {
+  display:flex;  
+  justify-content: center;
+  margin: auto 0;
+  top: 15%;
+  left: 26%;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  height: auto;
+  position: absolute;
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+  border: 8px #75e6ff groove;
+  padding: 5px;
+}
+
+.component-紀錄1-table td, th {
+  padding: 8px;
+  border-bottom: 1px solid #8E8E8E;
+  /* 可以在这里添加其他样式，如边框、背景色等 */
+}
+
+

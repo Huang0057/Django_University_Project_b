@@ -11,6 +11,7 @@ import uuid
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import json
 from django.http import JsonResponse
 from datetime import timedelta
@@ -53,8 +54,19 @@ def 商店(request):
     return render(request, '商店.html')
 
 
-def 紀錄(request):
-    return render(request, '紀錄.html')
+def MetricsTable(request):
+    # 获取 ArmMetrics 中的数据
+    arm_metrics_data = ArmMetrics.objects.all()
+    foot_metrics_data = FootMetrics.objects.all()
+    limb_metrics_data = LimbMetrics.objects.all()
+    hand_metrics_data = HandMetrics.objects.all()
+
+    return render(request, '紀錄.html', {
+        'arm_metrics_data': arm_metrics_data,
+        'foot_metrics_data': foot_metrics_data,
+        'limb_metrics_data': limb_metrics_data,
+        'hand_metrics_data': hand_metrics_data,
+    })
 
 
 def ArmRecords(request):
@@ -69,6 +81,17 @@ def ArmRecords(request):
         # 取得符合條件的遊戲紀錄（假設有與使用者相關的遊戲紀錄查詢）
         play_records = GameRecord.objects.filter(
             USER_UID=user_uid, PlayPart='arm')
+
+        records_per_page = 5
+        paginator = Paginator(play_records, records_per_page)
+
+        page_number = request.GET.get('page')
+        try:
+            play_records = paginator.page(page_number)
+        except PageNotAnInteger:
+            play_records = paginator.page(1)
+        except EmptyPage:
+            play_records = paginator.page(paginator.num_pages)
 
         return render(request, '紀錄上肢.html', {'play_records': play_records})
 

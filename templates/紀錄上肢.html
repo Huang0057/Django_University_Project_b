@@ -253,31 +253,40 @@
           />
           <span class="component-紀錄1-text12"><span>匯出紀錄</span></span>
 
-          <div class="component-紀錄1-text13-1">
-            <table style="border: 8px #75e6ff groove;" cellpadding="12">              
+          <div class="component-紀錄1-table">
+            <table>              
                 <tr style="border-bottom: 2px solid #000;">
-                  <th style="border-bottom: 2px solid #000;">遊玩日期</th>
-                  <th style="border-bottom: 2px solid #000;">關卡名稱</th>
-                  <th style="border-bottom: 2px solid #000;">開始時間</th>
-                  <th style="border-bottom: 2px solid #000;">遊玩時間</th>
-                  <th style="border-bottom: 2px solid #000;">鍛鍊次數</th>
-                  <th style="border-bottom: 2px solid #000;">獲得金幣</th>
+                  <th>遊玩日期</th>
+                  <th>關卡名稱</th>
+                  <th>開始時間</th>
+                  <th>遊玩時間</th>
+                  <th>鍛鍊次數</th>
+                  <th>獲得金幣</th>
                 </tr>             
               
                 {% for record in play_records %}
-                  <tr style="border-bottom: 1px solid #8E8E8E;">
-                    <td style="border-bottom: 1px solid #8E8E8E;">{{ record.PlayDate }}</td>
-                    <td style="border-bottom: 1px solid #8E8E8E;">{{ record.PlayStage }}</td>
-                    <td style="border-bottom: 1px solid #8E8E8E;">{{ record.StartTime }}</td>
-                    <td style="border-bottom: 1px solid #8E8E8E;">{{ record.DurationTime }}</td>
-                    <td style="border-bottom: 1px solid #8E8E8E;">{{ record.ExerciseCount }}</td>
-                    <td style="border-bottom: 1px solid #8E8E8E;">{{ record.AddCoin }}</td>
+                  <tr>
+                    <td>{{ record.PlayDate }}</td>
+                    <td>{{ record.PlayStage }}</td>
+                    <td>{{ record.StartTime }}</td>
+                    <td>{{ record.DurationTime }}</td>
+                    <td>{{ record.ExerciseCount }}</td>
+                    <td>{{ record.AddCoin }}</td>
                   </tr>
                 {% endfor %}
               
             </table>
           </div>
-          
+
+          <div class="component-紀錄1-pagination">
+            {% if play_records.has_previous %}
+                <a class ="table_previouspage" href="?page={{ play_records.previous_page_number }}">上一頁</a>
+            {% endif %}
+            <span>第 {{ play_records.number }} 頁，共 {{ play_records.paginator.num_pages }} 頁</span>
+            {% if play_records.has_next %}
+                <a class ="table_nextpage" href="?page={{ play_records.next_page_number }}">下一頁</a>
+            {% endif %}
+          </div>
 
           <img
             onclick="redirectToPage7()"

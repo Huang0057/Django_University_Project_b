@@ -257,47 +257,60 @@
           />
           <span class="component-紀錄1-text12"><span>匯出紀錄</span></span>
 
-          <span class="component-紀錄1-text13">
+          <div class="component-紀錄1-MetricsTable">
             <span>
               <table style="border: 8px #75e6ff groove" cellpadding="10">
                 <tr>
                   <th>運動部位</th>
-                  <th>進入關卡時間</th>
-                  <th>遊玩關卡時長</th>
-                  <th>通過關卡標準次數/總次數</th>
-                  <th>金幣增加量</th>
+                  <th>最後遊玩</th>
+                  <th>遊玩時間(秒)</th>
+                  <th>鍛鍊次數</th>
+                  <th>合格次數</th>
+                  <th>總獲得金幣</th>
                 </tr>
+                {% for arm_metric in arm_metrics_data %}
                 <tr>
                   <td>上肢</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
+                  <td>{{ arm_metric.LastStage }}</td>
+                  <td>{{ arm_metric.TotalPlayTime|floatformat:"0" }}</td>
+                  <td>{{ arm_metric.TotalPlayCount }}</td>
+                  <td>{{ arm_metric.PassCount }}</td>
+                  <td>{{ arm_metric.TotalGetCoin }}</td>
                 </tr>
+                {% endfor %}
+                {% for foot_metric in foot_metrics_data %}
                 <tr>
-                  <td>下肢</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
+                    <td>下肢</td>
+                    <td>{{ foot_metric.LastStage }}</td>
+                    <td>{{ foot_metric.TotalPlayTime|floatformat:"0" }}</td>
+                    <td>{{ foot_metric.TotalPlayCount }}</td>
+                    <td>{{ foot_metric.PassCount }}</td>
+                    <td>{{ foot_metric.TotalGetCoin }}</td>
                 </tr>
+                {% endfor %}
+                {% for limb_metric in limb_metrics_data %}
                 <tr>
-                  <td>四肢</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
+                    <td>四肢</td>
+                    <td>{{ limb_metric.LastStage }}</td>
+                    <td>{{ limb_metric.TotalPlayTime|floatformat:"0" }}</td>
+                    <td>{{ limb_metric.TotalPlayCount }}</td>
+                    <td>{{ limb_metric.PassCount }}</td>
+                    <td>{{ limb_metric.TotalGetCoin }}</td>
                 </tr>
+                {% endfor %}
+                {% for hand_metric in hand_metrics_data %}
                 <tr>
-                  <td>手部</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
+                    <td>手部</td>
+                    <td>{{ hand_metric.LastStage }}</td>
+                    <td>{{ hand_metric.TotalPlayTime|floatformat:"0" }}</td>
+                    <td>{{ hand_metric.TotalPlayCount }}</td>
+                    <td>{{ hand_metric.PassCount }}</td>
+                    <td>{{ hand_metric.TotalGetCoin }}</td>
                 </tr>
+                {% endfor %}
               </table>
             </span>
-          </span>
+          </div>
 
           <img
             src="{% static 'public/playground_assets/buttongray1.png' %}"
