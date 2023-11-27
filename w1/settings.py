@@ -141,3 +141,5 @@ CHANNEL_LAYERS = {
         'BACKEND': 'channels.layers.InMemoryChannelLayer',  # 在開發環境中使用內存層
     },
 }
+
+LOGIN_URL = 'http://127.0.0.1:8000/signin'

@@ -1,5 +1,6 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="english">
+<html lang="zh-Hant">
   <head>
     <title>簽到</title>
     <meta property="og:title" content="Page10 - exported project" />
@@ -7,7 +8,7 @@
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
 
-    {% load static %}
+    
 
     <script>
       function redirectToPage1() {
@@ -48,10 +49,13 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var currentDate = new Date();
+        var year = currentDate.getFullYear();
         var month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
         var day = currentDate.getDate().toString().padStart(2, "0");
         var formattedDate = month + "/" + day;
+        var signed_date = year + "-" + month + "-" + day;
         document.getElementById("currentDate").innerHTML = month + "/" + day;
+        document.getElementById("signed_date").value = signed_date;
       });
     </script>
 
@@ -161,58 +165,54 @@
   <body>
     <div>
       <link href="{% static 'css/簽到.css' %}" rel="stylesheet" />
-
       <div class="page10-container">
         <div class="page10-frame">
-          <span class="page10-text"><span>七天登入紀錄</span></span>
-          <span class="page10-text02"><span>星期一</span></span>
-          <span class="page10-text04"><span>星期二</span></span>
-          <span class="page10-text06"><span>星期三</span></span>
-          <span class="page10-text08"><span>星期四</span></span>
-          <span class="page10-text10"><span>星期五</span></span>
-          <span class="page10-text12"><span>星期六</span></span>
-          <span class="page10-text14"><span>星期日</span></span>
-          <img
-            src="{% static '/public/playground_assets/check.png' %}"
-            alt="Rectangle174282"
-            class="page10-rectangle17"
-          />
-          <img
-            src="{% static '/public/playground_assets/check.png' %}"
-            alt="Rectangle184300"
-            class="page10-rectangle18"
-          />
-          <img
-            src="{% static '/public/playground_assets/check.png' %}"
-            alt="Rectangle194303"
-            class="page10-rectangle19"
-          />
-          <img
-            src="{% static '/public/playground_assets/blank.png' %}"
-            alt="Rectangle204306"
-            class="page10-rectangle20"
-          />
-          <img
-            src="{% static '/public/playground_assets/blank.png' %}"
-            alt="Rectangle214309"
-            class="page10-rectangle21"
-          />
-          <img
-            src="{% static '/public/playground_assets/blank.png' %}"
-            alt="Rectangle224312"
-            class="page10-rectangle22"
-          />
-          <img
-            src="{% static '/public/playground_assets/blank.png' %}"
-            alt="Rectangle234315"
-            class="page10-rectangle23"
-          />
-          <img
-            src="{% static '/public/playground_assets/rectangle1i329-1itb-200h.png' %}"
-            alt="Rectangle244317"
-            class="page10-rectangle24"
-          />
-          <span class="page10-text16"><span>簽到</span></span>
+          <table class="check_in_calendar" border="1">
+            <thead>
+                <tr>
+                    <th>日</th>
+                    <th>一</th>
+                    <th>二</th>
+                    <th>三</th>
+                    <th>四</th>
+                    <th>五</th>
+                    <th>六</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr>
+                {% for _ in first_day_weekday %}
+                  <td> </td>
+                {% endfor %}
+                  {% for day in calendar_data %}
+                      
+                      {% if day.weekday == 5 %}{% endif %}  <!-- 若为星期六，则新起一行 -->
+                      <td {% if day.date == today.date %}style="background-color: lightgrey;"{% endif %}>
+                          {{ day.date.day }}
+                          {% if day.signed_in  %}
+                              <img class="check_img" src="{% static '/public/playground_assets/check.png' %}" alt="Signed In">
+                          {% endif %}
+                      </td>
+                      {% if day.weekday == 5 or forloop.last %}</tr>{% endif %}  <!-- 若为星期五或最后一个单元格，则闭合行 -->
+                  {% endfor %}
+              </tr>
+            </tbody>
+          </table>      
+        
+        
+        
+          <form method="post" action="{% url '簽到' %}">
+            {% csrf_token %}
+            <input type="hidden" id="signed_date" name="signed_date">          
+            <button class="Checkin_button">
+              <span>簽到</span>
+              <img
+              src="{% static '/public/playground_assets/checkin_button.png' %}"
+              alt="Rectangle244317"
+              class="page10-rectangle24"
+              />
+            </button>
+          </form>
           <img
             src="{% static '/public/playground_assets/down.png' %}"
             alt="Rectangle313277"
@@ -280,63 +280,7 @@
             class="page10-image4"
           />
           <span class="page10-text30" id="currentDate"></span>
-          <span class="page10-text32"><span>999</span></span>
-          <div class="page10-group1">
-            <span class="page10-text34"><span>60 ×</span></span>
-            <img
-              src="{% static 'public/playground_assets/image53214-orkf.svg' %}"
-              alt="image53214"
-              class="page10-image5"
-            />
-          </div>
-          <div class="page10-group2">
-            <span class="page10-text36"><span>80 ×</span></span>
-            <img
-              src="{% static 'public/playground_assets/image53214-uwoh.svg' %}"
-              alt="image53214"
-              class="page10-image51"
-            />
-          </div>
-          <div class="page10-group3">
-            <span class="page10-text38"><span>0 ×</span></span>
-            <img
-              src="{% static 'public/playground_assets/image53214-o7ge.svg' %}"
-              alt="image53214"
-              class="page10-image52"
-            />
-          </div>
-          <div class="page10-group4">
-            <span class="page10-text40"><span>0 ×</span></span>
-            <img
-              src="{% static 'public/playground_assets/image53214-j94n.svg' %}"
-              alt="image53214"
-              class="page10-image53"
-            />
-          </div>
-          <div class="page10-group5">
-            <span class="page10-text42"><span>0 ×</span></span>
-            <img
-              src="{% static 'public/playground_assets/image53214-pvqe.svg' %}"
-              alt="image53214"
-              class="page10-image54"
-            />
-          </div>
-          <div class="page10-group6">
-            <span class="page10-text44"><span>0 ×</span></span>
-            <img
-              src="{% static 'public/playground_assets/image53214-s3x.svg' %}"
-              alt="image53214"
-              class="page10-image55"
-            />
-          </div>
-          <div class="page10-group7">
-            <span class="page10-text46"><span>0 ×</span></span>
-            <img
-              src="{% static 'public/playground_assets/image53214-f0ad.svg' %}"
-              alt="image53214"
-              class="page10-image56"
-            />
-          </div>
+          <span class="page10-text32"><span>999</span></span>          
           <span class="page10-text48"><span>999</span></span>
         </div>
       </div>

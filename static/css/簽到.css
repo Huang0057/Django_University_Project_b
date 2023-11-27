@@ -203,16 +203,15 @@ body {
   border-radius: 36px;
 }
 .page10-rectangle24 {
-  top: 286px;
-  left: 833px;
-  width: 233px;
-  height: 71px;
-  position: absolute;
   border-radius: 61px;
 }
-.page10-text16 {
-  top: 298px;
-  left: 909px;
+
+.Checkin_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 60%;
+  left: 41%;
   color: rgba(255, 255, 255, 1);
   height: auto;
   position: absolute;
@@ -224,6 +223,13 @@ body {
   line-height: normal;
   font-stretch: normal;
   text-decoration: none;
+  cursor: pointer;
+}
+.Checkin_button span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .page10-rectangle31 {
   top: 750px;
@@ -773,4 +779,52 @@ body {
   line-height: normal;
   font-stretch: normal;
   text-decoration: none;
+}
+
+.check_in_calendar{
+  top: 5%;
+  left: 32%;
+  position: absolute;
+  font-size: 24px;
+  font-style: Bold;
+  text-align: center;
+  border-collapse: separate;
+  border-spacing: 0; 
+  width: 30%; 
+  height: 60%; 
+}
+
+.check_in_calendar th {
+  border: 2px solid black;
+  color: black;
+  font-size: 32px;
+  font-style:  Bold;
+}
+
+.check_in_calendar th:nth-child(1),th:nth-child(7) {
+  border: 2px solid black;
+  color: red;
+  font-size: 32px;
+  font-style:  Bold;
+}
+
+.check_in_calendar td {
+  text-align: center;
+  vertical-align: top;
+  
+  padding-top: 10px; 
+  position: relative; 
+  font-size: 32px;
+  border: 1px solid black;
+}
+
+
+.check_img{  
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom:0%; 
+  left: 50%;  
+ 
 }

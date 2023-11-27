@@ -1,20 +1,16 @@
-from django.shortcuts import render, redirect
-from subprocess import call
-import numpy as np
-from .form import UserInfoForm
-from .form import LoginForm
-from django.contrib.auth import authenticate, login, logout
-from .models import GameRecord, UserProfile, ArmMetrics, FootMetrics, LimbMetrics, HandMetrics
-from .form import UserProfileForm
-from datetime import datetime
+import json
 import uuid
-from django.http import HttpResponse
-from django.contrib.auth.models import User
+from subprocess import call
+from datetime import datetime, timedelta
+from calendar import monthrange
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-import json
-from django.http import JsonResponse
-from datetime import timedelta
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.http import JsonResponse, HttpRequest, HttpResponse
+from .form import UserInfoForm, LoginForm, UserProfileForm
+from .models import GameRecord, UserProfile, ArmMetrics, FootMetrics, LimbMetrics, HandMetrics, UserCheckIn
+
 # Create your views here.
 
 
@@ -22,38 +18,110 @@ def 登入畫面(request):
     return render(request, '登入畫面.html')
 
 
+@login_required
 def 首頁(request):
     return render(request, '首頁.html')
 
 
+@login_required
 def 遊戲選擇畫面(request):
     return render(request, '遊戲選擇畫面.html')
 
 
+@login_required
 def 遊戲難度選擇上肢(request):
     return render(request, '遊戲難度選擇-上肢.html')
 
 
+@login_required
 def 遊戲難度選擇下肢(request):
     return render(request, '遊戲難度選擇-下肢.html')
 
 
+@login_required
 def 遊戲難度選擇四肢(request):
     return render(request, '遊戲難度選擇-四肢.html')
 
 
+@login_required
 def 遊戲難度選擇手部(request):
     return render(request, '遊戲難度選擇-手部.html')
 
 
+@login_required
 def 簽到(request):
     return render(request, '簽到.html')
 
 
+def get_calendar_data(year, month, current_user):
+    num_days = monthrange(year, month)[1]
+    calendar_data = []
+
+    for day in range(1, num_days + 1):
+        date = datetime(year, month, day).date()
+        user_check_in = UserCheckIn.objects.filter(
+            user=current_user, date=date).first()
+        if user_check_in:
+            signed_in = user_check_in.signed_in
+        else:
+            signed_in = False
+        weekday = date.weekday()  # 获取日期的星期几信息
+        calendar_data.append(
+            {'date': date, 'signed_in': signed_in, 'weekday': weekday})
+
+    return calendar_data
+
+
+@login_required
+def Checkin(request: HttpRequest) -> HttpResponse:
+    try:
+        current_user = request.user
+        creation_date = current_user.date_joined.date()
+
+        today = datetime.today()
+        year = today.year
+        month = today.month
+
+        try:
+            user_check_in = UserCheckIn.objects.get(
+                user=current_user, date=today)
+        except UserCheckIn.DoesNotExist:
+            user_check_in = UserCheckIn.objects.create(
+                user=current_user, date=today, signed_in=False)
+        if request.method == 'POST':
+            signed_date = request.POST.get('signed_date')
+
+            try:
+                user_check_in = UserCheckIn.objects.get(
+                    user=current_user, date=signed_date)
+                user_check_in.signed_in = True
+                user_check_in.save()
+            except UserCheckIn.DoesNotExist:
+                user_check_in = UserCheckIn.objects.create(
+                    user=current_user, date=signed_date, signed_in=True)
+
+        calendar_data = get_calendar_data(year, month, current_user)
+
+        first_day_weekday = range(calendar_data[0]['weekday']+1)
+
+        context = {
+            'current_user': current_user,
+            'calendar_data': calendar_data,
+            'creation_date': creation_date,
+            'first_day_weekday': first_day_weekday,
+        }
+        print(calendar_data)
+        return render(request, '簽到.html', context)
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)})
+
+
+@login_required
 def 商店(request):
     return render(request, '商店.html')
 
 
+@login_required
 def MetricsTable(request):
     # 获取 ArmMetrics 中的数据
     arm_metrics_data = ArmMetrics.objects.all()
@@ -69,6 +137,7 @@ def MetricsTable(request):
     })
 
 
+@login_required
 def ArmRecords(request):
     # 取得目前登入的使用者
     current_user = request.user
@@ -101,70 +170,86 @@ def ArmRecords(request):
         return JsonResponse({"status": "error", "message": str(e)})
 
 
+@login_required
 def 紀錄下肢(request):
     return render(request, '紀錄下肢.html')
 
 
+@login_required
 def 紀錄四肢(request):
     return render(request, '紀錄四肢.html')
 
 
+@login_required
 def 紀錄手部(request):
     return render(request, '紀錄手部.html')
 
 
+@login_required
 def 衣櫥(request):
     return render(request, '衣櫥.html')
 
 
+@login_required
 def 上肢遊戲畫面解說(request):
     return render(request, '上肢遊戲畫面-解說.html')
 
 
+@login_required
 def 下肢遊戲畫面解說(request):
     return render(request, '下肢遊戲畫面-解說.html')
 
 
+@login_required
 def 四肢遊戲畫面解說1(request):
     return render(request, '四肢遊戲畫面-解說1.html')
 
 
+@login_required
 def 四肢遊戲畫面解說2(request):
     return render(request, '四肢遊戲畫面-解說2.html')
 
 
+@login_required
 def 手部遊戲畫面解說(request):
     return render(request, '手部遊戲畫面-解說.html')
 
 
+@login_required
 def 遊戲畫面倒數上肢(request):
     return render(request, '遊戲畫面倒數-上肢.html')
 
 
+@login_required
 def 遊戲畫面倒數下肢(request):
     return render(request, '遊戲畫面倒數-下肢.html')
 
 
+@login_required
 def 遊戲畫面倒數四肢(request):
     return render(request, '遊戲畫面倒數-四肢.html')
 
 
+@login_required
 def 遊戲畫面倒數手部(request):
     return render(request, '遊戲畫面倒數-手部.html')
 
 
+@login_required
 def 遊戲畫面上肢(request):
     call(["python", "test03.py"])
     call(["python", "arm01.py"])
     return render(request, '遊戲畫面-上肢.html')
 
 
+@login_required
 def 遊戲畫面下肢(request):
     call(["python", "test03.py"])
     call(["python", "leg01.py"])
     return render(request, '遊戲畫面-下肢.html')
 
 
+@login_required
 def 遊戲畫面四肢(request):
     call(["python", "test03.py"])
     call(["python", "arm01.py"])
@@ -172,6 +257,7 @@ def 遊戲畫面四肢(request):
     return render(request, '遊戲畫面-四肢.html')
 
 
+@login_required
 def 遊戲畫面手部(request):
     call(["python", "test03.py"])
     call(["python", "hand01.py"])
@@ -370,7 +456,7 @@ def update_metrics(request, user_uid, play_date, play_part):
                 USER_UID=latest_game_record.USER_UID)
 
             metrics_instance = MetricsModel.objects.get(
-                USER_UID=user_uid, **{f"{play_part.upper()}_UID": user_profile.__dict__[f"{play_part.capitalize()}_UID"]})
+                USER_UID=user_uid, **{f"{play_part.title()}_UID": user_profile.__dict__[f"{play_part.capitalize()}_UID"]})
 
             duration_time = latest_game_record.DurationTime
             exercise_count = latest_game_record.ExerciseCount
