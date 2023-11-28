@@ -189,6 +189,7 @@
           />
           
           <img
+            onclick="redirectToPage3()"
             src="{% static 'public/playground_assets/calendar3283-gkkf.svg' %}"
             alt="Calendar1345"
             class="component-紀錄1-calendar"
@@ -264,8 +265,8 @@
                   <th>運動部位</th>
                   <th>最後遊玩</th>
                   <th>遊玩時間(秒)</th>
-                  <th>鍛鍊次數</th>
-                  <th>合格次數</th>
+                  <th>遊玩次數</th>
+                  <th>合格鍛鍊次數</th>
                   <th>總獲得金幣</th>
                 </tr>
                 {% for arm_metric in arm_metrics_data %}

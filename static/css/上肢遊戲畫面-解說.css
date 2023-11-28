@@ -122,6 +122,8 @@ body {
   position: absolute;
 }
 .page2-calendar {
+  cursor: pointer;
+  cursor: pointer;
   top: 0px;
   left: 0px;
   width: 100px;

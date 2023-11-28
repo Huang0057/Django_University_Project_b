@@ -20,6 +20,7 @@ body {
   background-color: rgba(255, 255, 255, 1);
 }
 .page7-calendar {
+  cursor: pointer;
   top: 0px;
   left: 0px;
   width: 100px;

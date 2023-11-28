@@ -41,6 +41,7 @@ body {
   position: absolute;
 }
 .component-紀錄1-calendar {
+  cursor: pointer;
   top: 0px;
   left: 0px;
   width: 100px;

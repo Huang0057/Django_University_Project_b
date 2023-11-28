@@ -78,6 +78,6 @@ class GameRecord(models.Model):
 
 
 class UserCheckIn(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField()
     signed_in = models.BooleanField(default=False)

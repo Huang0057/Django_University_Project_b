@@ -8,13 +8,14 @@ urlpatterns = [
     path('首頁', views.首頁, name="首頁"),
     path('遊戲選擇畫面', views.遊戲選擇畫面, name="遊戲選擇畫面"),
     path('簽到', views.Checkin, name="簽到"),
+    path('CheckinSearch', views.CheckinSearch, name="CheckinSearch"),
     path('商店', views.商店, name="商店"),
     path('衣櫥', views.衣櫥, name="衣櫥"),
     path('紀錄', views.MetricsTable, name="紀錄"),
     path('紀錄上肢', views.ArmRecords, name="紀錄上肢"),
-    path('紀錄下肢', views.紀錄下肢, name="紀錄下肢"),
-    path('紀錄四肢', views.紀錄四肢, name="紀錄四肢"),
-    path('紀錄手部', views.紀錄手部, name="紀錄手部"),
+    path('紀錄下肢', views.FootRecords, name="紀錄下肢"),
+    path('紀錄四肢', views.LimbRecords, name="紀錄四肢"),
+    path('紀錄手部', views.HandRecords, name="紀錄手部"),
     path('上肢遊戲畫面-解說', views.上肢遊戲畫面解說, name="上肢遊戲畫面-解說"),
     path('下肢遊戲畫面-解說', views.下肢遊戲畫面解說, name="下肢遊戲畫面-解說"),
     path('四肢遊戲畫面-解說1', views.四肢遊戲畫面解說1, name="四肢遊戲畫面-解說1"),
@@ -38,4 +39,5 @@ urlpatterns = [
     path('add_gamerecord/', views.add_gamerecord, name='add_gamerecord'),
     path('update_metrics/<str:user_uid>/<str:play_date>/<str:play_part>/',
          views.update_metrics, name='update_metrics'),
+
 ]

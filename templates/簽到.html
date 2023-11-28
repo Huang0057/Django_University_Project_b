@@ -181,26 +181,25 @@
             </thead>
             <tbody>
               <tr>
-                {% for _ in first_day_weekday %}
-                  <td> </td>
-                {% endfor %}
-                  {% for day in calendar_data %}
-                      
-                      {% if day.weekday == 5 %}{% endif %}  <!-- 若为星期六，则新起一行 -->
-                      <td {% if day.date == today.date %}style="background-color: lightgrey;"{% endif %}>
-                          {{ day.date.day }}
-                          {% if day.signed_in  %}
-                              <img class="check_img" src="{% static '/public/playground_assets/check.png' %}" alt="Signed In">
-                          {% endif %}
-                      </td>
-                      {% if day.weekday == 5 or forloop.last %}</tr>{% endif %}  <!-- 若为星期五或最后一个单元格，则闭合行 -->
+                {% if first_weekday != 6 %}
+                  {% for _ in first_day_weekday %}
+                    <td></td>
                   {% endfor %}
+                {% endif %}  
+                {% for day in calendar_data %}                      
+                    {% if day.weekday == 6  %}</tr><tr>{% endif %}
+                    <td {% if day.date == today.date %}style="background-color: lightgrey;"{% endif %}>
+                        {{ day.date.day }}
+                        {% if day.signed_in  %}
+                          <img class="check_img" src="{% static '/public/playground_assets/check.png' %}" alt="Signed In">
+                        {% endif %}
+                    </td>
+                    {% if day.weekday == 5 or forloop.last %}</tr>{% endif %}  
+                {% endfor %}
               </tr>
             </tbody>
-          </table>      
-        
-        
-        
+          </table>   
+     
           <form method="post" action="{% url '簽到' %}">
             {% csrf_token %}
             <input type="hidden" id="signed_date" name="signed_date">          
@@ -213,6 +212,49 @@
               />
             </button>
           </form>
+
+          <form method="post" action="{% url 'CheckinSearch' %}">
+            {% csrf_token %}
+            <label class="label_year" for="year" onchange="updateHiddenInput('year')">
+              <span>年份：</span>
+              <select name="year" id="year">
+                  {% for year_option in years %}
+                      <option value="{{ year_option }}" {% if year_option == current_year %}selected{% endif %}>
+                       {{ year_option }}
+                      </option>
+                  {% endfor %}
+              </select>
+            </label>
+
+            <label class="label_month"  for="month" onchange="updateHiddenInput('month')">
+              <span>月份：</span>
+              <select name="month" id="month">
+                  {% for month_option in months %}
+                    <option value="{{ month_option }}" {% if month_option == current_month %}selected{% endif %}>
+                      {{ month_option }}
+                    </option>
+                  {% endfor %}
+              </select>
+            </label>
+
+            <button class="search_time_button" type="submit">
+              <span>查詢</span>
+              <img
+              src="{% static '/public/playground_assets/checkin_button.png' %}"
+              alt="Rectangle244317"              
+              />
+            </button>
+          </form>
+
+          <script>
+            function updateHiddenInput(field) {
+                const selectElement = document.getElementById(field);
+                const hiddenInput = document.getElementById(`${field}_input`);
+                hiddenInput.value = selectElement.value;
+            }
+          </script>
+
+
           <img
             src="{% static '/public/playground_assets/down.png' %}"
             alt="Rectangle313277"
@@ -270,6 +312,7 @@
           />
           
           <img
+            onclick="redirectToPage3()"
             src="{% static 'public/playground_assets/calendar3280-8ngg.svg' %}"
             alt="Calendar3280"
             class="page10-calendar"

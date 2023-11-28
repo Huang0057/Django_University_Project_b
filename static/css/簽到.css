@@ -211,12 +211,12 @@ body {
   align-items: center;
   justify-content: center;
   top: 60%;
-  left: 41%;
+  left: 65%;
   color: rgba(255, 255, 255, 1);
   height: auto;
   position: absolute;
   font-size: 40px;
-  font-style: Extra Bold;
+  font-style: Bold;
   text-align: left;
   font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -505,11 +505,13 @@ body {
   position: absolute;
 }
 .page10-calendar {
+  cursor: pointer;
   top: 0px;
   left: 0px;
   width: 100px;
   height: 100px;
   position: absolute;
+  cursor: pointer;
 }
 .page10-image4 {
   top: 13px;
@@ -827,4 +829,71 @@ body {
   bottom:0%; 
   left: 50%;  
  
+}
+
+.search_time_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 30%;
+  left: 8%;
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  width: auto;
+  position: absolute; 
+  cursor: pointer;
+}
+
+.search_time_button span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  font-style: Bold;
+  text-align: left;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-weight: 700;  
+  font-stretch: normal;
+  text-decoration: none;
+}
+
+.search_time_button img {
+  border-radius: 61px;
+}
+
+.label_year{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 20%;
+  left: 3%;
+}
+.label_year span{
+  font-size: 32px;
+  font-style: Bold;
+
+}
+.label_year select{
+  font-size: 28px;
+}
+
+.label_month{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 20%;
+  left: 15%; 
+  position: absolute; 
+}
+
+.label_month span{
+  font-size: 32px;
+  font-style: Bold;
+
+}
+
+.label_month select{
+  font-size: 28px;
 }

@@ -8,6 +8,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse, HttpRequest, HttpResponse
+from django.db.models import Q
 from .form import UserInfoForm, LoginForm, UserProfileForm
 from .models import GameRecord, UserProfile, ArmMetrics, FootMetrics, LimbMetrics, HandMetrics, UserCheckIn
 
@@ -60,14 +61,16 @@ def get_calendar_data(year, month, current_user):
     for day in range(1, num_days + 1):
         date = datetime(year, month, day).date()
         user_check_in = UserCheckIn.objects.filter(
-            user=current_user, date=date).first()
+            user=current_user, date=date
+        ).first()
         if user_check_in:
             signed_in = user_check_in.signed_in
         else:
             signed_in = False
-        weekday = date.weekday()  # 获取日期的星期几信息
+        weekday = date.weekday()
         calendar_data.append(
-            {'date': date, 'signed_in': signed_in, 'weekday': weekday})
+            {'date': date, 'signed_in': signed_in, 'weekday': weekday}
+        )
 
     return calendar_data
 
@@ -77,41 +80,79 @@ def Checkin(request: HttpRequest) -> HttpResponse:
     try:
         current_user = request.user
         creation_date = current_user.date_joined.date()
-
         today = datetime.today()
-        year = today.year
-        month = today.month
 
-        try:
-            user_check_in = UserCheckIn.objects.get(
-                user=current_user, date=today)
-        except UserCheckIn.DoesNotExist:
-            user_check_in = UserCheckIn.objects.create(
-                user=current_user, date=today, signed_in=False)
         if request.method == 'POST':
-            signed_date = request.POST.get('signed_date')
+            signed_date = today.date()  # 使用當下日期作為簽到日期
 
             try:
                 user_check_in = UserCheckIn.objects.get(
-                    user=current_user, date=signed_date)
+                    user=current_user, date=signed_date
+                )
                 user_check_in.signed_in = True
                 user_check_in.save()
             except UserCheckIn.DoesNotExist:
                 user_check_in = UserCheckIn.objects.create(
-                    user=current_user, date=signed_date, signed_in=True)
+                    user=current_user, date=signed_date, signed_in=True
+                )
 
+        year = today.year
+        month = today.month
         calendar_data = get_calendar_data(year, month, current_user)
-
         first_day_weekday = range(calendar_data[0]['weekday']+1)
+        years = range(
+            current_user.date_joined.year, datetime.today().year + 1
+        )
+        months = range(1, 13)
 
         context = {
             'current_user': current_user,
             'calendar_data': calendar_data,
             'creation_date': creation_date,
             'first_day_weekday': first_day_weekday,
+            'years': years,
+            'months': months,
+            'current_year': year,
+            'current_month': month,
         }
-        print(calendar_data)
+
         return render(request, '簽到.html', context)
+
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)})
+
+
+@login_required
+def CheckinSearch(request):
+    try:
+        current_user = request.user
+        creation_date = current_user.date_joined.date()
+        today = datetime.today()
+
+        if request.method == 'POST':
+            year = int(request.POST.get('year', today.year))
+            month = int(request.POST.get('month', today.month))
+
+        calendar_data = get_calendar_data(year, month, current_user)
+        first_day_weekday = range(calendar_data[0]['weekday']+1)
+        first_weekday = calendar_data[0]['weekday']
+        years = range(current_user.date_joined.year, today.year + 1)
+        months = range(1, 13)
+
+        context = {
+            'current_user': current_user,
+            'calendar_data': calendar_data,
+            'creation_date': creation_date,
+            'first_day_weekday': first_day_weekday,
+            'first_weekday': first_weekday,
+            'years': years,
+            'months': months,
+            'current_year': year,
+            'current_month': month,
+        }
+
+        return render(request, '簽到.html', context)
+
     except Exception as e:
         return JsonResponse({"status": "error", "message": str(e)})
 
@@ -171,18 +212,102 @@ def ArmRecords(request):
 
 
 @login_required
-def 紀錄下肢(request):
-    return render(request, '紀錄下肢.html')
+def FootRecords(request):
+    # 取得目前登入的使用者
+    current_user = request.user
+
+    try:
+        # 根據目前登入使用者的使用者名稱取得相對應的 UserProfile
+        user_profile = UserProfile.objects.get(user=current_user)
+        user_uid = user_profile.USER_UID
+
+        # 取得符合條件的遊戲紀錄（假設有與使用者相關的遊戲紀錄查詢）
+        play_records = GameRecord.objects.filter(
+            USER_UID=user_uid, PlayPart='foot')
+
+        records_per_page = 5
+        paginator = Paginator(play_records, records_per_page)
+
+        page_number = request.GET.get('page')
+        try:
+            play_records = paginator.page(page_number)
+        except PageNotAnInteger:
+            play_records = paginator.page(1)
+        except EmptyPage:
+            play_records = paginator.page(paginator.num_pages)
+
+        return render(request, '紀錄下肢.html', {'play_records': play_records})
+
+    except UserProfile.DoesNotExist:
+        return JsonResponse({"status": "error", "message": "UserProfile does not exist."})
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)})
 
 
 @login_required
-def 紀錄四肢(request):
-    return render(request, '紀錄四肢.html')
+def LimbRecords(request):
+    # 取得目前登入的使用者
+    current_user = request.user
+
+    try:
+        # 根據目前登入使用者的使用者名稱取得相對應的 UserProfile
+        user_profile = UserProfile.objects.get(user=current_user)
+        user_uid = user_profile.USER_UID
+
+        # 取得符合條件的遊戲紀錄（假設有與使用者相關的遊戲紀錄查詢）
+        play_records = GameRecord.objects.filter(
+            USER_UID=user_uid, PlayPart='limb')
+
+        records_per_page = 5
+        paginator = Paginator(play_records, records_per_page)
+
+        page_number = request.GET.get('page')
+        try:
+            play_records = paginator.page(page_number)
+        except PageNotAnInteger:
+            play_records = paginator.page(1)
+        except EmptyPage:
+            play_records = paginator.page(paginator.num_pages)
+
+        return render(request, '紀錄四肢.html', {'play_records': play_records})
+
+    except UserProfile.DoesNotExist:
+        return JsonResponse({"status": "error", "message": "UserProfile does not exist."})
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)})
 
 
 @login_required
-def 紀錄手部(request):
-    return render(request, '紀錄手部.html')
+def HandRecords(request):
+    # 取得目前登入的使用者
+    current_user = request.user
+
+    try:
+        # 根據目前登入使用者的使用者名稱取得相對應的 UserProfile
+        user_profile = UserProfile.objects.get(user=current_user)
+        user_uid = user_profile.USER_UID
+
+        # 取得符合條件的遊戲紀錄（假設有與使用者相關的遊戲紀錄查詢）
+        play_records = GameRecord.objects.filter(
+            USER_UID=user_uid, PlayPart='hand')
+
+        records_per_page = 5
+        paginator = Paginator(play_records, records_per_page)
+
+        page_number = request.GET.get('page')
+        try:
+            play_records = paginator.page(page_number)
+        except PageNotAnInteger:
+            play_records = paginator.page(1)
+        except EmptyPage:
+            play_records = paginator.page(paginator.num_pages)
+
+        return render(request, '紀錄手部.html', {'play_records': play_records})
+
+    except UserProfile.DoesNotExist:
+        return JsonResponse({"status": "error", "message": "UserProfile does not exist."})
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)})
 
 
 @login_required
@@ -418,7 +543,7 @@ def update_arm_metrics(request, user_uid, play_date):
         # 處理更新 ArmMetrics 資料表
         arm_metrics.LastStage = play_stage
         arm_metrics.TotalPlayTime += duration_seconds
-        arm_metrics.TotalPlayCount += exercise_count
+        arm_metrics.TotalPlayCount += 1
         arm_metrics.PassCount += exercise_count
         arm_metrics.TotalGetCoin += add_coin
         arm_metrics.LastRecordId = uid
@@ -466,7 +591,7 @@ def update_metrics(request, user_uid, play_date, play_part):
 
             metrics_instance.LastStage = latest_game_record.PlayStage
             metrics_instance.TotalPlayTime += duration_seconds
-            metrics_instance.TotalPlayCount += exercise_count
+            metrics_instance.TotalPlayCount += 1
             metrics_instance.PassCount += exercise_count
             metrics_instance.TotalGetCoin += add_coin
             metrics_instance.LastRecordId = latest_game_record.UID
