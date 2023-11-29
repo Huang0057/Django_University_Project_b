@@ -1,18 +1,42 @@
 import json
 import uuid
+import csv
+import codecs
 from subprocess import call
 from datetime import datetime, timedelta
 from calendar import monthrange
+import matplotlib.pyplot as plt
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse, HttpRequest, HttpResponse
-from django.db.models import Q
+from django.db.models import Sum
+from django.conf import settings
 from .form import UserInfoForm, LoginForm, UserProfileForm
 from .models import GameRecord, UserProfile, ArmMetrics, FootMetrics, LimbMetrics, HandMetrics, UserCheckIn
 
 # Create your views here.
+
+
+def calculate_total_coins(user):
+    user_profile = get_object_or_404(UserProfile, user=user)
+
+    user_uid = user_profile.USER_UID
+
+    arm_total_coins = ArmMetrics.objects.filter(USER_UID=user_uid).aggregate(
+        total_coins=Sum('TotalGetCoin')).get('total_coins', 0)
+    foot_total_coins = FootMetrics.objects.filter(USER_UID=user_uid).aggregate(
+        total_coins=Sum('TotalGetCoin')).get('total_coins', 0)
+    limb_total_coins = LimbMetrics.objects.filter(USER_UID=user_uid).aggregate(
+        total_coins=Sum('TotalGetCoin')).get('total_coins', 0)
+    hand_total_coins = HandMetrics.objects.filter(USER_UID=user_uid).aggregate(
+        total_coins=Sum('TotalGetCoin')).get('total_coins', 0)
+
+    total_coins = arm_total_coins + foot_total_coins + \
+        limb_total_coins + hand_total_coins
+
+    return total_coins
 
 
 def 登入畫面(request):
@@ -21,37 +45,59 @@ def 登入畫面(request):
 
 @login_required
 def 首頁(request):
-    return render(request, '首頁.html')
+    username = request.user.username
+    total_coins = calculate_total_coins(request.user)
+    try:
+        user_check_ins = UserCheckIn.objects.filter(
+            user=request.user).order_by('-date')
+
+        consecutive_days = 1
+        today = datetime.today().date()
+        for check_in in user_check_ins:
+            if check_in.date == today - timedelta(days=consecutive_days):
+                consecutive_days += 1
+            else:
+                break
+    except UserCheckIn.DoesNotExist:
+        consecutive_days = 1
+
+    return render(request, '首頁.html', {'username': username, 'consecutive_days': consecutive_days, 'total_coins': total_coins})
 
 
 @login_required
 def 遊戲選擇畫面(request):
-    return render(request, '遊戲選擇畫面.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲選擇畫面.html', {'total_coins': total_coins})
 
 
 @login_required
 def 遊戲難度選擇上肢(request):
-    return render(request, '遊戲難度選擇-上肢.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲難度選擇-上肢.html', {'total_coins': total_coins})
 
 
 @login_required
 def 遊戲難度選擇下肢(request):
-    return render(request, '遊戲難度選擇-下肢.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲難度選擇-下肢.html', {'total_coins': total_coins})
 
 
 @login_required
 def 遊戲難度選擇四肢(request):
-    return render(request, '遊戲難度選擇-四肢.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲難度選擇-四肢.html', {'total_coins': total_coins})
 
 
 @login_required
 def 遊戲難度選擇手部(request):
-    return render(request, '遊戲難度選擇-手部.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲難度選擇-手部.html', {'total_coins': total_coins})
 
 
 @login_required
 def 簽到(request):
-    return render(request, '簽到.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '簽到.html', {'total_coins': total_coins})
 
 
 def get_calendar_data(year, month, current_user):
@@ -78,6 +124,7 @@ def get_calendar_data(year, month, current_user):
 @login_required
 def Checkin(request: HttpRequest) -> HttpResponse:
     try:
+        total_coins = calculate_total_coins(request.user)
         current_user = request.user
         creation_date = current_user.date_joined.date()
         today = datetime.today()
@@ -114,6 +161,7 @@ def Checkin(request: HttpRequest) -> HttpResponse:
             'months': months,
             'current_year': year,
             'current_month': month,
+            'total_coins': total_coins
         }
 
         return render(request, '簽到.html', context)
@@ -125,6 +173,7 @@ def Checkin(request: HttpRequest) -> HttpResponse:
 @login_required
 def CheckinSearch(request):
     try:
+        total_coins = calculate_total_coins(request.user)
         current_user = request.user
         creation_date = current_user.date_joined.date()
         today = datetime.today()
@@ -149,6 +198,7 @@ def CheckinSearch(request):
             'months': months,
             'current_year': year,
             'current_month': month,
+            'total_coins': total_coins
         }
 
         return render(request, '簽到.html', context)
@@ -159,31 +209,82 @@ def CheckinSearch(request):
 
 @login_required
 def 商店(request):
-    return render(request, '商店.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '商店.html', {'total_coins': total_coins})
 
 
 @login_required
 def MetricsTable(request):
-    # 获取 ArmMetrics 中的数据
-    arm_metrics_data = ArmMetrics.objects.all()
-    foot_metrics_data = FootMetrics.objects.all()
-    limb_metrics_data = LimbMetrics.objects.all()
-    hand_metrics_data = HandMetrics.objects.all()
+    current_user_profile = UserProfile.objects.get(user=request.user)
 
-    return render(request, '紀錄.html', {
-        'arm_metrics_data': arm_metrics_data,
-        'foot_metrics_data': foot_metrics_data,
-        'limb_metrics_data': limb_metrics_data,
-        'hand_metrics_data': hand_metrics_data,
-    })
+    total_coins = calculate_total_coins(request.user)
+
+    arm_metrics = ArmMetrics.objects.filter(
+        USER_UID=current_user_profile.USER_UID)
+    foot_metrics = FootMetrics.objects.filter(
+        USER_UID=current_user_profile.USER_UID)
+    limb_metrics = LimbMetrics.objects.filter(
+        USER_UID=current_user_profile.USER_UID)
+    hand_metrics = HandMetrics.objects.filter(
+        USER_UID=current_user_profile.USER_UID)
+
+    context = {
+        'arm_metrics_data': arm_metrics,
+        'foot_metrics_data': foot_metrics,
+        'limb_metrics_data': limb_metrics,
+        'hand_metrics_data': hand_metrics,
+        'total_coins': total_coins,
+    }
+
+    return render(request, '紀錄.html', context)
+
+
+def ExportMetricsTableToCSV(request):
+    current_user_profile = UserProfile.objects.get(user=request.user)
+
+    arm_metrics_data = ArmMetrics.objects.filter(
+        USER_UID=current_user_profile.USER_UID)
+    foot_metrics_data = FootMetrics.objects.filter(
+        USER_UID=current_user_profile.USER_UID)
+    limb_metrics_data = LimbMetrics.objects.filter(
+        USER_UID=current_user_profile.USER_UID)
+    hand_metrics_data = HandMetrics.objects.filter(
+        USER_UID=current_user_profile.USER_UID)
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="metrics_data.csv"'
+
+    response.write(codecs.BOM_UTF8)
+
+    writer = csv.writer(response)
+    writer.writerow(['運動部位', '最後遊玩關卡', '總遊玩時間(秒)', '總遊玩次數', '動作合格次數', '總獲得金幣'])
+
+    for arm_metric in arm_metrics_data:
+        writer.writerow(['上肢', arm_metric.LastStage, arm_metric.TotalPlayTime,
+                        arm_metric.TotalPlayCount, arm_metric.PassCount, arm_metric.TotalGetCoin])
+
+    for foot_metric in foot_metrics_data:
+        writer.writerow(['下肢', foot_metric.LastStage, foot_metric.TotalPlayTime,
+                        foot_metric.TotalPlayCount, foot_metric.PassCount, foot_metric.TotalGetCoin])
+
+    for limb_metric in limb_metrics_data:
+        writer.writerow(['四肢', limb_metric.LastStage, limb_metric.TotalPlayTime,
+                        limb_metric.TotalPlayCount, limb_metric.PassCount, limb_metric.TotalGetCoin])
+
+    for hand_metric in hand_metrics_data:
+        writer.writerow(['手部', hand_metric.LastStage, hand_metric.TotalPlayTime,
+                        hand_metric.TotalPlayCount, hand_metric.PassCount, hand_metric.TotalGetCoin])
+
+    return response
 
 
 @login_required
 def ArmRecords(request):
     # 取得目前登入的使用者
     current_user = request.user
-
+    total_coins = calculate_total_coins(request.user)
     try:
+
         # 根據目前登入使用者的使用者名稱取得相對應的 UserProfile
         user_profile = UserProfile.objects.get(user=current_user)
         user_uid = user_profile.USER_UID
@@ -203,7 +304,7 @@ def ArmRecords(request):
         except EmptyPage:
             play_records = paginator.page(paginator.num_pages)
 
-        return render(request, '紀錄上肢.html', {'play_records': play_records})
+        return render(request, '紀錄上肢.html', {'play_records': play_records, 'total_coins': total_coins})
 
     except UserProfile.DoesNotExist:
         return JsonResponse({"status": "error", "message": "UserProfile does not exist."})
@@ -215,6 +316,7 @@ def ArmRecords(request):
 def FootRecords(request):
     # 取得目前登入的使用者
     current_user = request.user
+    total_coins = calculate_total_coins(request.user)
 
     try:
         # 根據目前登入使用者的使用者名稱取得相對應的 UserProfile
@@ -236,7 +338,7 @@ def FootRecords(request):
         except EmptyPage:
             play_records = paginator.page(paginator.num_pages)
 
-        return render(request, '紀錄下肢.html', {'play_records': play_records})
+        return render(request, '紀錄下肢.html',  {'play_records': play_records, 'total_coins': total_coins})
 
     except UserProfile.DoesNotExist:
         return JsonResponse({"status": "error", "message": "UserProfile does not exist."})
@@ -248,7 +350,7 @@ def FootRecords(request):
 def LimbRecords(request):
     # 取得目前登入的使用者
     current_user = request.user
-
+    total_coins = calculate_total_coins(request.user)
     try:
         # 根據目前登入使用者的使用者名稱取得相對應的 UserProfile
         user_profile = UserProfile.objects.get(user=current_user)
@@ -269,7 +371,7 @@ def LimbRecords(request):
         except EmptyPage:
             play_records = paginator.page(paginator.num_pages)
 
-        return render(request, '紀錄四肢.html', {'play_records': play_records})
+        return render(request, '紀錄四肢.html', {'play_records': play_records, 'total_coins': total_coins})
 
     except UserProfile.DoesNotExist:
         return JsonResponse({"status": "error", "message": "UserProfile does not exist."})
@@ -281,7 +383,7 @@ def LimbRecords(request):
 def HandRecords(request):
     # 取得目前登入的使用者
     current_user = request.user
-
+    total_coins = calculate_total_coins(request.user)
     try:
         # 根據目前登入使用者的使用者名稱取得相對應的 UserProfile
         user_profile = UserProfile.objects.get(user=current_user)
@@ -302,7 +404,7 @@ def HandRecords(request):
         except EmptyPage:
             play_records = paginator.page(paginator.num_pages)
 
-        return render(request, '紀錄手部.html', {'play_records': play_records})
+        return render(request, '紀錄手部.html',  {'play_records': play_records, 'total_coins': total_coins})
 
     except UserProfile.DoesNotExist:
         return JsonResponse({"status": "error", "message": "UserProfile does not exist."})
@@ -310,83 +412,135 @@ def HandRecords(request):
         return JsonResponse({"status": "error", "message": str(e)})
 
 
+def ExportGameRecordsToCSV(request):
+    if request.method == 'POST':
+
+        current_user_profile = UserProfile.objects.get(user=request.user)
+        user_uid = current_user_profile.USER_UID
+
+        play_part = request.POST.get('play_part')
+
+        if not user_uid or not play_part:
+            return HttpResponse('Invalid parameters')
+
+        game_records = GameRecord.objects.filter(
+            USER_UID=user_uid, PlayPart=play_part)
+
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = f'attachment; filename="{play_part}_game_records.csv"'
+
+        response.write(codecs.BOM_UTF8)
+        writer = csv.writer(response)
+        writer.writerow(['日期', '關卡', '開始時間', '結束時間',
+                        '持續時間', '鍛鍊次數', '獲得金幣'])
+
+        for record in game_records:
+            writer.writerow([
+                record.PlayDate,
+                record.PlayStage,
+                record.StartTime,
+                record.EndTime,
+                record.DurationTime,
+                record.ExerciseCount,
+                record.AddCoin
+            ])
+
+        return response
+
+    return HttpResponse('Invalid request')
+
+
 @login_required
 def 衣櫥(request):
-    return render(request, '衣櫥.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '衣櫥.html', {'total_coins': total_coins})
 
 
 @login_required
 def 上肢遊戲畫面解說(request):
-    return render(request, '上肢遊戲畫面-解說.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '上肢遊戲畫面-解說.html', {'total_coins': total_coins})
 
 
 @login_required
 def 下肢遊戲畫面解說(request):
-    return render(request, '下肢遊戲畫面-解說.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '下肢遊戲畫面-解說.html', {'total_coins': total_coins})
 
 
 @login_required
 def 四肢遊戲畫面解說1(request):
-    return render(request, '四肢遊戲畫面-解說1.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '四肢遊戲畫面-解說1.html', {'total_coins': total_coins})
 
 
 @login_required
 def 四肢遊戲畫面解說2(request):
-    return render(request, '四肢遊戲畫面-解說2.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '四肢遊戲畫面-解說2.html', {'total_coins': total_coins})
 
 
 @login_required
 def 手部遊戲畫面解說(request):
-    return render(request, '手部遊戲畫面-解說.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '手部遊戲畫面-解說.html', {'total_coins': total_coins})
 
 
 @login_required
 def 遊戲畫面倒數上肢(request):
-    return render(request, '遊戲畫面倒數-上肢.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面倒數-上肢.html', {'total_coins': total_coins})
 
 
 @login_required
 def 遊戲畫面倒數下肢(request):
-    return render(request, '遊戲畫面倒數-下肢.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面倒數-下肢.html', {'total_coins': total_coins})
 
 
 @login_required
 def 遊戲畫面倒數四肢(request):
-    return render(request, '遊戲畫面倒數-四肢.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面倒數-四肢.html', {'total_coins': total_coins})
 
 
 @login_required
 def 遊戲畫面倒數手部(request):
-    return render(request, '遊戲畫面倒數-手部.html')
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面倒數-手部.html', {'total_coins': total_coins})
 
 
 @login_required
 def 遊戲畫面上肢(request):
+    total_coins = calculate_total_coins(request.user)
     call(["python", "test03.py"])
     call(["python", "arm01.py"])
-    return render(request, '遊戲畫面-上肢.html')
+    return render(request, '遊戲畫面-上肢.html', {'total_coins': total_coins})
 
 
 @login_required
 def 遊戲畫面下肢(request):
+    total_coins = calculate_total_coins(request.user)
     call(["python", "test03.py"])
     call(["python", "leg01.py"])
-    return render(request, '遊戲畫面-下肢.html')
+    return render(request, '遊戲畫面-下肢.html', {'total_coins': total_coins})
 
 
 @login_required
 def 遊戲畫面四肢(request):
+    total_coins = calculate_total_coins(request.user)
     call(["python", "test03.py"])
     call(["python", "arm01.py"])
     call(["python", "leg01.py"])
-    return render(request, '遊戲畫面-四肢.html')
+    return render(request, '遊戲畫面-四肢.html', {'total_coins': total_coins})
 
 
 @login_required
 def 遊戲畫面手部(request):
+    total_coins = calculate_total_coins(request.user)
     call(["python", "test03.py"])
     call(["python", "hand01.py"])
-    return render(request, '遊戲畫面-手部.html')
+    return render(request, '遊戲畫面-手部.html', {'total_coins': total_coins})
 
 
 def signup(request):
@@ -453,13 +607,8 @@ def signin(request):
     return render(request, '登入畫面.html', context)
 
 
-def arm_play_records(request):
-    user = request.user
-    arm_play_records = GameRecord.objects.filter(USER_UID=user, PlayPart='ARM')
-    return render(request, '紀錄上肢.html', {'play_records': arm_play_records})
-
-
 def update_user_profile(request):
+    total_coins = calculate_total_coins(request.user)
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=request.user.userprofile)
         if form.is_valid():
@@ -469,7 +618,7 @@ def update_user_profile(request):
     else:
         form = UserProfileForm(instance=request.user.userprofile)
 
-    return render(request, 'path_to_template.html', {'form': form})
+    return render(request, 'path_to_template.html', {'form': form}, {'total_coins': total_coins})
 
 
 def add_gamerecord(request):
@@ -517,46 +666,6 @@ def add_gamerecord(request):
             return JsonResponse({"status": "error", "message": str(e)})
 
     return JsonResponse({"status": "error", "message": "Invalid method."})
-
-
-def update_arm_metrics(request, user_uid, play_date):
-    try:
-        latest_game_record = GameRecord.objects.filter(
-            USER_UID=user_uid, PlayPart='arm', PlayDate=play_date).order_by('-StartTime').first()
-
-        user_profile = UserProfile.objects.get(
-            USER_UID=latest_game_record.USER_UID)
-        arm_uid = user_profile.Arm_UID
-
-        arm_metrics = ArmMetrics.objects.get(
-            USER_UID=user_uid, Arm_UID=arm_uid)
-
-        # 取得相關遊戲紀錄的資料
-        play_stage = latest_game_record.PlayStage
-        duration_time = latest_game_record.DurationTime
-        exercise_count = latest_game_record.ExerciseCount
-        add_coin = latest_game_record.AddCoin
-        uid = latest_game_record.UID
-
-        duration_seconds = duration_time.total_seconds()
-
-        # 處理更新 ArmMetrics 資料表
-        arm_metrics.LastStage = play_stage
-        arm_metrics.TotalPlayTime += duration_seconds
-        arm_metrics.TotalPlayCount += 1
-        arm_metrics.PassCount += exercise_count
-        arm_metrics.TotalGetCoin += add_coin
-        arm_metrics.LastRecordId = uid
-        arm_metrics.save()
-
-        return JsonResponse({"status": "success", "message": "ArmMetrics updated successfully."})
-
-    except UserProfile.DoesNotExist:
-        return JsonResponse({"status": "error", "message": "UserProfile does not exist."})
-    except ArmMetrics.DoesNotExist:
-        return JsonResponse({"status": "error", "message": "ArmMetrics does not exist."})
-    except Exception as e:
-        return JsonResponse({"status": "error", "message": str(e)})
 
 
 table_mapping = {

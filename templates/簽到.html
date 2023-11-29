@@ -204,7 +204,7 @@
             {% csrf_token %}
             <input type="hidden" id="signed_date" name="signed_date">          
             <button class="Checkin_button">
-              <span>簽到</span>
+              <span>簽到!</span>
               <img
               src="{% static '/public/playground_assets/checkin_button.png' %}"
               alt="Rectangle244317"
@@ -323,8 +323,8 @@
             class="page10-image4"
           />
           <span class="page10-text30" id="currentDate"></span>
-          <span class="page10-text32"><span>999</span></span>          
-          <span class="page10-text48"><span>999</span></span>
+          <span class="page10-text32"><span>{{ total_coins }}</span></span>          
+          <span class="page10-text48"><span>{{ total_coins }}</span></span>
         </div>
       </div>
     </div>

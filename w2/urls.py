@@ -39,5 +39,10 @@ urlpatterns = [
     path('add_gamerecord/', views.add_gamerecord, name='add_gamerecord'),
     path('update_metrics/<str:user_uid>/<str:play_date>/<str:play_part>/',
          views.update_metrics, name='update_metrics'),
+    path('ExportMetricsTableToCSV/', views.ExportMetricsTableToCSV,
+         name='ExportMetricsTableToCSV'),
+    path('ExportGameRecordsToCSV/', views.ExportGameRecordsToCSV,
+         name='ExportGameRecordsToCSV'),
+
 
 ]

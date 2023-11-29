@@ -200,7 +200,7 @@
             class="component-紀錄1-image4"
           />
           <span class="component-紀錄1-text" id="currentDate"></span>
-          <span class="component-紀錄1-text02"><span>999</span></span>
+          <span class="component-紀錄1-text02"><span>{{ total_coins }}</span></span>
           <img
             src="{% static 'public/playground_assets/down.png' %}"
             alt="Rectangle311345"
@@ -251,12 +251,17 @@
             </div>
           </div>
 
-          <img
-            src="{% static 'public/playground_assets/buttongray1.png' %}"
-            alt="Rectangle411556"
-            class="component-紀錄1-rectangle41"
-          />
-          <span class="component-紀錄1-text12"><span>匯出紀錄</span></span>
+          <a href="http://127.0.0.1:8000/ExportMetricsTableToCSV/">
+            <button class="button">
+              <img
+                src="{% static 'public/playground_assets/buttongray1.png' %}"
+                alt="Rectangle411556"
+                class="component-紀錄1-rectangle41"
+              />
+              <span class="component-紀錄1-text12"><span>匯出紀錄</span></span>
+            </button>
+          </a>
+          
 
           <div class="component-紀錄1-MetricsTable">
             <span>
@@ -270,63 +275,63 @@
                   <th>總獲得金幣</th>
                 </tr>
                 {% for arm_metric in arm_metrics_data %}
-                <tr>
-                  <td>上肢</td>
-                  <td>{{ arm_metric.LastStage }}</td>
-                  <td>{{ arm_metric.TotalPlayTime|floatformat:"0" }}</td>
-                  <td>{{ arm_metric.TotalPlayCount }}</td>
-                  <td>{{ arm_metric.PassCount }}</td>
-                  <td>{{ arm_metric.TotalGetCoin }}</td>
-                </tr>
+                  <tr>
+                    <td>上肢</td>
+                    <td>{{ arm_metric.LastStage }}</td>
+                    <td>{{ arm_metric.TotalPlayTime|floatformat:"0" }}</td>
+                    <td>{{ arm_metric.TotalPlayCount }}</td>
+                    <td>{{ arm_metric.PassCount }}</td>
+                    <td>{{ arm_metric.TotalGetCoin }}</td>
+                  </tr>
                 {% endfor %}
                 {% for foot_metric in foot_metrics_data %}
-                <tr>
-                    <td>下肢</td>
-                    <td>{{ foot_metric.LastStage }}</td>
-                    <td>{{ foot_metric.TotalPlayTime|floatformat:"0" }}</td>
-                    <td>{{ foot_metric.TotalPlayCount }}</td>
-                    <td>{{ foot_metric.PassCount }}</td>
-                    <td>{{ foot_metric.TotalGetCoin }}</td>
-                </tr>
+                  <tr>
+                      <td>下肢</td>
+                      <td>{{ foot_metric.LastStage }}</td>
+                      <td>{{ foot_metric.TotalPlayTime|floatformat:"0" }}</td>
+                      <td>{{ foot_metric.TotalPlayCount }}</td>
+                      <td>{{ foot_metric.PassCount }}</td>
+                      <td>{{ foot_metric.TotalGetCoin }}</td>
+                  </tr>
                 {% endfor %}
                 {% for limb_metric in limb_metrics_data %}
-                <tr>
-                    <td>四肢</td>
-                    <td>{{ limb_metric.LastStage }}</td>
-                    <td>{{ limb_metric.TotalPlayTime|floatformat:"0" }}</td>
-                    <td>{{ limb_metric.TotalPlayCount }}</td>
-                    <td>{{ limb_metric.PassCount }}</td>
-                    <td>{{ limb_metric.TotalGetCoin }}</td>
-                </tr>
+                  <tr>
+                      <td>四肢</td>
+                      <td>{{ limb_metric.LastStage }}</td>
+                      <td>{{ limb_metric.TotalPlayTime|floatformat:"0" }}</td>
+                      <td>{{ limb_metric.TotalPlayCount }}</td>
+                      <td>{{ limb_metric.PassCount }}</td>
+                      <td>{{ limb_metric.TotalGetCoin }}</td>
+                  </tr>
                 {% endfor %}
                 {% for hand_metric in hand_metrics_data %}
-                <tr>
-                    <td>手部</td>
-                    <td>{{ hand_metric.LastStage }}</td>
-                    <td>{{ hand_metric.TotalPlayTime|floatformat:"0" }}</td>
-                    <td>{{ hand_metric.TotalPlayCount }}</td>
-                    <td>{{ hand_metric.PassCount }}</td>
-                    <td>{{ hand_metric.TotalGetCoin }}</td>
-                </tr>
+                  <tr>
+                      <td>手部</td>
+                      <td>{{ hand_metric.LastStage }}</td>
+                      <td>{{ hand_metric.TotalPlayTime|floatformat:"0" }}</td>
+                      <td>{{ hand_metric.TotalPlayCount }}</td>
+                      <td>{{ hand_metric.PassCount }}</td>
+                      <td>{{ hand_metric.TotalGetCoin }}</td>
+                  </tr>
                 {% endfor %}
               </table>
             </span>
           </div>
 
-          <img
+          {% comment %} <img
             src="{% static 'public/playground_assets/buttongray1.png' %}"
             alt="Rectangle544014"
             class="component-紀錄1-rectangle40"
-          />
-          <span class="component-紀錄1-text22"><span>評估</span></span>
+          /> 
+           <span class="component-紀錄1-text22"><span>評估</span></span>
 
-          <img
+          <img 
+            
             src="{% static 'public/playground_assets/ex.png' %}"
-            alt="Rectangle544014"
-            class="component-紀錄1-rectangle54"
-          />
+            class="component-紀錄1-rectangle54" 
+          /> {% endcomment %}
           
-          
+          <button class="button">
           <img
             onclick="redirectToPage7()"
             src="{% static 'public/playground_assets/buttongray1.png' %}"
@@ -334,27 +339,38 @@
             class="component-紀錄1-rectangle33"
           />
           <span class="component-紀錄1-text14" onclick="redirectToPage7()"><span>上肢</span></span>
-          <img
+          </button>
+
+          <button class="button">
+            <img
             onclick="redirectToPage8()"
             src="{% static 'public/playground_assets/buttongray1.png' %}"
             alt="Rectangle544014"
             class="component-紀錄1-rectangle34"
-          />
-          <span class="component-紀錄1-text16" onclick="redirectToPage8()"><span>下肢</span></span>
-          <img
-            onclick="redirectToPage9()"
-            src="{% static 'public/playground_assets/buttongray1.png' %}"
-            alt="Rectangle544014"
-            class="component-紀錄1-rectangle35"
-          />
-          <span class="component-紀錄1-text18" onclick="redirectToPage9()"><span>四肢</span></span>
-          <img
-            onclick="redirectToPage10()"
-            src="{% static 'public/playground_assets/buttongray1.png' %}"
-            alt="Rectangle544014"
-            class="component-紀錄1-rectangle36"
-          />
-          <span class="component-紀錄1-text20" onclick="redirectToPage10()"><span>手部</span></span>
+            />
+            <span class="component-紀錄1-text16" onclick="redirectToPage8()"><span>下肢</span></span>
+          </button>
+
+          <button class="button">
+            <img
+              onclick="redirectToPage9()"
+              src="{% static 'public/playground_assets/buttongray1.png' %}"
+              alt="Rectangle544014"
+              class="component-紀錄1-rectangle35"
+            />
+            <span class="component-紀錄1-text18" onclick="redirectToPage9()"><span>四肢</span></span>
+          </button>
+          
+          <button class="button">
+            <img
+              onclick="redirectToPage10()"
+              src="{% static 'public/playground_assets/buttongray1.png' %}"
+              alt="Rectangle544014"
+              class="component-紀錄1-rectangle36"
+            />
+            <span class="component-紀錄1-text20" onclick="redirectToPage10()"><span>手部</span></span>
+          </button>
+          
 
 
 

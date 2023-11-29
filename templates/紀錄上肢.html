@@ -200,7 +200,7 @@
             class="component-紀錄1-image4"
           />
           <span class="component-紀錄1-text" id="currentDate"></span>
-          <span class="component-紀錄1-text02"><span>999</span></span>
+          <span class="component-紀錄1-text02"><span>{{ total_coins }}</span></span>
           <img
             src="{% static 'public/playground_assets/down.png' %}"
             alt="Rectangle311345"
@@ -247,12 +247,14 @@
             </div>
           </div>
 
-          <img
-            src="{% static 'public/playground_assets/buttongray1.png' %}"
-            alt="Rectangle411556"
-            class="component-紀錄1-rectangle41"
-          />
-          <span class="component-紀錄1-text12"><span>匯出紀錄</span></span>
+          <form method="post" action="http://127.0.0.1:8000/ExportGameRecordsToCSV/">
+            {% csrf_token %}
+            <input type="hidden" name="play_part" value="arm">
+            <button type="submit" class="button">
+                <img class="component-紀錄1-rectangle41" src="{% static 'public/playground_assets/buttongray1.png' %}" alt="Rectangle411556">
+                <span class="component-紀錄1-text12">匯出紀錄</span>
+            </button>
+          </form>
 
           <div class="component-紀錄1-table">
             <table>              
@@ -283,7 +285,9 @@
             {% if play_records.has_previous %}
                 <a class ="table_previouspage" href="?page={{ play_records.previous_page_number }}">上一頁</a>
             {% endif %}
+
             <span>第 {{ play_records.number }} 頁，共 {{ play_records.paginator.num_pages }} 頁</span>
+            
             {% if play_records.has_next %}
                 <a class ="table_nextpage" href="?page={{ play_records.next_page_number }}">下一頁</a>
             {% endif %}
@@ -295,7 +299,7 @@
             alt="Rectangle544014"
             class="component-紀錄1-rectangle33"
           />
-          <button class="component-紀錄1-text14"  onclick="redirectToPage7()">
+          <button   class="component-紀錄1-text14"  onclick="redirectToPage7()">
             <span>上肢</span>
           </button>
           <img
@@ -304,7 +308,7 @@
             alt="Rectangle544014"
             class="component-紀錄1-rectangle34"
           />
-          <span class="component-紀錄1-text16" onclick="redirectToPage8()"
+          <span  class="component-紀錄1-text16" onclick="redirectToPage8()"
             ><span>下肢</span></span
           >
           <img

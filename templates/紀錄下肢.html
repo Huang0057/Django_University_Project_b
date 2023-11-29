@@ -200,7 +200,7 @@
             class="component-紀錄1-image4"
           />
           <span class="component-紀錄1-text" id="currentDate"></span>
-          <span class="component-紀錄1-text02"><span>999</span></span>
+          <span class="component-紀錄1-text02"><span>{{ total_coins }}</span></span>
           <img
             src="{% static 'public/playground_assets/down.png' %}"
             alt="Rectangle311345"
@@ -251,12 +251,14 @@
             </div>
           </div>
 
-          <img
-            src="{% static 'public/playground_assets/buttongray1.png' %}"
-            alt="Rectangle411556"
-            class="component-紀錄1-rectangle41"
-          />
-          <span class="component-紀錄1-text12"><span>匯出紀錄</span></span>
+          <form method="post" action="http://127.0.0.1:8000/ExportGameRecordsToCSV/">
+            {% csrf_token %}
+            <input type="hidden" name="play_part" value="foot">
+            <button type="submit" class="button">
+                <img class="component-紀錄1-rectangle41" src="{% static 'public/playground_assets/buttongray1.png' %}" alt="Rectangle411556">
+                <span class="component-紀錄1-text12">匯出紀錄</span>
+            </button>
+          </form>
 
           <div class="component-紀錄1-table">
             <table>              

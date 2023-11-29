@@ -282,8 +282,9 @@ body {
   color: rgba(0, 0, 0, 1);
   height: auto;
   position: absolute;
+  z-index: 1;
   font-size: 40px;
-  font-style: Extra Bold;
+  font-style:  Bold;
   text-align: center;
   font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
   font-weight: 700;
@@ -293,7 +294,7 @@ body {
 }
 .component-紀錄1-MetricsTable {
   top: 190px;
-  left: 60px;
+  left: 30%;
   color: rgba(0, 0, 0, 1);
   width: 100%;
   height: auto;
@@ -591,10 +592,10 @@ body {
   position: fixed;
   top: 57%;
   left: -3%;
-  color: rgba(0, 0, 0, 1);
+  color: rgb(82, 82, 82);
   width: 100%;
   height: auto;  
-  font-size: 20px;
+  font-size: 30px;
   font-style: Bold;
   text-align: center;
   font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
@@ -604,6 +605,7 @@ body {
   text-decoration: none;
 }
 
+
 .table_nextpage {
   position: absolute;
   top: 0%;
@@ -611,7 +613,7 @@ body {
   color: rgba(0, 0, 0, 1);
   width: 100%;
   height: auto;  
-  font-size: 20px;
+  font-size: 30px;
   font-style: Bold;
   text-align: center;
   font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
@@ -621,22 +623,7 @@ body {
   text-decoration: none;
 }
 
-.table_nextpage {
-  position: absolute;
-  top: 0%;
-  left: 10%;
-  color: rgba(0, 0, 0, 1);
-  width: 100%;
-  height: auto;  
-  font-size: 20px;
-  font-style: Bold;
-  text-align: center;
-  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
-}
+
 .table_previouspage {
   position: absolute;
   top: 0%;
@@ -644,7 +631,7 @@ body {
   color: rgba(0, 0, 0, 1);
   width: 100%;
   height: auto;  
-  font-size: 20px;
+  font-size: 30px;
   font-style: Bold;
   text-align: center;
   font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
