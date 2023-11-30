@@ -64,34 +64,89 @@ def 首頁(request):
     return render(request, '首頁.html', {'username': username, 'consecutive_days': consecutive_days, 'total_coins': total_coins})
 
 
-@login_required
 def 遊戲選擇畫面(request):
     total_coins = calculate_total_coins(request.user)
     return render(request, '遊戲選擇畫面.html', {'total_coins': total_coins})
 
 
-@login_required
 def 遊戲難度選擇上肢(request):
     total_coins = calculate_total_coins(request.user)
     return render(request, '遊戲難度選擇-上肢.html', {'total_coins': total_coins})
 
 
-@login_required
 def 遊戲難度選擇下肢(request):
     total_coins = calculate_total_coins(request.user)
     return render(request, '遊戲難度選擇-下肢.html', {'total_coins': total_coins})
 
 
-@login_required
 def 遊戲難度選擇四肢(request):
     total_coins = calculate_total_coins(request.user)
     return render(request, '遊戲難度選擇-四肢.html', {'total_coins': total_coins})
 
 
-@login_required
 def 遊戲難度選擇手部(request):
     total_coins = calculate_total_coins(request.user)
     return render(request, '遊戲難度選擇-手部.html', {'total_coins': total_coins})
+
+
+def 遊戲地圖一星上肢(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲地圖一星-上肢.html', {'total_coins': total_coins})
+
+
+def 遊戲地圖二星上肢(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲地圖二星-上肢.html', {'total_coins': total_coins})
+
+
+def 遊戲地圖三星上肢(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲地圖三星-上肢.html', {'total_coins': total_coins})
+
+
+def 遊戲地圖一星下肢(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲地圖一星-下肢.html', {'total_coins': total_coins})
+
+
+def 遊戲地圖二星下肢(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲地圖二星-下肢.html', {'total_coins': total_coins})
+
+
+def 遊戲地圖三星下肢(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲地圖三星-下肢.html', {'total_coins': total_coins})
+
+
+def 遊戲地圖一星四肢(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲地圖一星-四肢.html', {'total_coins': total_coins})
+
+
+def 遊戲地圖二星四肢(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲地圖二星-四肢.html', {'total_coins': total_coins})
+
+
+def 遊戲地圖三星四肢(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲地圖三星-四肢.html', {'total_coins': total_coins})
+
+
+def 遊戲地圖一星手部(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲地圖一星-手部.html', {'total_coins': total_coins})
+
+
+def 遊戲地圖二星手部(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲地圖二星-手部.html', {'total_coins': total_coins})
+
+
+def 遊戲地圖三星手部(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲地圖三星-手部.html', {'total_coins': total_coins})
 
 
 @login_required
@@ -456,91 +511,421 @@ def 衣櫥(request):
     return render(request, '衣櫥.html', {'total_coins': total_coins})
 
 
-@login_required
-def 上肢遊戲畫面解說(request):
+def 上肢遊戲畫面1解說(request):
     total_coins = calculate_total_coins(request.user)
-    return render(request, '上肢遊戲畫面-解說.html', {'total_coins': total_coins})
+    return render(request, '上肢遊戲畫面1-解說.html', {'total_coins': total_coins})
 
 
-@login_required
+def 上肢遊戲畫面2解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '上肢遊戲畫面2-解說.html', {'total_coins': total_coins})
+
+
+def 上肢遊戲畫面3解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '上肢遊戲畫面3-解說.html', {'total_coins': total_coins})
+
+
+def 上肢遊戲畫面4解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '上肢遊戲畫面4-解說.html', {'total_coins': total_coins})
+
+
+def 上肢遊戲畫面5解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '上肢遊戲畫面5-解說.html', {'total_coins': total_coins})
+
+
+def 上肢遊戲畫面6解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '上肢遊戲畫面6-解說.html', {'total_coins': total_coins})
+
+
+def 上肢遊戲畫面7解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '上肢遊戲畫面7-解說.html', {'total_coins': total_coins})
+
+
+def 上肢遊戲畫面8解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '上肢遊戲畫面8-解說.html', {'total_coins': total_coins})
+
+
+def 上肢遊戲畫面9解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '上肢遊戲畫面9-解說.html', {'total_coins': total_coins})
+
+
+def 下肢遊戲畫面1解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '下肢遊戲畫面1-解說.html', {'total_coins': total_coins})
+
+
+def 下肢遊戲畫面2解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '下肢遊戲畫面2-解說.html', {'total_coins': total_coins})
+
+
+def 下肢遊戲畫面3解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '下肢遊戲畫面3-解說.html', {'total_coins': total_coins})
+
+
+def 下肢遊戲畫面4解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '下肢遊戲畫面4-解說.html', {'total_coins': total_coins})
+
+
+def 下肢遊戲畫面5解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '下肢遊戲畫面5-解說.html', {'total_coins': total_coins})
+
+
+def 下肢遊戲畫面6解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '下肢遊戲畫面6-解說.html', {'total_coins': total_coins})
+
+
+def 下肢遊戲畫面7解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '下肢遊戲畫面7-解說.html', {'total_coins': total_coins})
+
+
+def 下肢遊戲畫面8解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '下肢遊戲畫面8-解說.html', {'total_coins': total_coins})
+
+
+def 下肢遊戲畫面9解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '下肢遊戲畫面9-解說.html', {'total_coins': total_coins})
+
+
+def 四肢遊戲畫面1解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '四肢遊戲畫面1-解說.html', {'total_coins': total_coins})
+
+
+def 四肢遊戲畫面2解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '四肢遊戲畫面2-解說.html', {'total_coins': total_coins})
+
+
+def 四肢遊戲畫面3解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '四肢遊戲畫面3-解說.html', {'total_coins': total_coins})
+
+
+def 四肢遊戲畫面4解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '四肢遊戲畫面4-解說.html', {'total_coins': total_coins})
+
+
+def 四肢遊戲畫面5解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '四肢遊戲畫面5-解說.html', {'total_coins': total_coins})
+
+
+def 四肢遊戲畫面6解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '四肢遊戲畫面6-解說.html', {'total_coins': total_coins})
+
+
+def 四肢遊戲畫面7解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '四肢遊戲畫面7-解說.html', {'total_coins': total_coins})
+
+
+def 四肢遊戲畫面8解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '四肢遊戲畫面8-解說.html', {'total_coins': total_coins})
+
+
+def 四肢遊戲畫面9解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '四肢遊戲畫面9-解說.html', {'total_coins': total_coins})
+
+
+def 獎勵關卡解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '獎勵關卡-解說.html', {'total_coins': total_coins})
+
+
 def 下肢遊戲畫面解說(request):
     total_coins = calculate_total_coins(request.user)
     return render(request, '下肢遊戲畫面-解說.html', {'total_coins': total_coins})
 
 
-@login_required
 def 四肢遊戲畫面解說1(request):
     total_coins = calculate_total_coins(request.user)
     return render(request, '四肢遊戲畫面-解說1.html', {'total_coins': total_coins})
 
 
-@login_required
 def 四肢遊戲畫面解說2(request):
     total_coins = calculate_total_coins(request.user)
     return render(request, '四肢遊戲畫面-解說2.html', {'total_coins': total_coins})
 
 
-@login_required
 def 手部遊戲畫面解說(request):
     total_coins = calculate_total_coins(request.user)
     return render(request, '手部遊戲畫面-解說.html', {'total_coins': total_coins})
 
 
-@login_required
+def 手部遊戲畫面1解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '手部遊戲畫面1-解說.html', {'total_coins': total_coins})
+
+
+def 手部遊戲畫面2解說(request):
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '手部遊戲畫面2-解說.html', {'total_coins': total_coins})
+
+
 def 遊戲畫面倒數上肢(request):
     total_coins = calculate_total_coins(request.user)
     return render(request, '遊戲畫面倒數-上肢.html', {'total_coins': total_coins})
 
 
-@login_required
 def 遊戲畫面倒數下肢(request):
     total_coins = calculate_total_coins(request.user)
     return render(request, '遊戲畫面倒數-下肢.html', {'total_coins': total_coins})
 
 
-@login_required
 def 遊戲畫面倒數四肢(request):
     total_coins = calculate_total_coins(request.user)
     return render(request, '遊戲畫面倒數-四肢.html', {'total_coins': total_coins})
 
 
-@login_required
 def 遊戲畫面倒數手部(request):
     total_coins = calculate_total_coins(request.user)
     return render(request, '遊戲畫面倒數-手部.html', {'total_coins': total_coins})
 
 
-@login_required
-def 遊戲畫面上肢(request):
-    total_coins = calculate_total_coins(request.user)
+def 遊戲畫面上肢1(request):
     call(["python", "test03.py"])
-    call(["python", "arm01.py"])
-    return render(request, '遊戲畫面-上肢.html', {'total_coins': total_coins})
-
-
-@login_required
-def 遊戲畫面下肢(request):
+    call(["python", "arm01_1.py"])
     total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-上肢1.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面上肢2(request):
     call(["python", "test03.py"])
-    call(["python", "leg01.py"])
-    return render(request, '遊戲畫面-下肢.html', {'total_coins': total_coins})
+    call(["python", "arm01_2.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-上肢2.html', {'total_coins': total_coins})
 
 
-@login_required
+def 遊戲畫面上肢3(request):
+    call(["python", "test03.py"])
+    call(["python", "arm01_3.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-上肢3.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面上肢4(request):
+    call(["python", "test03.py"])
+    call(["python", "arm02_1.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-上肢4.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面上肢5(request):
+    call(["python", "test03.py"])
+    call(["python", "arm02_2.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-上肢5.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面上肢6(request):
+    call(["python", "test03.py"])
+    call(["python", "arm02_3.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-上肢6.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面上肢7(request):
+    call(["python", "test03.py"])
+    call(["python", "arm03_1.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-上肢7.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面上肢8(request):
+    call(["python", "test03.py"])
+    call(["python", "arm03_2.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-上肢8.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面上肢9(request):
+    call(["python", "test03.py"])
+    call(["python", "arm03_3.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-上肢9.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面下肢1(request):
+    call(["python", "test03.py"])
+    call(["python", "leg01_1.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-下肢1.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面下肢2(request):
+    call(["python", "test03.py"])
+    call(["python", "leg01_2.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-下肢2.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面下肢3(request):
+    call(["python", "test03.py"])
+    call(["python", "leg01_3.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-下肢3.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面下肢4(request):
+    call(["python", "test03.py"])
+    call(["python", "leg02_1.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-下肢4.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面下肢5(request):
+    call(["python", "test03.py"])
+    call(["python", "leg02_2.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-下肢5.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面下肢6(request):
+    call(["python", "test03.py"])
+    call(["python", "leg02_3.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-下肢6.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面下肢7(request):
+    call(["python", "test03.py"])
+    call(["python", "leg03_1.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-下肢7.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面下肢8(request):
+    call(["python", "test03.py"])
+    call(["python", "leg03_2.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-下肢8.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面下肢9(request):
+    call(["python", "test03.py"])
+    call(["python", "leg03_3.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-下肢9.html', {'total_coins': total_coins})
+
+
 def 遊戲畫面四肢(request):
-    total_coins = calculate_total_coins(request.user)
     call(["python", "test03.py"])
-    call(["python", "arm01.py"])
-    call(["python", "leg01.py"])
+    call(["python", "arm01_1.py"])
+    call(["python", "leg01_1.py"])
+    total_coins = calculate_total_coins(request.user)
     return render(request, '遊戲畫面-四肢.html', {'total_coins': total_coins})
 
 
-@login_required
-def 遊戲畫面手部(request):
+def 遊戲畫面四肢1(request):
+    call(["python", "test03.py"])
+    call(["python", "arm02_1.py"])
+    call(["python", "leg02_1.py"])
     total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-四肢1.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面四肢2(request):
+    call(["python", "test03.py"])
+    call(["python", "arm03_1.py"])
+    call(["python", "leg03_1.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-四肢2.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面四肢3(request):
+    call(["python", "test03.py"])
+    call(["python", "arm01_2.py"])
+    call(["python", "leg01_2.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-四肢3.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面四肢4(request):
+    call(["python", "test03.py"])
+    call(["python", "arm02_2.py"])
+    call(["python", "leg02_2.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-四肢4.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面四肢5(request):
+    call(["python", "test03.py"])
+    call(["python", "arm03_2.py"])
+    call(["python", "leg03_2.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-四肢5.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面四肢6(request):
+    call(["python", "test03.py"])
+    call(["python", "arm01_3.py"])
+    call(["python", "leg01_3.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-四肢6.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面四肢7(request):
+    call(["python", "test03.py"])
+    call(["python", "arm02_3.py"])
+    call(["python", "leg02_3.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-四肢7.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面四肢8(request):
+    call(["python", "test03.py"])
+    call(["python", "arm03_3.py"])
+    call(["python", "leg03_3.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-四肢8.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面獎勵關卡(request):
+    call(["python", "test03.py"])
+    call(["python", "GiftboxAutoMove.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-獎勵關卡.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面手部1(request):
     call(["python", "test03.py"])
     call(["python", "hand01.py"])
-    return render(request, '遊戲畫面-手部.html', {'total_coins': total_coins})
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-手部1.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面手部2(request):
+    call(["python", "test03.py"])
+    call(["python", "hand02.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-手部2.html', {'total_coins': total_coins})
+
+
+def 遊戲畫面手部3(request):
+    call(["python", "test03.py"])
+    call(["python", "hand01.py"])
+    call(["python", "hand02.py"])
+    total_coins = calculate_total_coins(request.user)
+    return render(request, '遊戲畫面-手部3.html', {'total_coins': total_coins})
 
 
 def signup(request):

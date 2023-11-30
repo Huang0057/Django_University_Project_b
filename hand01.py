@@ -1,6 +1,17 @@
-import mediapipe as mp
 import cv2
 import math
+import uuid
+import mediapipe as mp
+
+import datetime
+import requests
+
+id = "123123"
+part = "hand"
+playstage = "食指訓練"
+start_time = datetime.datetime.now()
+print(f"{part}\n{playstage}\nStart time: {start_time}")
+
 
 def detect_hand_landmarks(image):
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -9,6 +20,7 @@ def detect_hand_landmarks(image):
         for hand_landmarks in results.multi_hand_landmarks:
             return hand_landmarks
     return None
+
 
 def count_finger_bends(hand_landmarks):
     wrist = hand_landmarks.landmark[mp_hands.HandLandmark.WRIST]
@@ -41,6 +53,7 @@ def count_finger_bends(hand_landmarks):
 
     return bends
 
+
 mp_hands = mp.solutions.hands
 mp_drawing = mp.solutions.drawing_utils
 
@@ -68,18 +81,113 @@ while True:
         # 在左上角放置一個狀態框
         cv2.rectangle(frame, (0, 0), (170, 73), (245, 117, 16), -1)
         # 顯示次數
-        cv2.putText(frame, 'number of times', (15, 12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
-        cv2.putText(frame, str(left_index_finger_bends), (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 2, cv2.LINE_AA)
+        cv2.putText(frame, 'number of times', (15, 12),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1, cv2.LINE_AA)
+        cv2.putText(frame, str(left_index_finger_bends), (10, 60),
+                    cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 2, cv2.LINE_AA)
 
         # 繪製手部骨架線條
-        mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+        mp_drawing.draw_landmarks(
+            frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
     cv2.imshow('Hand Gesture Recognition', frame)
 
     if left_index_finger_bends == 10:
+        end_time = datetime.datetime.now()
+        duration = end_time - start_time
+        duration_time_str = str(duration)
+
+        PlayDate = start_time.strftime('%Y-%m-%d')
+        StartTime = start_time.strftime('%H:%M:%S')
+        EndTime = end_time.strftime('%H:%M:%S')
+        UID = str(uuid.uuid4())
+        duration_formatted = duration.total_seconds()
+        hours, remainder = divmod(duration_formatted, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        duration_str_formatted = "{:02}:{:02}:{:02}".format(
+            int(hours), int(minutes), int(seconds))
+
+        print("id:", id)
+        print("Counter:", left_index_finger_bends)
+        print("part:", part)
+        print("UID:", UID)
+        print("PlayStage:", playstage)
+        print("Start Time:", StartTime)
+        print("End time:", EndTime)
+        print("Duration Time:", duration_str_formatted)
+
+        url = 'http://127.0.0.1:8000/add_gamerecord/'  # 替換為你的Django應用程式的URL和端點
+
+        data = {
+            'USER_UID': id,
+            'PlayDate': PlayDate,
+            'PlayPart': part,
+            'UID': UID,
+            'PlayStage': playstage,
+            'StartTime': StartTime,
+            'EndTime': EndTime,
+            'DurationTime': duration_str_formatted,
+            'AddCoin': "5",
+            'ExerciseCount': left_index_finger_bends
+        }
+        header = {
+            "Content-Type": "application/json"
+        }
+        response = requests.post(url, json=data, headers=header)
+        print(response.text)
+        if response.status_code == 200:
+            print("Data sent successfully.")
+        else:
+            print("Failed to send data.")
         break
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
+        end_time = datetime.datetime.now()
+        duration = end_time - start_time
+        duration_time_str = str(duration)
+
+        PlayDate = start_time.strftime('%Y-%m-%d')
+        StartTime = start_time.strftime('%H:%M:%S')
+        EndTime = end_time.strftime('%H:%M:%S')
+        UID = str(uuid.uuid4())
+        duration_formatted = duration.total_seconds()
+        hours, remainder = divmod(duration_formatted, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        duration_str_formatted = "{:02}:{:02}:{:02}".format(
+            int(hours), int(minutes), int(seconds))
+
+        print("id:", id)
+        print("Counter:", left_index_finger_bends)
+        print("part:", part)
+        print("UID:", UID)
+        print("PlayStage:", playstage)
+        print("Start Time:", StartTime)
+        print("End time:", EndTime)
+        print("Duration Time:", duration_str_formatted)
+
+        url = 'http://127.0.0.1:8000/add_gamerecord/'  # 替換為你的Django應用程式的URL和端點
+
+        data = {
+            'USER_UID': id,
+            'PlayDate': PlayDate,
+            'PlayPart': part,
+            'UID': UID,
+            'PlayStage': playstage,
+            'StartTime': StartTime,
+            'EndTime': EndTime,
+            'DurationTime': duration_str_formatted,
+            'AddCoin': "5",
+            'ExerciseCount': left_index_finger_bends
+        }
+        header = {
+            "Content-Type": "application/json"
+        }
+        response = requests.post(url, json=data, headers=header)
+        print(response.text)
+        if response.status_code == 200:
+            print("Data sent successfully.")
+        else:
+            print("Failed to send data.")
         break
 
 cap.release()

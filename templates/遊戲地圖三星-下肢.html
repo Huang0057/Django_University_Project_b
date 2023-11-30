@@ -1,0 +1,309 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <title>遊戲選擇畫面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <script>
+      function redirectToPage1() {
+        window.location.href = "http://127.0.0.1:8000/首頁";
+      }
+    </script>
+
+    <script>
+      function redirectToPage2() {
+        window.location.href = "http://127.0.0.1:8000/遊戲選擇畫面";
+      }
+    </script>
+
+    <script>
+      function redirectToPage3() {
+        window.location.href = "http://127.0.0.1:8000/簽到";
+      }
+    </script>
+
+    <script>
+      function redirectToPage4() {
+        window.location.href = "http://127.0.0.1:8000/商店";
+      }
+    </script>
+
+    <script>
+      function redirectToPage5() {
+        window.location.href = "http://127.0.0.1:8000/衣櫥";
+      }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var currentDate = new Date();
+        var month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+        var day = currentDate.getDate().toString().padStart(2, "0");
+        var formattedDate = month + "/" + day;
+        document.getElementById("currentDate").innerHTML = month + "/" + day;
+      });
+    </script>
+
+    <script>
+      function redirectToPage6() {
+        window.location.href = "http://127.0.0.1:8000/紀錄";
+      }
+    </script>
+
+    <script>
+      function redirectToPage01() {
+        window.location.href = "http://127.0.0.1:8000/下肢遊戲畫面7-解說";
+      }
+    </script>
+
+    <script>
+      function redirectToPage02() {
+        window.location.href = "http://127.0.0.1:8000/下肢遊戲畫面8-解說";
+      }
+    </script>
+
+    <script>
+      function redirectToPage03() {
+        window.location.href = "http://127.0.0.1:8000/下肢遊戲畫面9-解說";
+      }
+    </script>
+
+    <script>
+      function redirectToPage04() {
+        window.location.href = "http://127.0.0.1:8000/遊戲難度選擇-下肢";
+      }
+    </script>
+
+    <script>
+      function redirectToPage05() {
+        window.location.href = "http://127.0.0.1:8000/獎勵關卡-解說";
+      }
+    </script>
+
+    <style data-tag="reset-style-sheet">
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 100%;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div>
+      <link href="{% static 'css/遊戲地圖畫面.css' %}" rel="stylesheet" />
+
+      <div class="page-container">
+        <div class="page-frame">
+          <img
+            src="{% static 'public/playground_assets/down.png' %}"
+            alt="Rectangle313245"
+            class="page-rectangle31"
+          />
+          <img
+            src="{% static 'public/playground_assets/user.png' %}"
+            alt="User127"
+            class="page-user"
+          />
+
+          <img
+            src="{% static 'public/playground_assets/linemap.png' %}"
+            alt="Ellipse1212"
+            class="page-line"
+          />
+          <img
+            src="{% static 'public/playground_assets/start.png' %}"
+            alt="Ellipse1212"
+            class="page-ellipse0"
+          />
+
+          <img
+            onclick="redirectToPage01()"
+            src="{% static 'public/playground_assets/map1.png' %}"
+            alt="Ellipse1212"
+            class="page-ellipse1"
+          />
+          <span class="page-text01"><span>抬腿運動</span></span>
+          <img
+            onclick="redirectToPage02()"
+            src="{% static 'public/playground_assets/map1.png' %}"
+            alt="Ellipse2213"
+            class="page-ellipse2"
+          />
+          <span class="page-text02"><span>站立後抬</span></span>
+          <img
+            onclick="redirectToPage03()"
+            src="{% static 'public/playground_assets/map1.png' %}"
+            alt="Ellipse3215"
+            class="page-ellipse3"
+          />
+          <span class="page-text03"><span>躺下抬腳</span></span>
+          <img
+            onclick="redirectToPage04()"
+            src="{% static 'public/playground_assets/arrow.png' %}"
+            class="page-arrow"
+          />
+          <span class="page-text00"><span>返回</span></span>
+          <img
+            onclick="redirectToPage05()"
+            src="{% static 'public/playground_assets/end.png' %}"
+            alt="Ellipse3215"
+            class="page-ellipse4"
+          />
+          <span class="page-text04"><span>獎勵關卡</span></span>
+
+          <div class="page-component">
+            <div class="page-group9">
+              <img
+                onclick="redirectToPage1()"
+                src="{% static 'public/playground_assets/home.png' %}"
+                alt="image6I324"
+                class="page-image6"
+              />
+            </div>
+          </div>
+          <div class="page-component1">
+            <div class="page-group10">
+              <img
+                onclick="redirectToPage2()"
+                src="{% static 'public/playground_assets/game1.png' %}"
+                alt="image6I324"
+                class="page-image61"
+              />
+            </div>
+          </div>
+          <div class="page-component2">
+            <div class="page-group91">
+              <img
+                onclick="redirectToPage3()"
+                src="{% static 'public/playground_assets/sign.png' %}"
+                alt="image6I324"
+                class="page-image62"
+              />
+            </div>
+          </div>
+
+          <div class="page-component5">
+            <div class="page-group94">
+              <img
+                onclick="redirectToPage6()"
+                src="{% static 'public/playground_assets/record.png' %}"
+                alt="image6I324"
+                class="page-image65"
+              />
+            </div>
+          </div>
+          <img
+            src="{% static 'public/playground_assets/calendar3245-xs.svg' %}"
+            alt="Calendar3245"
+            class="page-calendar"
+          />
+          <img
+            src="{% static 'public/playground_assets/image43245-78qg.svg' %}"
+            alt="image43245"
+            class="page-image4"
+          />
+          <span class="page-text20" id="currentDate"></span>
+
+          <span class="page-text22"><span>{{ total_coins }}</span></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -4,8 +4,7 @@ import mediapipe as mp
 import numpy as np
 import datetime
 import requests
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
+
 
 mp_drawing = mp.solutions.drawing_utils  # 有關於任何需要繪製的東西
 mp_pose = mp.solutions.pose
@@ -14,6 +13,12 @@ mp_pose = mp.solutions.pose
 # 初始化计数器和标志位
 counter = 8
 stage = None
+
+id = "123123"
+part = "arm"
+playstage = "上肢上舉"
+start_time = datetime.datetime.now()
+print(f"{part}\n{playstage}\nStart time: {start_time}")
 
 # 11:LEFT_SHOULDER；13:LEFT_ELBOW手肘；15:LEFT_WRIST手腕
 # 計算角度
@@ -29,13 +34,6 @@ def calculate_angle(a, b, c):  # 分別為肩，手肘，手腕
     if angle > 180.0:
         angle = 360-angle  # >180度代表手是垂下來的
     return angle
-
-
-id = "123123"
-part = "arm"
-playstage = "上肢上舉"
-start_time = datetime.datetime.now()
-print(f"{part}\n{playstage}\nStart time: {start_time}")
 
 
 # 定义MediaPipe姿势识别模型

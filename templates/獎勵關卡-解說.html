@@ -1,0 +1,201 @@
+{% load static %}
+
+<html lang="zh-Hant">
+  <head>
+    <title>下肢遊戲畫面1-解說</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <script>
+      function redirectToPage1() {
+        window.location.href = 'http://127.0.0.1:8000/首頁';
+      }
+    </script>
+
+    <script>
+      function redirectToPage2() {
+        window.location.href = 'http://127.0.0.1:8000/遊戲選擇畫面';
+      }
+    </script>
+
+    <script>
+      function redirectToPage3() {
+        window.location.href = 'http://127.0.0.1:8000/簽到';
+      }
+    </script>
+
+    <script>
+      function redirectToPage4() {
+        window.location.href = 'http://127.0.0.1:8000/商店';
+      }
+    </script>
+
+    <script>
+      function redirectToPage5() {
+        window.location.href = 'http://127.0.0.1:8000/衣櫥';
+      }
+    </script>
+
+    <script>
+      function redirectToPage6() {
+        window.location.href = 'http://127.0.0.1:8000/紀錄';
+      }
+    </script>
+
+    <script>
+      function redirectToPage01() {
+        window.location.href = 'http://127.0.0.1:8000/遊戲畫面-獎勵關卡';
+      }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var currentDate = new Date();
+        var month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
+        var day = currentDate.getDate().toString().padStart(2, "0");
+        var formattedDate = month + "/" + day;
+        document.getElementById("currentDate").innerHTML = month + "/" + day;
+      });
+    </script>
+
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+  
+    <div>
+      <link href="{% static 'css/上肢遊戲畫面-解說.css' %}"  rel="stylesheet" />
+
+      <div class="page2-container">
+        <div class="page2-frame">
+          <style>
+            video{
+              transform: translateY(180px);
+            }
+          </style>
+          <video controls src="{% static 'public/gift.mp4' %}" width="800" controls loop>
+            載入失敗
+          </video>
+          <div class="page2-paper">
+            <img
+            src="{% static 'public/playground_assets/paper.png' %}"
+            />
+          </div>
+          <span class="page2-text"><span>示範</span></span>
+          <span class="page2-text02"><span>獎勵關卡</span></span>
+          
+          </div>      
+                
+          <span class="page2-text04">
+            <span>接下來在畫面中會隨機出現禮物盒，利用四肢或身體去觸碰禮物盒獲得金幣!</span>           
+          </span>
+
+          <img
+            src="{% static 'public/playground_assets/user.png' %}"
+            alt="User3265"
+            class="page2-user"
+          />
+          
+          <img
+            src="{% static 'public/playground_assets/calendar3265-0bzr.svg' %}"
+            alt="Calendar3265"
+            class="page2-calendar"
+          />
+          <img
+            src="{% static 'public/playground_assets/image43265-fv3.svg' %}"
+            alt="image43265"
+            class="page2-image4"
+          />
+          <span class="page2-text06" id="currentDate"></span>
+          <span class="page2-text08"><span>{{ total_coins }}</span></span>
+          <img
+            src="{% static 'public/playground_assets/down.png' %}"
+            alt="Rectangle313275"
+            class="page2-rectangle31"
+          />
+          <div class="page2-component">
+            <div class="page2-group9">
+              <img
+                onclick="redirectToPage1()"
+                src="{% static 'public/playground_assets/home.png' %}"
+                alt="image6I327"
+                class="page2-image6"
+              />
+
+            </div>
+          </div>
+          <div class="page2-component1">
+            <div class="page2-group10">
+              <img
+                onclick="redirectToPage2()"
+                src="{% static 'public/playground_assets/game1.png' %}"
+                alt="image6I327"
+                class="page2-image61"
+              />
+
+            </div>
+          </div>
+          <div>
+            <div class="page2-group91">
+              <img
+                onclick="redirectToPage3()"
+                src="{% static 'public/playground_assets/sign.png' %}"
+                alt="image6I327"
+                class="page2-image62"
+              />
+
+            </div>
+          </div>
+          
+          <div class="page2-component5">
+            <div class="page2-group94">
+              <img
+                onclick="redirectToPage6()"
+                src="{% static 'public/playground_assets/record.png' %}"
+                alt="image6I327"
+                class="page2-image65"
+              />
+
+            </div>
+          </div>
+          <div class="page2-component2">
+            <img
+              onclick="redirectToPage01()"
+              src="{% static 'public/playground_assets/rectangle347837-bi29-300h.png' %}"
+              alt="Rectangle1I784"
+              class="page2-rectangle1"
+            />
+            <span class="page2-text22" onclick="redirectToPage01()"><span>開始</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
