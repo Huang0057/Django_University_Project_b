@@ -49,17 +49,18 @@ def 首頁(request):
     total_coins = calculate_total_coins(request.user)
     try:
         user_check_ins = UserCheckIn.objects.filter(
-            user=request.user).order_by('-date')
+            user=request.user, signed_in=True).order_by('-date')
 
-        consecutive_days = 1
+        consecutive_days = 0
         today = datetime.today().date()
         for check_in in user_check_ins:
             if check_in.date == today - timedelta(days=consecutive_days):
                 consecutive_days += 1
             else:
                 break
+
     except UserCheckIn.DoesNotExist:
-        consecutive_days = 1
+        consecutive_days = 0
 
     return render(request, '首頁.html', {'username': username, 'consecutive_days': consecutive_days, 'total_coins': total_coins})
 
@@ -1027,6 +1028,9 @@ def add_gamerecord(request):
             hours, minutes, seconds = map(int, duration_str.split(':'))
             duration_time = timedelta(
                 hours=hours, minutes=minutes, seconds=seconds)
+
+            if play_stage == "獎勵關卡":
+                add_coin = exercise_count
 
             game_record = GameRecord(
                 USER_UID=user_uid,

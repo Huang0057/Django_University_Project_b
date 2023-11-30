@@ -82,6 +82,7 @@ body {
   text-decoration: none;
 }
 .page1-user {
+  cursor: pointer;
   position: absolute;
   top: 0px;
   right: 20px;

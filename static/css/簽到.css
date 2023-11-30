@@ -491,6 +491,7 @@ body {
   text-decoration: none;
 }
 .page10-user {
+  cursor: pointer;
   position: absolute;
   top: 0px;
   right: 20px;
@@ -896,4 +897,55 @@ body {
 
 .label_month select{
   font-size: 28px;
+}
+.dropdown-content {
+  display: none;
+  top: 10%;
+  right: 2%;
+  position: absolute;
+  background-color: #f9f9f9;
+  width: 250px;
+  height: 250px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.show {
+  display: block;
+}
+
+.dropdown-content p{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top:20%;  
+  font-size: 30px;   
+  font-weight: Bold;
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  font-stretch: normal;
+}
+
+.logout_button{
+  height: 50px;
+  width: 95%;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 70%; 
+  transform: translateY(-50%);
+  margin-right: auto;
+  margin-left: auto;  
+  background-color: #506e54;
+  border-radius: 30px;
+  font-size: 30px;   
+  font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+  color: white;
+  font-weight: Bold;
+  font-stretch: normal; 
 }

@@ -347,6 +347,7 @@ body {
   text-decoration: none;
 }
 .page8-user {
+  cursor: pointer;
   top: 0px;
   right: 50px;
   width: 100px;

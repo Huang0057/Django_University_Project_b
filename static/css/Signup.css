@@ -78,11 +78,15 @@
   text-decoration: none;
 }
 .page1-user {
+  cursor: pointer;
+  cursor: pointer;
+  cursor: pointer;
   position: absolute;
   top: 0px;
   right: 20px;
   width: 100px;
   height: 100px;
+  
 }
 .page1-search {
   top: 15px;

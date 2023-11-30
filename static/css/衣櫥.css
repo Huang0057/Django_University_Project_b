@@ -332,6 +332,7 @@ body {
   border-radius: 43px;
 }
 .page7-user {
+  cursor: pointer;
   position: absolute;
   top: 0px;
   right: 20px;

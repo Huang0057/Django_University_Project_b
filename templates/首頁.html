@@ -53,6 +53,17 @@
       });
     </script>
 
+    <script>
+      function toggleDropdown() {
+        var dropdown = document.getElementById("dropdownContent");
+        if (dropdown.classList.contains("show")) {
+          dropdown.classList.remove("show"); 
+        } else {
+          dropdown.classList.add("show"); 
+        }
+      }
+    </script>
+
     <style data-tag="reset-style-sheet">
       html {
         line-height: 1.15;
@@ -228,14 +239,24 @@
           <span class="page3-text12"><span>{{ total_coins }}</span></span>
 
           <span class="page3-text16"><span>開始運動吧!{{ username }}!</span></span>
-          <span class="page3-text18"><span>今天是你連續簽到第{{ consecutive_days }}天!</span></span>
+          <span class="page3-text18"><span>今天是你連續簽到第 {{ consecutive_days }} 天!</span></span>
           
           <img
             src="{% static 'public/playground_assets/user.png' %}"
             alt="User5657"
             class="page3-user"
+            id="userDropdownBtn" 
+            onclick="toggleDropdown()" 
           />
-          
+
+          <div class="dropdown-content" id="dropdownContent">
+            <p>哈囉，<span id="username">{{ username }}</span>！</p>
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button class = "logout_button" type="submit">登出</button>
+            </form>
+          </div>          
+
           <img
             onclick="redirectToPage2()"
             src="{% static 'public/playground_assets/rectangle347837-bi29-300h.png' %}"
