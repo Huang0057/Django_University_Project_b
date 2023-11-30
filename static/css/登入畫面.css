@@ -236,9 +236,10 @@ body {
   padding: 20px 150px;
   background-color: #DAF7BF;
   border-radius: 90px;
+  font-style: Extra Bold;
   text-align: center;
   font-size: 48px;
-  color: white;
+  color: #2E5A8D;
 }
 .login_button:hover {
   background-color: #61973d;

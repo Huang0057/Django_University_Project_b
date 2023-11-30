@@ -85,7 +85,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                 stage = "up"
                 counter += 1
                 print(counter)
-                if counter == 10:  # 次數=10結束
+                if counter == 5:  # 次數=10結束
                     end_time = datetime.datetime.now()
                     duration = end_time - start_time
                     duration_time_str = str(duration)

@@ -346,9 +346,10 @@ def ArmRecords(request):
 
         # 取得符合條件的遊戲紀錄（假設有與使用者相關的遊戲紀錄查詢）
         play_records = GameRecord.objects.filter(
-            USER_UID=user_uid, PlayPart='arm')
+            USER_UID=user_uid, PlayPart='arm').order_by('-PlayDate')
 
         records_per_page = 5
+
         paginator = Paginator(play_records, records_per_page)
 
         page_number = request.GET.get('page')

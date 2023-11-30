@@ -47,7 +47,7 @@ body {
 .page2-text02 {
   top: 200px;
   left: 1200px;
-  color: black;
+  color:  black;
   width: 300px;
   height: auto;
   position: absolute;
@@ -92,7 +92,7 @@ body {
   position: absolute;
 }
 .page2-text04 {
-  top: 290px;
+  top: 350px;
   left: 1030px;
   color: black;
   width: 526px;
@@ -122,8 +122,6 @@ body {
   position: absolute;
 }
 .page2-calendar {
-  cursor: pointer;
-  cursor: pointer;
   top: 0px;
   left: 0px;
   width: 100px;
@@ -140,7 +138,7 @@ body {
 .page2-text06 {
   top: 21px;
   left: 116px;
-  color: #000000;
+  color: #506E54;
   height: auto;
   position: absolute;
   font-size: 48px;
@@ -437,21 +435,21 @@ body {
   flex-shrink: 0;
 }
 .page2-rectangle1 {
-  top: -120px;
+  top: -90px;
   left: 90px;
-  width: 400px;
+  width: 294px;
   height: 132px;
   position: absolute;
   border-radius: 60px;
 }
 .page2-text22 {
-  top: -100px;
+  top: -70px;
   left: 116px;
-  color: #f8f8f8;
+  color: #2E5A8D;
   height: auto;
   width: 250px;
   position: absolute;
-  font-size: 36px;
+  font-size: 72px;
   font-style: Extra Bold;
   text-align: center;
   font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
@@ -466,4 +464,9 @@ body {
   left: 800px;
   width: 150px;
   height: 150px;
+}
+.page2-logo {
+  top: 150px;
+  left: 200px;
+  position: absolute;
 }
