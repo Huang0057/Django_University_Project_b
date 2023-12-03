@@ -74,6 +74,29 @@
       });
     </script>
 
+    <script>
+      function toggleDropdown() {
+        var dropdown = document.getElementById("dropdownContent");
+        if (dropdown.classList.contains("show")) {
+          dropdown.classList.remove("show"); 
+        } else {
+          dropdown.classList.add("show"); 
+        }
+      }
+    </script>
+
+    <script>
+      function toggleDropdown() {
+        var dropdown = document.getElementById("dropdownContent");
+        if (dropdown.classList.contains("show")) {
+          dropdown.classList.remove("show"); 
+        } else {
+          dropdown.classList.add("show"); 
+        }
+      }
+    </script>
+
+
     <style data-tag="reset-style-sheet">
       html {
         line-height: 1.15;
@@ -183,10 +206,21 @@
       <div class="component-紀錄1-container">
         <div class="component-紀錄1-frame">
           <img
-            src="{% static 'public/playground_assets/user.png' %}"
-            alt="User1345"
-            class="component-紀錄1-user"
-          />
+          src="{% static 'public/playground_assets/user.png' %}"
+          alt="User1345"
+          class="component-紀錄1-user"
+          id="userDropdownBtn" 
+          onclick="toggleDropdown()" 
+        />
+
+        <div class="dropdown-content" id="dropdownContent">
+          <p>哈囉，<span id="username">{{ username }}</span>！</p>
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button class = "logout_button" type="submit">登出</button>
+          </form>
+        </div>
+
 
           <img
             onclick="redirectToPage3()"

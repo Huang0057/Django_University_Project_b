@@ -47,6 +47,17 @@
     </script>
 
     <script>
+      function toggleDropdown() {
+        var dropdown = document.getElementById("dropdownContent");
+        if (dropdown.classList.contains("show")) {
+          dropdown.classList.remove("show"); 
+        } else {
+          dropdown.classList.add("show"); 
+        }
+      }
+    </script>
+
+    <script>
       function redirectToPage6() {
         window.location.href = "http://127.0.0.1:8000/紀錄";
       }
@@ -190,11 +201,22 @@
             alt="Rectangle313245"
             class="page-rectangle31"
           />
+
           <img
             src="{% static 'public/playground_assets/user.png' %}"
             alt="User127"
             class="page-user"
+            id="userDropdownBtn" 
+            onclick="toggleDropdown()" 
           />
+
+          <div class="dropdown-content" id="dropdownContent">
+            <p>哈囉，<span id="username">{{ username }}</span>！</p>
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button class = "logout_button" type="submit">登出</button>
+            </form>
+          </div>          
           
           <img
             onclick="redirectToPage01()"

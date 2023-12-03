@@ -948,4 +948,5 @@ body {
   color: white;
   font-weight: Bold;
   font-stretch: normal; 
+  cursor: pointer;
 }

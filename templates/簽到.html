@@ -11,6 +11,18 @@
     
 
     <script>
+      function toggleDropdown() {
+        var dropdown = document.getElementById("dropdownContent");
+        if (dropdown.classList.contains("show")) {
+          dropdown.classList.remove("show"); 
+        } else {
+          dropdown.classList.add("show"); 
+        }
+      }
+    </script>
+
+
+    <script>
       function redirectToPage1() {
         window.location.href = "http://127.0.0.1:8000/首頁";
       }
@@ -305,12 +317,23 @@
 
             </div>
           </div>
+
           <img
             src="{% static '/public/playground_assets/user.png' %}"
             alt="User3280"
             class="page10-user"
+            id="userDropdownBtn" 
+            onclick="toggleDropdown()" 
           />
-          
+
+          <div class="dropdown-content" id="dropdownContent">
+            <p>哈囉，<span id="username">{{ username }}</span>！</p>
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button class = "logout_button" type="submit">登出</button>
+            </form>
+          </div>          
+
           <img
             onclick="redirectToPage3()"
             src="{% static 'public/playground_assets/calendar3280-8ngg.svg' %}"
